@@ -1,0 +1,367 @@
+/*https://quarto.org/docs/presentations/revealjs/themes.html*/
+
+/* tipografías de google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@400;600;700&display=swap');
+
+
+/*-- scss:defaults --*/
+
+// fonts
+$font-family-sans-serif: "Atkinson Hyperlegible", Helvetica, Arial, sans-serif !default;
+$presentation-font-size-root: 30px;
+$presentation-line-height: 1.2;
+
+// headings
+$presentation-heading-font: "Montserrat", sans-serif !default;
+$presentation-heading-color: #523870 !default;
+$presentation-heading-line-height: 1.2 !default;
+$presentation-heading-font-weight: 600 !default;
+
+$presentation-h1-font-size:	2.5em;
+$presentation-h2-font-size:	1.8em;
+$presentation-h3-font-size:	1.6em;
+$presentation-h4-font-size: 1em;
+
+// colors
+$body-bg: #ffffff !default;
+$body-color: #272828 !default;
+$link-color: #00b5b5 !default;
+$link-color-hover: $presentation-heading-color !default;
+$selection-bg: #F27983 !default;
+$selection-color: #fff !default;
+$mutedColor: lighten($body-color, 45%) !default;
+
+// inline code
+$code-bg:  #553A74 !default;
+$code-color: #F4E8FD;
+
+// code blocks
+$code-block-bg: #1A111E;
+$code-block-border-color: lighten($code-block-bg, 10%);
+$code-block-font-size: 0.6em;
+
+
+// general
+p {
+  color: $body-color;
+  
+  code {
+    padding: 3px !important;
+  }
+}
+
+.cell code {
+  padding: 14px 6px !important; 
+}
+
+a {
+  text-decoration: underline !important;
+}
+
+h1 {
+  color: $presentation-heading-color !important;
+}
+
+strong {
+  color: $link-color !important;
+}
+
+.footer {
+  font-size: 0.4em !important;
+
+  p {
+  color: $mutedColor !important;
+  }
+
+  a {
+  color: $mutedColor !important;
+  }
+}
+
+.title {
+  font-weight: 600 !important;
+  line-height: 1 !important;
+}
+
+.subtitle {
+  // font-family: "EB Garamond", Garamond, Times, serif !important;
+  font-size: 130%;
+  font-style: italic;
+  font-weight: normal;
+}
+
+.subtitulo {
+  font-size: 120%;
+  font-weight: bold;
+  color: $link-color;
+}
+
+h4 {
+  font-size: 120% !important;
+  font-weight: bold !important;
+  color: $link-color !important;
+}
+
+// texto con look de heading que no debe cortar diapositiva (no usar h1-h6 reales)
+.titulo-like {
+  display: block;
+  font-family: $presentation-heading-font;
+  color: $presentation-heading-color;
+  font-weight: $presentation-heading-font-weight;
+  line-height: $presentation-heading-line-height;
+}
+
+// images
+.reveal section.img_container {
+        width: 90%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+}
+.reveal section img {
+        display: block;
+        margin: auto;
+        height: auto;
+        max-height: 90%;
+        width: auto;
+        max-width: 90%;
+}
+
+// bloques de código
+.cell {
+  margin: 12px;
+}
+
+// creados
+.espaciar {
+      padding-right: 10%; /* Adjust the percentage as needed */
+}
+
+.borde {
+  border-radius: 7px !important;
+  margin: 12px !important;
+}
+
+.borde-linea {
+  border-radius: 8px !important;
+}
+
+.linea {
+  border: solid 2px $mutedColor;
+}
+
+.centrar {
+  margin: auto; 
+  text-align: center;
+}
+
+
+.cuadro {
+    border: solid 1px $mutedColor;
+    border-radius: 8px !important;
+    padding: 10px !important;
+    padding-left: 20px !important;
+    padding-bottom: 4px !important;
+    margin: 10px;
+    background-color: lighten($presentation-heading-color, 42%);
+    margin-bottom: 20px !important;
+    margin-top: 20px !important;
+}
+
+
+/*-- scss:rules --*/
+
+.reveal .slide blockquote {
+  border-left: 3px solid $text-muted;
+  padding-left: 0.5em;
+}
+
+
+/*estilo de listas*/
+
+.reveal ul {
+  list-style-type: none; 
+  padding-left: 6px; 
+}
+
+.reveal ul ul {
+  list-style-type: none; 
+  padding-left: 6px; 
+}
+
+.reveal ul li {
+  position: relative; 
+  padding-left: 30px; 
+  margin-bottom: 6px;
+}
+
+.reveal ul li::before {
+  content: '▶';
+  position: absolute;
+  left: 0;
+  color: $link-color;
+  font-size: 20px;
+  line-height: 2;
+}
+
+.reveal ul ul ul {
+  list-style-type: none;
+}
+
+
+.rosa {
+  filter: saturate(200%) brightness(90%);
+}
+
+.izq {
+ float: left !important;
+ padding-right: 16px;
+}
+
+.der {
+ float: right !important;
+ padding-left: 16px;
+}
+
+.esquina-der {
+  float: right !important;
+  margin-right: 32px !important;
+  margin-top: -80px !important;
+}
+
+.ancho-medio {
+  width: 120px !important;
+}
+
+
+.circulo {
+  background-color: $link-color;
+  color: $body-bg !important; 
+  font-weight: bold;
+  width: 30px; height: 30px;
+  line-height: 30px;
+  font-size: 95%;
+  padding-bottom: 0px;
+  border-radius: 50%;
+  text-align: center;
+  display: inline-block;
+  margin-right: 4px;
+  vertical-align: 0.1em;
+}
+
+.circulo-grande {
+  background-color: $link-color;
+  color: $body-bg !important; 
+  font-weight: bold;
+  width: 50px; height: 50px;
+  line-height: 50px;
+  font-size: 120%;
+  padding-bottom: 0px;
+  border-radius: 50%;
+  text-align: center;
+  display: inline-block;
+  margin-right: 4px;
+  vertical-align: 0.1em;
+}
+
+.circulo-grande-texto {
+  font-size: 90%;
+  margin-top: 60px;
+  margin-left: 25px;
+  transform: translate(-50%, 0%);
+}
+.circulo-grande-texto-der {
+  font-size: 90%;
+  margin-top: 60px;
+  margin-right: 25px;
+  transform: translate(50%, 0%);
+}
+
+.pad {
+  padding-top: 8px !important; 
+  padding-bottom: 8px !important; 
+}
+
+
+.just-der {
+  text-align: right !important;
+}
+
+
+.boton {
+  background-color: $link-color;
+  color: $body-bg !important; 
+  font-weight: bold;
+  font-size: 100%;
+  padding: 0px 18px;
+  border-radius: 8px;
+  text-align: center;
+  display: inline-block;
+  margin: 8px 4px;
+  
+  a {
+    color: $body-bg !important; 
+    text-decoration: none !important;
+  }
+  
+  p {
+  color: $body-bg !important;
+  }
+  
+  .fa-classic, .fa-regular, .fa-solid, .far, .fas {
+    margin-right: 6px !important;
+  }
+}
+
+
+
+.entrada-fade-in {
+  animation: fadeIn 3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.padding {
+  padding: 20px !important;
+}
+
+.fit-image {
+  width: 100% !important;
+  height: auto !important; /* maintain aspect ratio */
+  max-height: 100% !important; /* ensure it fits vertically */
+  object-fit: contain; /* ensures the whole image is visible within its container */
+}
+
+.fondo {
+  background-color: $body-bg !important;
+}
+
+
+.linea {
+  padding: 2px 8px;
+  background-color: $link-color;
+  border-radius: 6px;
+  border: none;
+  font-size: 65%;
+  color: $body-bg;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+figure {
+  margin: 16px;
+  
+  img {
+    border-radius: 6px;
+  }
+}
+
+.r-stretch {
+  border-radius: 6px;
+}

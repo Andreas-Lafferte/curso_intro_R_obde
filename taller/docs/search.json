@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "instalaR.html",
+    "href": "instalaR.html",
+    "title": "Instalación de R y RStudio",
+    "section": "",
+    "text": "Para empezar a trabajar con datos en R necesitamos preparar dos piezas que funcionan juntas: el lenguaje R y una interfaz para escribir y ejecutar nuestro código de forma cómoda. En esta guía vamos a instalar ambas y a verificar que todo quedó andando. Si en algún momento la instalación se te complica, más abajo dejo dos alternativas que te dejan trabajar sin instalar nada pesado en tu computador.\nAntes de partir, conviene tener clara una distinción que suele confundir al principio:\n\nR es un lenguaje y ambiente de programación, dentro del cual se pueden implementar técnicas estadísticas y de ciencia de datos. Se instala una sola vez y queda funcionando “por debajo”.\nEl IDE (RStudio, o Positron) es la interfaz que abrimos día a día para interactuar con R. Nos permite escribir código, ejecutarlo, ver gráficos y organizar nuestro trabajo.\n\nUna analogía simple: R es el motor del auto y el IDE es el tablero desde el que conducimos (volante, palanca de cambios). Necesitamos las dos cosas, pero interactuamos casi siempre con el tablero.\n\n\nTodos los recursos que usaremos (esta guía, las presentaciones, la base de datos y el material del taller práctico) están reunidos en un repositorio de GitHub. Te recomiendo tenerlo a mano desde el comienzo: ahí encontrarás siempre la versión más actualizada de todo.\n\nRepositorio del taller en GitHub\n\n\n\n\n\n\n\nNota\n\n\n\nCómo obtenerlo. Puedes descargar todo como archivo comprimido con el botón verde Code → Download ZIP, o, si ya usas Git, clonarlo con:\ngit clone https://github.com/Andreas-Lafferte/curso_intro_R_obde.git"
+  },
+  {
+    "objectID": "instalaR.html#materiales-del-taller",
+    "href": "instalaR.html#materiales-del-taller",
+    "title": "Instalación de R y RStudio",
+    "section": "",
+    "text": "Todos los recursos que usaremos (esta guía, las presentaciones, la base de datos y el material del taller práctico) están reunidos en un repositorio de GitHub. Te recomiendo tenerlo a mano desde el comienzo: ahí encontrarás siempre la versión más actualizada de todo.\n\nRepositorio del taller en GitHub\n\n\n\n\n\n\n\nNota\n\n\n\nCómo obtenerlo. Puedes descargar todo como archivo comprimido con el botón verde Code → Download ZIP, o, si ya usas Git, clonarlo con:\ngit clone https://github.com/Andreas-Lafferte/curso_intro_R_obde.git"
+  },
+  {
+    "objectID": "instalaR.html#alternativa-1-rstudio-en-el-navegador-posit-cloud",
+    "href": "instalaR.html#alternativa-1-rstudio-en-el-navegador-posit-cloud",
+    "title": "Instalación de R y RStudio",
+    "section": "Alternativa 1: RStudio en el navegador (Posit Cloud)",
+    "text": "Alternativa 1: RStudio en el navegador (Posit Cloud)\nPosit Cloud te da un RStudio completo dentro del navegador web, sin instalar nada en tu computador. Solo necesitas crear una cuenta gratuita; luego, en la esquina superior derecha, elige New project → New RStudio Project y tendrás una instancia de R lista para usar, con la misma experiencia que en la versión de escritorio.\n\nIr a Posit Cloud"
+  },
+  {
+    "objectID": "instalaR.html#alternativa-2-positron-el-ide-nuevo-de-posit",
+    "href": "instalaR.html#alternativa-2-positron-el-ide-nuevo-de-posit",
+    "title": "Instalación de R y RStudio",
+    "section": "Alternativa 2: Positron (el IDE nuevo de Posit)",
+    "text": "Alternativa 2: Positron (el IDE nuevo de Posit)\nPositron es el IDE de nueva generación de Posit, pensado especialmente para ciencia de datos, con soporte para R y Python en un mismo lugar. Es gratuito y está construido sobre la base de VS Code (Code OSS), así que si vienes de ese mundo te resultará muy familiar.\nAl igual que RStudio, Positron necesita que R (Paso 1) ya esté instalado en tu computador. Se instala como cualquier programa y se actualiza solo.\n\nDescargar Positron\n\n\n\n\n\n\n\nNota\n\n\n\nNota para Windows. A diferencia de otras instalaciones, Positron no incluye Rtools. Si en algún momento lo necesitas, tendrás que instalarlo por separado.\n\n\nPositron es una alternativa moderna a RStudio; para este taller cualquiera de los dos te sirve, así que quédate con el que te resulte más cómodo.\n\nCon cualquiera de estas opciones vas a estar listo para el taller. Si algo no funciona como esperabas, avísame antes de la sesión y lo resolvemos con calma."
+  }
+]

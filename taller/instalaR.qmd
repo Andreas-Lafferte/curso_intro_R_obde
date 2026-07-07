@@ -1,0 +1,152 @@
+---
+title: "Instalación de R y RStudio"
+subtitle: "Taller de introducción a R con la Encuesta ICSOH-UDP"
+date: today
+date-format: "DD MMMM, YYYY"
+author:
+  - name: Andreas Laffert Tamayo
+    orcid: 0000-0002-9008-2454
+    email: andreas.laffert@uchile.cl 
+    affiliations:
+      - ref: 1
+affiliations: 
+  - id: 1
+    name: Universidad de Chile
+
+lang: es
+format:
+  html:
+    theme: edumer.scss
+    title-block-banner: "#523870"
+    title-block-banner-color: white
+    toc: true
+    toc-title: "En esta guía"
+    toc-location: left
+    toc-depth: 2
+    code-copy: true
+    link-external-newwindow: true
+    link-external-icon: true
+---
+
+<!-- Ajuste opcional: edumer.scss fue escrito para presentaciones (revealjs),
+     así que en formato HTML solo el h1 sale morado por defecto. Estas reglas
+     hacen que TODOS los encabezados usen el morado y la tipografía Montserrat.
+     Si prefieres, puedes borrar este bloque y mover las reglas dentro de
+     edumer.scss (en la capa scss:rules). -->
+<style>
+h1, h2, h3, h4, h5, h6 { font-family: "Montserrat", sans-serif; font-weight: 600; }
+h2, h3, h5, h6 { color: #523870; }
+
+/* Aumenta el tamaño de letra global (body, texto y encabezados heredan de aquí) */
+:root { font-size: 18px; }
+
+/* El h1 global es morado (!important, ver arriba), lo que deja el título
+   invisible dentro del banner morado. Forzamos blanco solo ahí. */
+.quarto-title-block .quarto-title-banner h1.title,
+.quarto-title-block .quarto-title-banner .subtitle {
+  color: #fff !important;
+}
+
+/* El TOC depende de JS (Bootstrap "collapse") para desplegar su lista;
+   si el html se abre directo (sin quarto preview / servidor), ese JS
+   no corre y la lista queda oculta. Forzamos que siempre se muestre. */
+#quarto-sidebar #TOC ul.collapse,
+#quarto-sidebar #TOC li ul.collapse {
+  display: block !important;
+  height: auto !important;
+}
+</style>
+
+# Introducción 
+
+Para empezar a trabajar con datos en R necesitamos preparar dos piezas que funcionan juntas: **el lenguaje R** y **una interfaz** para escribir y ejecutar nuestro código de forma cómoda. En esta guía vamos a instalar ambas y a verificar que todo quedó andando. Si en algún momento la instalación se te complica, más abajo dejo dos alternativas que te dejan trabajar sin instalar nada pesado en tu computador.
+
+Antes de partir, conviene tener clara una distinción que suele confundir al principio:
+
+- **R** es un lenguaje y ambiente de programación, dentro del cual se pueden implementar técnicas estadísticas y de ciencia de datos. Se instala **una sola vez** y queda funcionando "por debajo".
+- **El IDE** (RStudio, o Positron) es la interfaz que abrimos día a día para interactuar con R. Nos permite escribir código, ejecutarlo, ver gráficos y organizar nuestro trabajo.
+
+Una analogía simple: R es el motor del auto y el IDE es el tablero desde el que conducimos (volante, palanca de cambios). Necesitamos las dos cosas, pero interactuamos casi siempre con el tablero.
+
+## Materiales del taller
+
+Todos los recursos que usaremos (esta guía, las presentaciones, la base de datos y el material del taller práctico) están reunidos en un repositorio de GitHub. Te recomiendo tenerlo a mano desde el comienzo: ahí encontrarás siempre la versión más actualizada de todo.
+
+::: {.boton}
+[Repositorio del taller en GitHub](https://github.com/Andreas-Lafferte/curso_intro_R_obde)
+:::
+
+::: callout-note
+**Cómo obtenerlo.** Puedes descargar todo como archivo comprimido con el botón verde **Code → Download ZIP**, o, si ya usas Git, clonarlo con:
+
+`git clone https://github.com/Andreas-Lafferte/curso_intro_R_obde.git`
+:::
+
+
+# Paso 1: Instalar R
+
+R es el lenguaje base de análisis estadístico. Su gran fortaleza es que se amplía con **paquetes** (o librerías): pequeños complementos que agregan funciones para casi cualquier tarea, desde limpiar datos hasta hacer gráficos o modelos.
+
+Instalamos R **primero**, porque tanto RStudio como Positron lo usan por detrás: sin R, el IDE no tiene con qué trabajar.
+
+En la página de descarga elige el instalador según tu sistema operativo (Windows, macOS o Linux) y ejecútalo con las opciones que vienen por defecto.
+
+::: {.boton}
+[Descargar R desde CRAN](https://cran.r-project.org/)
+:::
+
+::: callout-note
+**Nota para Windows.** Para algunas tareas avanzadas (compilar ciertos paquetes) es posible que además necesites **Rtools**. Su enlace aparece en la misma página de descarga cuando eliges Windows. Para arrancar el taller no es imprescindible, así que puedes dejarlo para más adelante.
+:::
+
+# Paso 2: Instalar RStudio
+
+RStudio es un **entorno de desarrollo integrado (IDE)**: reúne en una sola ventana la consola de R junto a varios paneles que nos facilitan el trabajo. Lo desarrolla Posit, funciona con R y también con Python, y hoy es la opción más usada para aprender.
+
+Sus paneles principales son:
+
+- **Source / script:** donde escribimos y guardamos nuestros documentos con instrucciones para R.
+- **Console:** donde R recibe y ejecuta esas instrucciones.
+- **Environment:** donde vemos los objetos (datos, variables, resultados) con los que estamos trabajando.
+- **Plots / Files / Help:** donde exploramos los gráficos, navegamos archivos y
+  consultamos la ayuda.
+
+Además, RStudio nos ahorra pasos en tareas como importar datos, instalar paquetes o llevar control de versiones.
+
+::: {.boton}
+[Descargar RStudio Desktop](https://posit.co/download/rstudio-desktop/)
+:::
+
+Con R y RStudio ya instalados, abre RStudio y comprobemos que todo funciona: escribe en la consola `1 + 2` y presiona Enter. Si te devuelve `3`, ¡la instalación quedó lista y estamos en marcha!
+
+# Alternativas si no puedes instalar
+
+Si no quieres instalar nada, tu equipo es limitado, o simplemente la instalación no coopera, hay dos caminos que también funcionan perfecto para el taller.
+
+## Alternativa 1: RStudio en el navegador (Posit Cloud)
+
+**Posit Cloud** te da un RStudio completo dentro del navegador web, sin instalar nada en tu computador. Solo necesitas crear una cuenta gratuita; luego, en la esquina superior derecha, elige **New project → New RStudio Project** y tendrás una instancia de R lista para usar, con la misma experiencia que en la versión de escritorio.
+
+::: {.boton}
+[Ir a Posit Cloud](https://posit.cloud/)
+:::
+
+## Alternativa 2: Positron (el IDE nuevo de Posit)
+
+**Positron** es el IDE de nueva generación de Posit, pensado especialmente para ciencia de datos, con soporte para R y Python en un mismo lugar. Es **gratuito** y está construido sobre la base de VS Code (Code OSS), así que si vienes de ese mundo te resultará muy familiar.
+
+Al igual que RStudio, Positron necesita que **R (Paso 1) ya esté instalado** en tu computador. Se instala como cualquier programa y se actualiza solo.
+
+::: {.boton}
+[Descargar Positron](https://positron.posit.co/download.html)
+:::
+
+::: callout-note
+**Nota para Windows.** A diferencia de otras instalaciones, Positron **no incluye Rtools**. Si en algún momento lo necesitas, tendrás que instalarlo por separado.
+:::
+
+Positron es una alternativa moderna a RStudio; para este taller cualquiera de los dos te sirve, así que quédate con el que te resulte más cómodo.
+
+---
+
+Con cualquiera de estas opciones vas a estar listo para el taller. Si algo no funciona como esperabas, avísame **antes** de la sesión y lo resolvemos con calma.
