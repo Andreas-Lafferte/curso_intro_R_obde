@@ -196,12 +196,12 @@ h4 {
 }
 
 .reveal ul li::before {
-  content: '▶';
+  content: '●';
   position: absolute;
   left: 0;
   color: $link-color;
-  font-size: 20px;
-  line-height: 2;
+  font-size: 26px;
+  line-height: 1.6;
 }
 
 .reveal ul ul ul {

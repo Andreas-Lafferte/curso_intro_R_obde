@@ -26,5 +26,390 @@
     "title": "Instalación de R y RStudio",
     "section": "Alternativa 2: Positron (el IDE nuevo de Posit)",
     "text": "Alternativa 2: Positron (el IDE nuevo de Posit)\nPositron es el IDE de nueva generación de Posit, pensado especialmente para ciencia de datos, con soporte para R y Python en un mismo lugar. Es gratuito y está construido sobre la base de VS Code (Code OSS), así que si vienes de ese mundo te resultará muy familiar.\nAl igual que RStudio, Positron necesita que R (Paso 1) ya esté instalado en tu computador. Se instala como cualquier programa y se actualiza solo.\n\nDescargar Positron\n\n\n\n\n\n\n\nNota\n\n\n\nNota para Windows. A diferencia de otras instalaciones, Positron no incluye Rtools. Si en algún momento lo necesitas, tendrás que instalarlo por separado.\n\n\nPositron es una alternativa moderna a RStudio; para este taller cualquiera de los dos te sirve, así que quédate con el que te resulte más cómodo.\n\nCon cualquiera de estas opciones vas a estar listo para el taller. Si algo no funciona como esperabas, avísame antes de la sesión y lo resolvemos con calma."
+  },
+  {
+    "objectID": "taller.html#inicio",
+    "href": "taller.html#inicio",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Inicio",
+    "text": "Inicio\nBastián Olea Herrera\nbastianolea.rbind.io\n\nEncuentra todo sobre el curso en este post de mi blog.\n\n\n\n Curso\n\n\n Código\n\n\n Grabaciones\n\n\n Diapositivas\n\n\n Contacto\n\n\n\nPuedes encontrar más contenidos para aprender R en este sitio, y más cosas de R en mi sitio web."
+  },
+  {
+    "objectID": "taller.html#por-qué-programar-para-analizar-datos",
+    "href": "taller.html#por-qué-programar-para-analizar-datos",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "¿Por qué programar para analizar datos?",
+    "text": "¿Por qué programar para analizar datos?\nExisten muchas diferencias entre hacer algo y programarlo:\n\nAprender a programar es un cambio de perspectiva: pasamos de hacer cosas a planificar cosas 💅🏼\nDesde la mera Acción 🔧 a la Instrucción 🧠 y luego al Proceso ⚙️\nTrabajamos desde arriba, viendo todos sus pasos y componentes 👩🏻‍💻\nPasos independientes, reutilizables, mejorables, intercambiables ⚙️\nEl trabajo que hagas puede servirte a futuro, a ti y a otrxs ♻️\nResultados replicables 🔄 que dan paso a la automatización 🏭"
+  },
+  {
+    "objectID": "taller.html#qué-es-r",
+    "href": "taller.html#qué-es-r",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "¿Qué es R?",
+    "text": "¿Qué es R?\n\n\nR es un lenguaje de programación pensado para trabajar con datos: analizarlos, transformarlos y visualizarlos.\n\n\n\n\n\n¿Para qué lo vamos a usar?\n\nPara cargar y limpiar bases de encuestas\nPara construir tablas y gráficos de forma reproducible\nPara dejar registrado cada paso de nuestro análisis"
+  },
+  {
+    "objectID": "taller.html#qué-se-puede-hacer-con-r",
+    "href": "taller.html#qué-se-puede-hacer-con-r",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "¿Qué se puede hacer con R?",
+    "text": "¿Qué se puede hacer con R?\n\nLimpiar y recodificar bases de datos de encuestas\nConstruir tablas de frecuencias y estadísticas descriptivas\nGenerar gráficos para informes y presentaciones\nHacer mapas, dashboards, reportes automáticos, y más\n\n\nLa gracia es que, una vez que aprendes la lógica básica, todo lo demás se trata de ir sumando herramientas nuevas según lo que necesites."
+  },
+  {
+    "objectID": "taller.html#conceptos-clave",
+    "href": "taller.html#conceptos-clave",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Conceptos clave",
+    "text": "Conceptos clave\n\n\nScript\nUn archivo de texto .R (o .qmd) donde escribimos nuestro código en orden, paso a paso, para poder volver a ejecutarlo cuando queramos.\n\n\n\nConsola\nEl lugar donde R ejecuta cada instrucción, una a la vez. Lo que se escribe directo en la consola no queda guardado.\n\n\n\nProyecto\nUn archivo .Rproj que define una carpeta como nuestro espacio de trabajo, reuniendo datos, scripts y resultados en un mismo lugar."
+  },
+  {
+    "objectID": "taller.html#paneles-de-rstudio",
+    "href": "taller.html#paneles-de-rstudio",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Paneles de RStudio",
+    "text": "Paneles de RStudio\n\n\n1 Scripts\n\n\n2 Consola\n\n\n3 Entorno\n\n\n4 Archivos"
+  },
+  {
+    "objectID": "taller.html#operaciones-básicas",
+    "href": "taller.html#operaciones-básicas",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Operaciones básicas",
+    "text": "Operaciones básicas\n\n Ver tutorial\n\n\n\n\nPodemos realizar cualquier operación matemática en R.\nPara ejecutar un comando, pon el cursor de texto en la línea que desees ejecutar, o selecciónala, y presiona el botón Run, o las teclas control + enter.\nLo importante es que el cursor de texto | esté en cualquier lugar de la línea.\nEl resultado siempre aparecerá en la consola.\n\n\n\n\n\n2 + 2 #suma\n#&gt; [1] 4\n\n\n50 * 100 #multiplicación\n#&gt; [1] 5000\n\n\n4556 - 1000 #resta\n#&gt; [1] 3556\n\n\n6565 / 89 #división\n#&gt; [1] 73.76404\n\n\n10^4 #potencias\n#&gt; [1] 10000"
+  },
+  {
+    "objectID": "taller.html#tipos-de-datos",
+    "href": "taller.html#tipos-de-datos",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Tipos de datos",
+    "text": "Tipos de datos\nLo que podemos hacer con un dato depende de su tipo.\n\n\nNumérico\n\nclass(2026)\n#&gt; [1] \"numeric\"\nclass(5.5)\n#&gt; [1] \"numeric\"\n\n\n\n\n\nCarácter (texto)\n\nclass(\"izquierda\")\n#&gt; [1] \"character\"\n\n\n\n\n\nLógico\n\nclass(TRUE)\n#&gt; [1] \"logical\"\n\n\n\n\n\nFactor (categorías, muy común en encuestas)\n\nclass(datos$ideologia)\n#&gt; [1] \"factor\""
+  },
+  {
+    "objectID": "taller.html#objetos",
+    "href": "taller.html#objetos",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Objetos",
+    "text": "Objetos\nCuando queremos reutilizar un dato o resultado, lo guardamos en un objeto: le damos un nombre y le asignamos un contenido.\n\nnombre ← contenido\n\n\n\n\n\nUsamos el operador &lt;- para asignar:\n\n\nn_encuestados &lt;- 1000\n\n\n\n\n\n\n\nEl objeto se crea al asignarle un valor, y podemos ejecutarlo para ver su contenido:\n\n\nn_encuestados\n#&gt; [1] 1000"
+  },
+  {
+    "objectID": "taller.html#vectores",
+    "href": "taller.html#vectores",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Vectores",
+    "text": "Vectores\nUn vector es una secuencia de elementos del mismo tipo: la forma más básica de guardar varios datos a la vez.\n\n\nc(1, 6, 8, 3, 10)\n#&gt; [1]  1  6  8  3 10\nc(\"Izquierda\", \"Centro\", \"Derecha\")\n#&gt; [1] \"Izquierda\" \"Centro\"    \"Derecha\"\nc(TRUE, FALSE, TRUE)\n#&gt; [1]  TRUE FALSE  TRUE\n\n\n\nY ahora la buena noticia: cada columna de una base de datos ya es un vector."
+  },
+  {
+    "objectID": "taller.html#funciones",
+    "href": "taller.html#funciones",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Funciones",
+    "text": "Funciones\n\nLas funciones son pequeños programas que permiten realizar distintas operaciones.\n\n\nfunción(argumento = 123)\n\n\nAlgunas funciones comunes:\n\nmean() # calcular promedio\nmedian() # calcular mediana\nsum() # sumar elementos\nmin() # valor mínimo\nmax() # valor máximo\n\n\n\nPor ejemplo:\n\nmean(c(1, 2, 3, 4, 5))\n#&gt; [1] 3\n\n\n\n\n\nSi no sabemos cómo usar una función, podemos buscar su nombre en el panel Ayuda de RStudio, o escribir el nombre de la función precedido de un signo de interrogación: ?funcion"
+  },
+  {
+    "objectID": "taller.html#paquetes",
+    "href": "taller.html#paquetes",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Paquetes",
+    "text": "Paquetes\n\n\n\n\n\nExtensiones que agregan funciones nuevas a R\nSe instalan una vez desde internet, y se cargan cada sesión\nLos mantiene la comunidad de R\nPiénsalos como cajones de cocina: cada paquete guarda herramientas específicas, y uno va abriendo el cajón que necesita para la tarea que tiene entre manos\n\n\n\nPara instalar y cargar de una vez usamos {pacman}: si el paquete ya está instalado, solo lo carga; si no, lo instala primero.\n\npacman::p_load(dplyr, ggplot2, sjlabelled, sjmisc, naniar, sjPlot)\n\n\n\nHoy vamos a usar {dplyr} y {ggplot2} para procesar y graficar, y {sjlabelled}, {sjmisc}, {naniar} y {sjPlot}, pensados especialmente para datos de encuestas."
+  },
+  {
+    "objectID": "taller.html#cargar-datos",
+    "href": "taller.html#cargar-datos",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Cargar datos ",
+    "text": "Cargar datos \nNuestra base viene en formato .RData, el formato nativo de R. Se carga con load(), y el objeto aparece con el nombre que traía guardado:\n\nload(\"../input/data/BBDD_Clima_Junio_Sample.RData\")\nls()\n#&gt; [1] \"bbdd_clima_sample\" \"casos_muestra\"     \"casos_totales\"    \n#&gt; [4] \"datos\"             \"edad\"              \"fichas_salud\"     \n#&gt; [7] \"minimo_muestral\"   \"n_encuestados\"     \"region_favorita\"\n\n\nLas bases de encuesta suelen llegar etiquetadas: cada valor numérico representa una categoría (clase haven_labelled). Para trabajar cómodos desde ya, convertimos esas etiquetas en factores de una vez, con sjlabelled::as_label():\n\ndatos &lt;- sjlabelled::as_label(bbdd_clima_sample)"
+  },
+  {
+    "objectID": "taller.html#para-qué-sirve-dplyr",
+    "href": "taller.html#para-qué-sirve-dplyr",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "¿Para qué sirve {dplyr}?",
+    "text": "¿Para qué sirve {dplyr}?\nPara explorar y modificar los datos.\n\n\nSeleccionar columnas:\ndatos |&gt; select(region, comuna, porcentaje)\n\n#&gt; # A tibble: 4 × 3\n#&gt;   region   comuna        porcentaje\n#&gt;   &lt;chr&gt;    &lt;chr&gt;              &lt;dbl&gt;\n#&gt; 1 Tarapacá Iquique            0.183\n#&gt; 2 Tarapacá Alto Hospicio      0.326\n#&gt; 3 Tarapacá Pozo Almonte       0.250\n#&gt; 4 Tarapacá Camiña             0.223\n\nOrdenar observaciones:\ndatos |&gt; arrange(porcentaje)\n\n#&gt; # A tibble: 4 × 3\n#&gt;   region        comuna         porcentaje\n#&gt;   &lt;chr&gt;         &lt;chr&gt;               &lt;dbl&gt;\n#&gt; 1 Magallanes    Río Verde         0.00113\n#&gt; 2 Magallanes    Laguna Blanca     0.00353\n#&gt; 3 Magallanes    Cabo De Hornos    0.0158 \n#&gt; 4 Metropolitana Vitacura          0.0244\n\n\nFiltrar datos:\ndatos |&gt; filter(porcentaje &gt; 0.3)\n\n#&gt; # A tibble: 4 × 3\n#&gt;   region   comuna          porcentaje\n#&gt;   &lt;chr&gt;    &lt;chr&gt;                &lt;dbl&gt;\n#&gt; 1 Tarapacá Alto Hospicio        0.326\n#&gt; 2 Tarapacá Colchane             0.300\n#&gt; 3 Tarapacá Huara                0.386\n#&gt; 4 Atacama  Tierra Amarilla      0.345\n\nCrear variables:\ndatos |&gt; mutate(ranking = row_number())\n\n#&gt; # A tibble: 4 × 3\n#&gt;   comuna        porcentaje ranking\n#&gt;   &lt;chr&gt;              &lt;dbl&gt;   &lt;int&gt;\n#&gt; 1 General Lagos      0.586       1\n#&gt; 2 Saavedra           0.445       2\n#&gt; 3 Ercilla            0.416       3\n#&gt; 4 Galvarino          0.399       4\n\nY más!"
+  },
+  {
+    "objectID": "taller.html#conector",
+    "href": "taller.html#conector",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Conector",
+    "text": "Conector\n\n Ver tutorial\n\nEl conector o pipe |&gt; (o también %&gt;%) nos permite encadenar varias funciones de forma más legible.\n\n|&gt; o %&gt;%\n\n\nSe escribe con:\n\nWindows:\n\n\n\nMac:"
+  },
+  {
+    "objectID": "taller.html#seleccionar-y-ordenar",
+    "href": "taller.html#seleccionar-y-ordenar",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Seleccionar y ordenar",
+    "text": "Seleccionar y ordenar\n\n Ver tutorial\n\nUsaremos los datos de pobreza del Ministerio Desarrollo Social y Familia que vimos antes. Si no los cargaste, descárgalos y los cargas así:\n\nlibrary(dplyr)\nlibrary(readxl)\n\ndatos &lt;- read_excel(\"estimaciones_pobreza.xlsx\")\n\n\n\n\nSeleccionar\n\ndatos |&gt; \n  select(region, comuna, personas) |&gt; \n  head()\n#&gt; # A tibble: 6 × 3\n#&gt;   region   comuna        personas\n#&gt;   &lt;chr&gt;    &lt;chr&gt;            &lt;dbl&gt;\n#&gt; 1 Tarapacá Iquique         41967.\n#&gt; 2 Tarapacá Alto Hospicio   45162.\n#&gt; 3 Tarapacá Pozo Almonte     4563.\n#&gt; 4 Tarapacá Camiña            308.\n#&gt; 5 Tarapacá Colchane          473.\n#&gt; 6 Tarapacá Huara            1185.\n\n\nOrdenar\n\ndatos |&gt; \n  select(region, comuna, personas) |&gt; \n  arrange(desc(personas)) |&gt; \n  head()\n#&gt; # A tibble: 6 × 3\n#&gt;   region        comuna       personas\n#&gt;   &lt;chr&gt;         &lt;chr&gt;           &lt;dbl&gt;\n#&gt; 1 Metropolitana Puente Alto   125235.\n#&gt; 2 Metropolitana Santiago       87355.\n#&gt; 3 Metropolitana Maipú          86976.\n#&gt; 4 Antofagasta   Antofagasta    73103.\n#&gt; 5 Metropolitana San Bernardo   64276.\n#&gt; 6 Valparaíso    Valparaíso     60901."
+  },
+  {
+    "objectID": "taller.html#comparaciones",
+    "href": "taller.html#comparaciones",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Comparaciones",
+    "text": "Comparaciones\nPodemos usar cifras u objetos para compararlas entre sí: la respuesta será TRUE (verdadero) o FALSE (falso).\n\n\n\nedad &gt;= 18\n#&gt; [1] TRUE\n\n\n\n\nminimo &lt;- 35\nedad &gt; minimo\n#&gt; [1] FALSE\n\n\n\n\naño == 2024\n#&gt; [1] FALSE\n\n\n\n\naño != 2024\n#&gt; [1] TRUE\n\n\n\nLas comparaciones son el principio que luego nos permitirá filtrar datos, crear variables, y más!"
+  },
+  {
+    "objectID": "taller.html#filtrar-datos",
+    "href": "taller.html#filtrar-datos",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Filtrar datos",
+    "text": "Filtrar datos\n\n Ver tutorial\n\n\nPara filtrar, realizamos una comparación entre los valores de una columna y un valor específico.\n\n\n\nlibrary(dplyr)\n\ndatos |&gt; \n  filter(porcentaje &gt; 0.35) |&gt; \n  arrange(desc(porcentaje)) |&gt; \n  head()\n#&gt; # A tibble: 6 × 10\n#&gt;   codigo region         comuna personas_proy personas porcentaje limite_inferior\n#&gt;   &lt;chr&gt;  &lt;chr&gt;          &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;           &lt;dbl&gt;\n#&gt; 1 15202  Arica y Parin… Gener…           668     392.      0.586           0.435\n#&gt; 2 9116   La Araucanía   Saave…         12717    5654.      0.445           0.361\n#&gt; 3 9204   La Araucanía   Ercil…          8422    3503.      0.416           0.361\n#&gt; 4 9106   La Araucanía   Galva…         12594    5029.      0.399           0.313\n#&gt; 5 8314   Biobío         Alto …          6784    2640.      0.389           0.319\n#&gt; 6 10306  Los Lagos      San J…          7521    2923.      0.389           0.314\n#&gt; # ℹ 3 more variables: limite_superior &lt;dbl&gt;, casen &lt;chr&gt;, tipo_estimacion &lt;chr&gt;"
+  },
+  {
+    "objectID": "taller.html#funciones-comunes",
+    "href": "taller.html#funciones-comunes",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Funciones comunes",
+    "text": "Funciones comunes\nAlgunas de las funciones más comunes de usar en {dplyr}, que son también las que usaremos para interactuar con los datos.\n\nhead(), tail(), glimpse(): vistazos a los datos\nselect(): seleccionar columnas o variables de una tabla\nslice(): extraer filas de una tabla por su posición o distintos criterios\npull(): extraer una columna como vector\nfilter(): filtrar observaciones en base a condiciones personalizadas\ndistinct(): filtrar observaciones repetidas en una o más columnas\ncount(): conteo de casos únicos en una o más columnas\nmutate(): crear columnas entregando valores, funciones sobre columnas, o calculando a partir de otras columnas"
+  },
+  {
+    "objectID": "taller.html#datos-de-texto",
+    "href": "taller.html#datos-de-texto",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Datos de texto",
+    "text": "Datos de texto\n\nEl paquete {stringr} se especializa en texto.\n\n\nlibrary(stringr)\n\n\n\ntexto &lt;- \"todxs pueden aprender a programar 💕\" \n\nstr_detect(texto, \"todos\")\n#&gt; [1] FALSE\n\nstr_detect(texto, \"aprender\")\n#&gt; [1] TRUE\n\n\n\n\ndatos |&gt; \n  filter(str_detect(comuna, \"Alto\")) |&gt; \n  select(region, comuna)\n#&gt; # A tibble: 4 × 2\n#&gt;   region        comuna         \n#&gt;   &lt;chr&gt;         &lt;chr&gt;          \n#&gt; 1 Tarapacá      Alto Hospicio  \n#&gt; 2 Atacama       Alto Del Carmen\n#&gt; 3 Biobío        Alto Biobío    \n#&gt; 4 Metropolitana Puente Alto"
+  },
+  {
+    "objectID": "taller.html#crearmodificar-variables",
+    "href": "taller.html#crearmodificar-variables",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Crear/modificar variables",
+    "text": "Crear/modificar variables\n\n Ver tutorial\n\n\nCon mutate() para crear una nueva variable o columna\n\n\nLe aplicamos mutate() a un data frame conectando los datos a la función con un conector (|&gt; o %&gt;%)\n\n\n\n\ndatos |&gt; \n  select(codigo, comuna) |&gt; \n  mutate(saludo = \"hola\") |&gt; \n  head()\n#&gt; # A tibble: 6 × 3\n#&gt;   codigo comuna        saludo\n#&gt;   &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt; \n#&gt; 1 1101   Iquique       hola  \n#&gt; 2 1107   Alto Hospicio hola  \n#&gt; 3 1401   Pozo Almonte  hola  \n#&gt; 4 1402   Camiña        hola  \n#&gt; 5 1403   Colchane      hola  \n#&gt; 6 1404   Huara         hola\n\n\n\ndatos |&gt; \n  select(comuna, personas) |&gt; \n  mutate(miles = personas/1000) |&gt; \n  head()\n#&gt; # A tibble: 6 × 3\n#&gt;   comuna        personas  miles\n#&gt;   &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;\n#&gt; 1 Iquique         41967. 42.0  \n#&gt; 2 Alto Hospicio   45162. 45.2  \n#&gt; 3 Pozo Almonte     4563.  4.56 \n#&gt; 4 Camiña            308.  0.308\n#&gt; 5 Colchane          473.  0.473\n#&gt; 6 Huara            1185.  1.18"
+  },
+  {
+    "objectID": "taller.html#resúmenes-de-datos",
+    "href": "taller.html#resúmenes-de-datos",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Resúmenes de datos",
+    "text": "Resúmenes de datos\n\n Ver tutorial\n\n\nAplicar una función para resumir todas las filas de una tabla en un sólo resultado:\n\ndatos |&gt; \n  summarize(total = sum(personas))\n#&gt; # A tibble: 1 × 1\n#&gt;      total\n#&gt;      &lt;dbl&gt;\n#&gt; 1 3368245.\n\n\n\nSi agrupamos los datos, obtendremos una fila de resultado por cada grupo:\n\ndatos |&gt; \n  group_by(region) |&gt; \n  summarize(total = sum(personas)) |&gt; \n  head(n = 4)\n#&gt; # A tibble: 4 × 2\n#&gt;   region               total\n#&gt;   &lt;chr&gt;                &lt;dbl&gt;\n#&gt; 1 Antofagasta        121379.\n#&gt; 2 Arica y Parinacota  48086.\n#&gt; 3 Atacama             64481.\n#&gt; 4 Aysén               15113."
+  },
+  {
+    "objectID": "taller.html#cruce-de-datos-o-left-join",
+    "href": "taller.html#cruce-de-datos-o-left-join",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Cruce de datos o left join",
+    "text": "Cruce de datos o left join\n\n Ver tutorial\n\nPara cruzar dos tablas de datosusamos left_join() de {dplyr}\n\n\n\n\n\n\n  Descargar datos de clasificación comunal en Excel"
+  },
+  {
+    "objectID": "taller.html#transformar-datos",
+    "href": "taller.html#transformar-datos",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Transformar datos",
+    "text": "Transformar datos\n\n Ver tutorial\n\n\nlibrary(tidyr)\n\n\nEl paquete {tidyr} se especializa en transformar la estructura de los datos.\nEsto nos permite manipular los datos para que sea más cómodo o lógico realizar ciertas operaciones.\nPor ejemplo:\nSi necesitamos sumar varias variables, es más cómodo tenerlas en filas (para poder usar algo como sum(valores)) que en columnas (y tener que sumar a+b+c+d…)\nSi queremos comparar varias variables, o mostrarlas a un público, es mejor que estén lado a lado, como en las tablas comunes."
+  },
+  {
+    "objectID": "taller.html#tutoriales-de-dplyr",
+    "href": "taller.html#tutoriales-de-dplyr",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Tutoriales de {dplyr}",
+    "text": "Tutoriales de {dplyr}\nPara que puedan repasar o guiarse con casos básicos de uso de {dplyr} con datos reales, dejo un par de tutoriales:\n\n Tutorial con datos censales\n\n\n Tutorial con datos sociales\n\n\nDatos para practicar\nAlgunos conjuntos de datos limpios para practicar\n\n  Clasificaciones comunales\n\n\n  Estimaciones de población\n\n\n  Escolaridad por comuna\n\n\n  Población según género"
+  },
+  {
+    "objectID": "taller.html#gramática-de-gráficos",
+    "href": "taller.html#gramática-de-gráficos",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Gramática de gráficos",
+    "text": "Gramática de gráficos\n\n\n\n\n\n\n\nDatos: variables disponibles para construir el gráfico\nMapeos: conexión de variables a distintos aspectos de la visualización\nCapas: elementos geométricos agregados unos sobre otros\nEscalas: especificación de la forma en que se mapean las variables a los ejes\nFacetas: dividir la visualización en paneles distintos según una variable\nCoordenadas: proyección de las coordenadas en el plano\nTemas: definición de la apariencia general del gráfico, y específica para cada elemento"
+  },
+  {
+    "objectID": "taller.html#gramática-aplicada-al-código",
+    "href": "taller.html#gramática-aplicada-al-código",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Gramática aplicada al código",
+    "text": "Gramática aplicada al código\n\n Ver tutorial\n\n\n\nConceptos que constituyen la gramática de los gráficos:\n\n\nDatos línea 1\nMapeos línea 2\nCapas línea 3\nEscalas línea 4\nFacetas línea 5\nCoordenadas línea 6\nTemas línea 7\n\n\n\nConceptos de la gramática de gráficos aplicados al código:\n\nggplot(iris) + # datos\n  aes(Sepal.Width, Sepal.Length, color = Species) + # mapeos\n  geom_point(size = 1) + # capas\n  scale_color_discrete() + # escalas\n  facet_wrap(~Species) + # facetas\n  coord_cartesian(xlim = c(2, 5)) + # coordenadas\n  theme_linedraw() # temas"
+  },
+  {
+    "objectID": "taller.html#colores-del-gráfico",
+    "href": "taller.html#colores-del-gráfico",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Colores del gráfico",
+    "text": "Colores del gráfico\n\ngrafico &lt;- ggplot(iris) +\n  aes(Sepal.Width, Sepal.Length, color = Species) + \n  geom_point(alpha = 0.7)\n\n\n\nColores generales del gráfico\n\ngrafico_tema &lt;- grafico +\n  theme_linedraw(paper = \"#EAD2FA\", \n                 ink = \"#553A74\", \n                 accent = \"#9069C0\")\ngrafico_tema\n\n\n\n\n\n\n\n\n\nColores de las categorías\n\ngrafico_color &lt;- grafico_tema +\n  scale_color_discrete(\n    palette = c(\"#AC558A\", \"#553A74\", \n                \"#666BC7\"))\ngrafico_color"
+  },
+  {
+    "objectID": "taller.html#textos-del-gráfico",
+    "href": "taller.html#textos-del-gráfico",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Textos del gráfico",
+    "text": "Textos del gráfico\nPodemos configurar y agregar textos del gráfico con la capa labs():\n\n\ngrafico_textos &lt;- grafico_color +\n  labs(x = \"Ancho del sépalo\", \n       y = \"Largo del sépalo\", \n       color = \"Especies\",\n       title = \"Gráfico de dispersión\",\n       subtitle = \"Iris Setosa\")\n\ngrafico_textos"
+  },
+  {
+    "objectID": "taller.html#temas",
+    "href": "taller.html#temas",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Temas",
+    "text": "Temas\nConfiguración completa de cualquier aspecto o elemento del gráfico.\n\n\nFunciones de temas\nAgregar un tema prediseñado que cambia la apariencia general del gráfico:\n\ntheme_minimal()\ntheme_classic()\ntheme_void()\ntheme_linedraw()\n\n\nComponentes del gráfico\nEn theme() podemos cambiar aspectos específicos. Los principales empiezan con:\n\npanel\ngrid\nscales\naxis\nstrip\nlegend\n\n\nTipos de componente\nCada aspecto del gráfico es de un tipo distinto, y cada tipo se configura mediante una función:\n\nelement_text(), txtos\nelement_line(), líneas\nelement_rect(), rectángulos\nelement_blank(), ocultar"
+  },
+  {
+    "objectID": "taller.html#extensiones-de-ggplot2",
+    "href": "taller.html#extensiones-de-ggplot2",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Extensiones de {ggplot2}",
+    "text": "Extensiones de {ggplot2}\n\nExisten muchos paquetes que extienden las capacidades de {ggplot2}:\n\n\n{ggforce}: nuevas geometrías\n{patchwork}: combinación de gráficos\n{ggrepel}: separación de textos sobrepuestos\n{gganimate}: gráficos animados\n{marquee} y {ggtext}: textos con formato, color, y más\n{ggiraph} y {plotly}: gráficos interactivos\n\n\n\n\nAcá hay una lista de extensiones de ggplot2"
+  },
+  {
+    "objectID": "taller.html#recursos-de-aprendizaje",
+    "href": "taller.html#recursos-de-aprendizaje",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Recursos de aprendizaje",
+    "text": "Recursos de aprendizaje\n\n Tutorial de visualización de datos con {ggplot2}\n\n\nR Graph Gallery\nR Charts\nA ggplot2 Tutorial for Beautiful Plotting in R, tutorial de {ggplot2} en inglés"
+  },
+  {
+    "objectID": "taller.html#datos-para-practicar-1",
+    "href": "taller.html#datos-para-practicar-1",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Datos para practicar ",
+    "text": "Datos para practicar \n\n Estimaciones de población Censo\n\n\n Variables educacionales Censo 2024\n\n\n Estimación de pobreza multidimensional 2022\n\n\n Clasificaciones comunales 2024\n\nPuedes encontrar más datos en mi repositorio de datos sociales, en el banco integrado de datos del Ministerio de Desarrollo, en los datos abiertos del Estado Chile, y muchos más.\n\n\n\nAhora que ya sabes lo básico, todo lo demás se trata de aprender piezas y herramientas que puedes ir agregando a tus análisis! 🧩🛠️"
+  },
+  {
+    "objectID": "taller.html#consejos",
+    "href": "taller.html#consejos",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Consejos",
+    "text": "Consejos\n\nMantengan su propio libro de aprendizajes 📝\nLean bien los errores y busquen su significado\nSi algo sale mal, prueben paso a paso\nTambién pueden devolverse y empezar de nuevo\nDense una vuelta y a veces la respuesta llega solita 😌\nNo se vuelvan dependientes de la IA 😵\nSi quieren usar IA:\nAutocompletado de GitHub Copilot\nMensaje de sistema para su proveedor de IA\nAprendendan a buscar bien en internet\nCompartan lo que hacen y socialicen sus aprendizajes! ✨"
+  },
+  {
+    "objectID": "taller.html#objetivo-del-taller",
+    "href": "taller.html#objetivo-del-taller",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Objetivo del taller",
+    "text": "Objetivo del taller\nEste taller busca darles las primeras herramientas para programar en R aplicado al análisis de datos en ciencias sociales. Vamos a trabajar con una muestra de la Encuesta ICSOH-UDP, un instrumento de opinión pública que mide el clima social y político en Chile.\n\nAl terminar, ustedes van a poder cargar una base de datos de encuesta, explorarla, recodificarla, y producir sus primeras tablas y gráficos descriptivos, todo con código que puedan repetir y adaptar."
+  },
+  {
+    "objectID": "taller.html#qué-se-van-a-llevar",
+    "href": "taller.html#qué-se-van-a-llevar",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "¿Qué se van a llevar?",
+    "text": "¿Qué se van a llevar?\n\nVan a perder el miedo a la pantalla en blanco de un script\nVan a saber leer un mensaje de error y no entrar en pánico\nVan a poder cargar cualquier base de encuesta y darle una primera mirada\nVan a poder responder preguntas simples con datos: ¿cuántas personas piensan X?, ¿cómo varía Y según Z?"
+  },
+  {
+    "objectID": "taller.html#la-encuesta-icsoh-udp",
+    "href": "taller.html#la-encuesta-icsoh-udp",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "La Encuesta ICSOH-UDP",
+    "text": "La Encuesta ICSOH-UDP\n\nEncuesta de opinión pública sobre clima social, económico y político en Chile, levantada por el Instituto de Ciencias Sociales de la Universidad Diego Portales\nMetodología: encuesta online autoaplicada, con cuotas que buscan representar la dispersión regional del país\nLa versión completa considera del orden de 1.500 casos; nosotros trabajaremos con una muestra reducida de 1.000 casos, pensada exclusivamente para fines de enseñanza\nMás información: icso.udp.cl/nosotros/encuesta\n\n\nLa ola que usaremos incluye preguntas sobre el gobierno de José Antonio Kast y la segunda vuelta presidencial de noviembre de 2025, así que corresponde a una medición reciente del clima social."
+  },
+  {
+    "objectID": "taller.html#r-como-calculadora",
+    "href": "taller.html#r-como-calculadora",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "R como calculadora",
+    "text": "R como calculadora\n\n\n\nPodemos escribir cualquier operación matemática directamente en R\nPara ejecutarla, pon el cursor en la línea y presiona control/cmd + enter\nEl resultado aparece en la consola\n\n\n\n\n850 + 150 # dos tandas de encuestas, sumadas\n#&gt; [1] 1000\n\n\n5 * 200 # 5 quintiles de 200 personas cada uno\n#&gt; [1] 1000\n\n\n1500 - 1000 # encuesta completa menos nuestra muestra\n#&gt; [1] 500\n\n\n1000 / 5 # tamaño esperado de cada quintil\n#&gt; [1] 200\n\n\n3.1 * 10^6 # tramo más alto de ingreso del hogar, en pesos\n#&gt; [1] 3100000"
+  },
+  {
+    "objectID": "taller.html#operaciones-lógicas",
+    "href": "taller.html#operaciones-lógicas",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Operaciones lógicas",
+    "text": "Operaciones lógicas\nComparan dos valores y devuelven TRUE o FALSE.\n\n\n\n20 == 5 # igualdad\n#&gt; [1] FALSE\n\n\n30 &gt;= 14 # mayor o igual que\n#&gt; [1] TRUE\n\n\n22 &lt;= 2 # menor o igual que\n#&gt; [1] FALSE\n\n\n\n25 != 10 # distinto de\n#&gt; [1] TRUE\n\n\nedad &lt;- 32\nedad &gt;= 18 & edad &lt;= 65 # varias condiciones a la vez\n#&gt; [1] TRUE"
+  },
+  {
+    "objectID": "taller.html#bases-de-datos-data-frames",
+    "href": "taller.html#bases-de-datos-data-frames",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Bases de datos (data frames)",
+    "text": "Bases de datos (data frames)\nUn data frame es una tabla: cada fila es un caso (una persona encuestada) y cada columna es una variable.\n\nLa base que vamos a usar durante todo el taller ya es un data frame:\n\nclass(datos)\n#&gt; [1] \"tbl_df\"     \"tbl\"        \"data.frame\"\ndim(datos)\n#&gt; [1] 1000  101\n\n\n\n\ndatos |&gt;\n  select(sexo, tramo_edad, region, gse) |&gt;\n  head()\n#&gt; # A tibble: 6 × 4\n#&gt;   sexo   tramo_edad region        gse  \n#&gt;   &lt;fct&gt;  &lt;ord&gt;      &lt;fct&gt;         &lt;chr&gt;\n#&gt; 1 Mujer  18-29      Maule         C2   \n#&gt; 2 Hombre 30-49      Maule         D    \n#&gt; 3 Hombre 18-29      Antofagasta   ABC1 \n#&gt; 4 Mujer  18-29      Biobío        C2   \n#&gt; 5 Hombre 30-49      Metropolitana C2   \n#&gt; 6 Mujer  50-99      Metropolitana D"
+  },
+  {
+    "objectID": "taller.html#observar-datos",
+    "href": "taller.html#observar-datos",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Observar datos",
+    "text": "Observar datos\n\nhead(): primeras filas\nnames(): nombres de las columnas\ndim(): número de filas y columnas\nView(): abre la tabla completa en una pestaña\n\n\n\ndim(datos)\n#&gt; [1] 1000  101\nnames(datos) |&gt; head(10)\n#&gt;  [1] \"id\"                            \"sexo\"                         \n#&gt;  [3] \"tramo_edad\"                    \"quintil_ingreso\"              \n#&gt;  [5] \"educ\"                          \"ideologia\"                    \n#&gt;  [7] \"trade_crecimiento_desigualdad\" \"trade_ambiente_empleo\"        \n#&gt;  [9] \"trade_derechos_laborales\"      \"provision_pensiones\""
+  },
+  {
+    "objectID": "taller.html#estructura-de-la-bbdd",
+    "href": "taller.html#estructura-de-la-bbdd",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Estructura de la bbdd",
+    "text": "Estructura de la bbdd\nCon glimpse() vemos el tipo de cada columna y sus primeros valores:\n\ndatos |&gt;\n  select(sexo, tramo_edad, region, gse, ideologia, autoubicacion_izq_der) |&gt;\n  glimpse()\n#&gt; Rows: 1,000\n#&gt; Columns: 6\n#&gt; $ sexo                  &lt;fct&gt; Mujer, Hombre, Hombre, Mujer, Hombre, Mujer, Hom…\n#&gt; $ tramo_edad            &lt;ord&gt; 18-29, 30-49, 18-29, 18-29, 30-49, 50-99, 50-99,…\n#&gt; $ region                &lt;fct&gt; Maule, Maule, Antofagasta, Biobío, Metropolitana…\n#&gt; $ gse                   &lt;chr&gt; \"C2\", \"D\", \"ABC1\", \"C2\", \"C2\", \"D\", \"C3\", \"ABC1\"…\n#&gt; $ ideologia             &lt;fct&gt; Izquierda, Centro, Derecha, Derecha, Ninguno, De…\n#&gt; $ autoubicacion_izq_der &lt;fct&gt; 4, 5, 6, 7, Sin identificación política, 10. Der…"
+  },
+  {
+    "objectID": "taller.html#seleccionar",
+    "href": "taller.html#seleccionar",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Seleccionar",
+    "text": "Seleccionar\nselect() elige columnas por su nombre:\n\ndatos |&gt;\n  select(sexo, tramo_edad, region, ideologia) |&gt;\n  head()\n#&gt; # A tibble: 6 × 4\n#&gt;   sexo   tramo_edad region        ideologia\n#&gt;   &lt;fct&gt;  &lt;ord&gt;      &lt;fct&gt;         &lt;fct&gt;    \n#&gt; 1 Mujer  18-29      Maule         Izquierda\n#&gt; 2 Hombre 30-49      Maule         Centro   \n#&gt; 3 Hombre 18-29      Antofagasta   Derecha  \n#&gt; 4 Mujer  18-29      Biobío        Derecha  \n#&gt; 5 Hombre 30-49      Metropolitana Ninguno  \n#&gt; 6 Mujer  50-99      Metropolitana Derecha"
+  },
+  {
+    "objectID": "taller.html#renombrar",
+    "href": "taller.html#renombrar",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Renombrar",
+    "text": "Renombrar\nrename() le cambia el nombre a una columna sin tocar su contenido:\n\ndatos |&gt;\n  rename(genero = sexo, posicion_politica = ideologia) |&gt;\n  select(genero, posicion_politica) |&gt;\n  head()\n#&gt; # A tibble: 6 × 2\n#&gt;   genero posicion_politica\n#&gt;   &lt;fct&gt;  &lt;fct&gt;            \n#&gt; 1 Mujer  Izquierda        \n#&gt; 2 Hombre Centro           \n#&gt; 3 Hombre Derecha          \n#&gt; 4 Mujer  Derecha          \n#&gt; 5 Hombre Ninguno          \n#&gt; 6 Mujer  Derecha"
+  },
+  {
+    "objectID": "taller.html#filtrar",
+    "href": "taller.html#filtrar",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Filtrar",
+    "text": "Filtrar\nfilter() conserva solo las filas que cumplen una condición:\n\ndatos |&gt;\n  filter(quintil_ingreso == \"Q1\") |&gt;\n  select(quintil_ingreso, region, gse) |&gt;\n  head()\n#&gt; # A tibble: 6 × 3\n#&gt;   quintil_ingreso region                              gse  \n#&gt;   &lt;ord&gt;           &lt;fct&gt;                               &lt;chr&gt;\n#&gt; 1 Q1              Maule                               C3   \n#&gt; 2 Q1              Ñuble                               E    \n#&gt; 3 Q1              Antofagasta                         E    \n#&gt; 4 Q1              Antofagasta                         E    \n#&gt; 5 Q1              Biobío                              C3   \n#&gt; 6 Q1              Libertador Gral. Bernardo O'Higgins D\n\n\n\ndatos |&gt;\n  filter(tramo_edad == \"18-29\" & sexo == \"Mujer\") |&gt;\n  nrow()\n#&gt; [1] 112"
+  },
+  {
+    "objectID": "taller.html#recodificar-y-transformar",
+    "href": "taller.html#recodificar-y-transformar",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Recodificar y transformar",
+    "text": "Recodificar y transformar\nmutate() crea o modifica columnas. Con if_else() resolvemos una condición simple:\n\ndatos |&gt;\n  mutate(de_acuerdo = if_else(\n    gob_buen_camino %in% c(\"De acuerdo\", \"Muy de acuerdo\"),\n    \"De acuerdo\", \"No de acuerdo\")) |&gt;\n  count(de_acuerdo)\n#&gt; # A tibble: 2 × 2\n#&gt;   de_acuerdo        n\n#&gt;   &lt;chr&gt;         &lt;int&gt;\n#&gt; 1 De acuerdo      296\n#&gt; 2 No de acuerdo   704\n\n\nComo gob_buen_camino ya es un factor con categorías legibles, comparamos directamente contra el texto de las categorías que nos interesan."
+  },
+  {
+    "objectID": "taller.html#valores-perdidos",
+    "href": "taller.html#valores-perdidos",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Valores perdidos",
+    "text": "Valores perdidos\n\nEn una encuesta, no todas las personas responden todo: eso genera valores perdidos (NA)\nEl paquete {naniar} está pensado justo para diagnosticar cuántos y dónde están\n\n\n\ncolSums(is.na(datos)) |&gt; head(6)\n#&gt;              id            sexo      tramo_edad quintil_ingreso            educ \n#&gt;               0              11               0               0               0 \n#&gt;       ideologia \n#&gt;               1\nnaniar::n_miss(datos)\n#&gt; [1] 117\nnaniar::prop_miss(datos) * 100\n#&gt; [1] 0.1158416\n\n\n\nmiss_var_summary() ordena las variables de más a menos incompletas:\n\nnaniar::miss_var_summary(datos) |&gt; head(5)\n#&gt; # A tibble: 5 × 3\n#&gt;   variable                n_miss pct_miss\n#&gt;   &lt;chr&gt;                    &lt;int&gt;    &lt;num&gt;\n#&gt; 1 sexo                        11      1.1\n#&gt; 2 llega_fin_mes                5      0.5\n#&gt; 3 imp_bajar_genera_empleo      4      0.4\n#&gt; 4 trade_ambiente_empleo        3      0.3\n#&gt; 5 problema_desigualdad         3      0.3\n\n\n\nna.omit() elimina toda fila con al menos un dato perdido en cualquier columna, así que hay que usarlo con cuidado en bases tan anchas como esta:\n\nnrow(datos)\n#&gt; [1] 1000\nnrow(na.omit(datos))\n#&gt; [1] 939"
+  },
+  {
+    "objectID": "taller.html#guardar-y-exportar",
+    "href": "taller.html#guardar-y-exportar",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Guardar y exportar",
+    "text": "Guardar y exportar\n\ndatos_filtrados &lt;- datos |&gt;\n  filter(!is.na(sexo))\n\nsaveRDS(datos_filtrados, \"datos_filtrados.rds\")\nreadr::write_csv(datos_filtrados, \"datos_filtrados.csv\")\nwritexl::write_xlsx(datos_filtrados, \"datos_filtrados.xlsx\")\n\n\nGuardamos siempre en un objeto nuevo, para no perder ni sobreescribir los datos originales."
+  },
+  {
+    "objectID": "taller.html#resumiendo-datos",
+    "href": "taller.html#resumiendo-datos",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Resumiendo datos",
+    "text": "Resumiendo datos\nsummarize() reduce toda la tabla a un solo resultado; group_by() lo hace por grupos:\n\ndatos |&gt;\n  group_by(ideologia) |&gt;\n  summarize(\n    fichas_seguridad_prom = mean(fichas_seguridad, na.rm = TRUE),\n    n = n())\n#&gt; # A tibble: 5 × 3\n#&gt;   ideologia fichas_seguridad_prom     n\n#&gt;   &lt;fct&gt;                     &lt;dbl&gt; &lt;int&gt;\n#&gt; 1 Izquierda                  1.45   253\n#&gt; 2 Centro                     1.72   150\n#&gt; 3 Derecha                    2.17   313\n#&gt; 4 Ninguno                    1.65   283\n#&gt; 5 &lt;NA&gt;                       2        1\n\n\nfichas_seguridad son las fichas de gasto público que cada persona asignó a seguridad; vemos que quienes se identifican de derecha le asignan, en promedio, bastantes más que quienes se identifican de izquierda."
+  },
+  {
+    "objectID": "taller.html#variables-categóricas",
+    "href": "taller.html#variables-categóricas",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Variables categóricas",
+    "text": "Variables categóricas\nPara ver la distribución de una variable categórica, usamos sjmisc::frq():\n\nsjmisc::frq(datos$gse)\n#&gt; x &lt;character&gt; \n#&gt; # total N=1000 valid N=1000 mean=2.65 sd=1.15\n#&gt; \n#&gt; Value |   N | Raw % | Valid % | Cum. %\n#&gt; --------------------------------------\n#&gt; ABC1  | 207 | 20.70 |   20.70 |  20.70\n#&gt; C2    | 225 | 22.50 |   22.50 |  43.20\n#&gt; C3    | 328 | 32.80 |   32.80 |  76.00\n#&gt; D     | 189 | 18.90 |   18.90 |  94.90\n#&gt; E     |  51 |  5.10 |    5.10 | 100.00\n#&gt; &lt;NA&gt;  |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;"
+  },
+  {
+    "objectID": "taller.html#variables-numéricas",
+    "href": "taller.html#variables-numéricas",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Variables numéricas",
+    "text": "Variables numéricas\nPara variables numéricas usamos funciones de resumen o sjmisc::descr():\n\nsummary(datos$fichas_salud)\n#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n#&gt;   0.000   2.000   2.000   2.166   2.000  10.000       1\nsjmisc::descr(datos, fichas_salud)\n#&gt; \n#&gt; ## Basic descriptive statistics\n#&gt; \n#&gt;           var    type\n#&gt;  fichas_salud numeric\n#&gt;                                                                                                                                                                                                                                                       label\n#&gt;  Imagine que usted tiene 10 fichas para repartir entre las siguientes áreas de gasto público en Chile. ¿Cuánto le asignaría a cada una? Puede asignar 0 fichas a las áreas que considere menos prioritarias, pero el total debe sumar exactamente 10 - Salu\n#&gt;    n NA.prc mean   sd   se md trimmed     range iqr skew\n#&gt;  999    0.1 2.17 0.87 0.03  2    2.12 10 (0-10)   0  2.9\n\n\nfichas_salud viene de una pregunta donde cada persona reparte 10 fichas de gasto público entre distintas áreas; aquí vemos cuántas fichas, en promedio, se destinan a salud."
+  },
+  {
+    "objectID": "taller.html#bivariados-categórica-categórica",
+    "href": "taller.html#bivariados-categórica-categórica",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Bivariados: categórica × categórica",
+    "text": "Bivariados: categórica × categórica\nCon sjPlot::tab_xtab() obtenemos una tabla de contingencia con porcentajes de fila:\nsjPlot::tab_xtab(datos$gse, datos$ideologia, show.row.prc = TRUE)\n\n \n gse\n ideologia\n Total\n \n \n\n Izquierda\n Centro\n Derecha\n Ninguno\n \n \n \nABC1\n6129.5 %\n3215.5 %\n7636.7 %\n3818.4 %\n207100 % \n\n \n \nC2\n7131.6 %\n219.3 %\n8136 %\n5223.1 %\n225100 % \n\n \n \nC3\n8225.1 %\n4614.1 %\n10130.9 %\n9830 %\n327100 % \n\n \n \nD\n3719.6 %\n3317.5 %\n3920.6 %\n8042.3 %\n189100 % \n\n \n \nE\n23.9 %\n1835.3 %\n1631.4 %\n1529.4 %\n51100 % \n\n \n \nTotal\n25325.3 %\n15015 %\n31331.3 %\n28328.3 %\n999100 % \n\nχ2=69.570 · df=12 · Cramer's V=0.152 · p=0.000"
+  },
+  {
+    "objectID": "taller.html#algunos-gráficos-con-ggplot2",
+    "href": "taller.html#algunos-gráficos-con-ggplot2",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Algunos gráficos con {ggplot2}",
+    "text": "Algunos gráficos con {ggplot2}\nUna barra para una variable categórica:\n\nggplot(datos, aes(x = gse)) +\n  geom_bar() +\n  labs(title = \"Distribución por grupo socioeconómico\", x = \"GSE\", y = \"Casos\")"
+  },
+  {
+    "objectID": "taller.html#recursos-para-seguir-aprendiendo",
+    "href": "taller.html#recursos-para-seguir-aprendiendo",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Recursos para seguir aprendiendo",
+    "text": "Recursos para seguir aprendiendo\n\nR Graph Gallery\nR Charts\nA ggplot2 Tutorial for Beautiful Plotting in R (en inglés)\n\n\nEste taller se inspira en los materiales abiertos de Bastián Olea (proyecto Aprende R), a quien agradecemos por compartir su trabajo con la comunidad."
+  },
+  {
+    "objectID": "taller.html#consejos-finales",
+    "href": "taller.html#consejos-finales",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Consejos finales",
+    "text": "Consejos finales\n\nMantengan su propio cuaderno de aprendizajes 📝\nLean con calma los errores: casi siempre dicen exactamente qué falló\nSi algo sale mal, revisen paso a paso, y si hace falta, empiecen de nuevo\nUsen la IA como apoyo puntual, no como reemplazo de entender lo que hacen\nCompartan lo que van aprendiendo con sus colegas ✨"
   }
 ]
