@@ -1,0 +1,119 @@
+---
+title: "Guía 1: antes del taller"
+subtitle: "Taller de introducción a R con la Encuesta ICSOH-UDP"
+date: today
+date-format: "DD MMMM, YYYY"
+author:
+  - name: Andreas Laffert Tamayo
+    orcid: 0000-0002-9008-2454
+    email: andreas.laffert@uchile.cl 
+    affiliations:
+      - ref: 1
+affiliations: 
+  - id: 1
+    name: Universidad de Chile
+
+lang: es
+format:
+  html:
+    theme: edumer.scss
+    title-block-banner: "#523870"
+    title-block-banner-color: white
+    toc: true
+    toc-title: "En esta guía"
+    toc-location: left
+    toc-depth: 2
+    code-copy: true
+    link-external-newwindow: true
+    link-external-icon: true
+---
+<!-- Ajuste opcional: edumer.scss fue escrito para presentaciones (revealjs),
+     así que en formato HTML solo el h1 sale morado por defecto. Estas reglas
+     hacen que TODOS los encabezados usen el morado y la tipografía Montserrat.
+     Si prefieres, puedes borrar este bloque y mover las reglas dentro de
+     edumer.scss (en la capa scss:rules). -->
+<style>
+h1, h2, h3, h4, h5, h6 { font-family: "Montserrat", sans-serif; font-weight: 600; }
+h2, h3, h5, h6 { color: #523870; }
+
+/* Aumenta el tamaño de letra global (body, texto y encabezados heredan de aquí) */
+:root { font-size: 18px; }
+
+/* El h1 global es morado (!important, ver arriba), lo que deja el título
+   invisible dentro del banner morado. Forzamos blanco solo ahí. */
+.quarto-title-block .quarto-title-banner h1.title,
+.quarto-title-block .quarto-title-banner .subtitle {
+  color: #fff !important;
+}
+
+/* El TOC depende de JS (Bootstrap "collapse") para desplegar su lista;
+   si el html se abre directo (sin quarto preview / servidor), ese JS
+   no corre y la lista queda oculta. Forzamos que siempre se muestre. */
+#quarto-sidebar #TOC ul.collapse,
+#quarto-sidebar #TOC li ul.collapse {
+  display: block !important;
+  height: auto !important;
+}
+</style>
+
+## ¿Qué es este taller?
+
+Este es un taller de introducción a **R** pensado para personas sin experiencia previa en programación. Durante la sesión van a aprender los elementos básicos del lenguaje y a usarlos para explorar, limpiar y describir datos de encuesta, usando como ejemplo una muestra de la [Encuesta ICSOH-UDP](https://icso.udp.cl/nosotros/encuesta/), un instrumento de opinión pública que mide el clima social y político en Chile.
+
+Al terminar el taller, ustedes van a poder:
+
+- Cargar una base de datos de encuesta y darle una primera mirada.
+- Recodificar variables y manejar valores perdidos.
+- Producir sus primeras tablas y gráficos descriptivos.
+- Leer y entender un script de R escrito por otra persona, y adaptarlo a sus propios datos.
+
+No se necesita ningún conocimiento previo de programación ni de estadística avanzada.
+
+## Cómo vamos a trabajar: Posit Cloud
+
+El taller se hace íntegramente en **[Posit Cloud](https://posit.cloud/)**, la versión de RStudio que corre directo en el navegador. Esto quiere decir que:
+
+- **No necesitan instalar nada** en su computador para participar.
+- Van a acceder a un **proyecto ya preparado**, con la base de datos cargada y el script del taller listo para usar.
+- Cualquier computador con navegador e internet sirve; no importa el sistema operativo.
+
+::: {.callout-note}
+[**Enlace de acceso al proyecto**](https://posit.cloud/spaces/801250/join?access_code=UlLr8-j6_-WOVbHS5n8sncNJ311aY63MPllAo6Z2) 
+
+Al entrar con este enlace, se les va a pedir crear una cuenta gratuita en Posit Cloud (o iniciar sesión si ya tienen una). Después de eso, deben darle a "Yes" y van a ver el proyecto del taller en su espacio de trabajo, con todo listo para partir.
+
+También puedes copiarlo y pegarlo en tu navegador: `https://posit.cloud/spaces/801250/join?access_code=UlLr8-j6_-WOVbHS5n8sncNJ311aY63MPllAo6Z2`
+:::
+
+## Flujo del taller
+
+El taller se organiza en dos partes:
+
+1. **Presentación:** revisamos juntos los conceptos y el código paso a paso, proyectado en pantalla.
+2. **Código en vivo:** aplicamos todo lo aprendido sobre la misma base de datos, en un script que ustedes pueden ir corriendo en paralelo, línea por línea, en su propio proyecto de Posit Cloud.
+
+No hace falta que tomen notas de todo el código: va a quedar disponible en el proyecto compartido para que lo revisen después con calma.
+
+## Materiales y recursos
+
+Esto es lo que van a encontrar en el proyecto de Posit Cloud:
+
+- La presentación del taller.
+- El script de código en vivo, comentado paso a paso.
+- La base de datos de la encuesta, ya lista para cargar.
+
+Recursos adicionales para seguir aprendiendo después del taller:
+
+- [Repositorio del curso](https://github.com/Andreas-Lafferte/curso_intro_R_obde)
+
+## Instalación local de R y RStudio (opcional)
+
+Como el taller se hace en Posit Cloud, **no necesitan instalar nada** para participar. Si de todas formas quieren tener R y RStudio instalados en su propio computador —para seguir practicando después del taller, por ejemplo—, pueden seguir esta guía aparte:
+
+[Instalar R y RStudio](https://andreas-lafferte.github.io/curso_intro_R_obde/taller/docs/instalaR.html)
+
+Esa instalación es completamente opcional y no es un requisito para el taller.
+
+---
+
+Cualquier duda antes del taller, pueden escribir a andreas.laffert@uchile.cl. ¡Nos vemos pronto!

@@ -97,7 +97,7 @@
     code span.vs { color: #9ecbff; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-9a44c0814ddcc99aa64be2a69f58f673.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-0b02c6c93fd8575ed63645626705279f.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -212,13 +212,16 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
     </div>
 </div>
 
-  <p class="date">07 julio, 2026</p>
+  <p class="date">22 julio, 2026</p>
 </section>
 <section id="objetivo-del-taller" class="slide level2">
 <h2>Objetivo del taller</h2>
 <p>Este taller busca darles las primeras herramientas para <strong>programar en R</strong> aplicado al <strong>análisis de datos en ciencias sociales</strong>. Vamos a trabajar con una muestra de la <strong>Encuesta ICSOH-UDP</strong>, un instrumento de opinión pública que mide el clima social y político en Chile.</p>
 <div class="fragment">
 <p>Al terminar, ustedes van a poder cargar una base de datos de encuesta, explorarla, recodificarla, y producir sus primeras tablas y gráficos descriptivos, todo con código que puedan repetir y adaptar.</p>
+<div class="fragment pad">
+<p>Vamos a trabajar en <strong>Posit Cloud</strong>, directo desde el navegador y sin instalar nada. Los detalles de acceso están en la <strong>Guía 1</strong> que se envió antes del taller.</p>
+</div>
 </div>
 </section>
 <section class="slide level2">
@@ -227,7 +230,7 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <ul>
 <li class="fragment">Qué es R y cómo se usa junto a RStudio</li>
 <li class="fragment">Los elementos básicos del lenguaje: objetos, vectores, tipos de datos</li>
-<li class="fragment">Herramientas para cargar, ordenar y limpiar datos de encuestas</li>
+<li class="fragment">Herramientas para cargar, ordenar y procesar datos de encuestas</li>
 <li class="fragment">Estadística descriptiva: frecuencias, promedios y gráficos simples</li>
 </ul>
 </section>
@@ -235,7 +238,7 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 
 <h3 id="lo-que-no-vamos-a-ver">Lo que no vamos a ver</h3>
 <ul>
-<li class="fragment">Cómo instalar R y RStudio en tu computador <em>(revisa la guía de instalación aparte)</em></li>
+<li class="fragment">Cómo instalar R y RStudio en tu computador: como trabajamos en <strong>Posit Cloud</strong>, hoy no hace falta instalar nada; si igual quieres instalarlo en tu computador, la guía está en la <strong>Guía 1</strong></li>
 <li class="fragment">Cómo escribir tus propias funciones o loops</li>
 <li class="fragment">Modelos estadísticos (regresiones, tests de hipótesis, etc.)</li>
 </ul>
@@ -254,31 +257,37 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 </section>
 <section id="la-encuesta-icsoh-udp" class="slide level2">
 <h2>La Encuesta ICSOH-UDP</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
 <ul>
-<li class="fragment">Encuesta de <strong>opinión pública</strong> sobre clima social, económico y político en Chile, levantada por el Instituto de Ciencias Sociales de la Universidad Diego Portales</li>
-<li class="fragment">Metodología: encuesta <strong>online autoaplicada</strong>, con cuotas que buscan representar la dispersión regional del país</li>
-<li class="fragment">La versión completa considera del orden de <strong>1.500 casos</strong>; nosotros trabajaremos con una <strong>muestra reducida de 1.000 casos</strong>, pensada exclusivamente para fines de enseñanza</li>
+<li class="fragment">Encuesta de <strong>opinión pública</strong> sobre clima social y político en Chile, levantada por ICSOH y el OBDE de la UDP</li>
+<li class="fragment">Metodología: encuesta <strong>online autoaplicada</strong>, con diseño muestral por cuotas</li>
+<li class="fragment"><span class="math inline">\(N\)</span> = 1.500 casos con valores perdidos introducidos con fines pedagógicos</li>
 <li class="fragment">Más información: <a href="https://icso.udp.cl/nosotros/encuesta/">icso.udp.cl/nosotros/encuesta</a></li>
 </ul>
-<div class="fragment pad">
-<p>La ola que usaremos incluye preguntas sobre el gobierno de José Antonio Kast y la segunda vuelta presidencial de noviembre de 2025, así que corresponde a una medición reciente del clima social.</p>
-</div>
+</div><div class="column" style="width:45%;">
+<p><img data-src="imagenes/clima.png"></p>
+</div></div>
 </section>
 <section class="slide level2">
 
 <h3 id="flujo-de-trabajo">Flujo de trabajo</h3>
 <div class="fragment">
-<p><img data-src="imagenes/flujo_trabajo.png" class="centro" style="width: 800px;"></p>
+<p><img data-src="imagenes/ipo.png" class="centro" style="width: 800px;"></p>
 </div>
+</section>
+<section class="slide level2">
+
+<h3 id="flujo-de-trabajo-1">Flujo de trabajo</h3>
 <div class="fragment">
-<p>Datos → limpieza → análisis → resultados. Todo documentado en un script que pueden volver a correr cuantas veces quieran.</p>
+<p><img data-src="imagenes/cora1.png" class="centro" style="width: 800px;"></p>
 </div>
 </section>
 <section id="qué-es-r" class="slide level2">
 <h2>¿Qué es R?</h2>
 <div class="columns">
 <div class="column" style="width:55%;">
-<p>R es un <strong>lenguaje de programación</strong> pensado para trabajar con datos: analizarlos, transformarlos y visualizarlos.</p>
+<p>R es un <strong>lenguaje y ambiente de programación</strong> pensado para trabajar con datos: analizarlos, transformarlos y visualizarlos.</p>
 </div><div class="column" style="width:45%;">
 <p><img data-src="imagenes/logo_r.png" class="rosa" style="height: 180px; margin-top:-30px;"></p>
 </div></div>
@@ -322,12 +331,23 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <li class="fragment">Generar gráficos para informes y presentaciones</li>
 <li class="fragment">Hacer mapas, dashboards, reportes automáticos, y más</li>
 </ul>
-<div class="fragment pad">
-<p>La gracia es que, una vez que aprendes la lógica básica, todo lo demás se trata de ir sumando herramientas nuevas según lo que necesites.</p>
+<div class="columns">
+<div class="column fragment" style="width:33%;">
+<div class="cuadro">
+<p><img data-src="imagenes/web.png" style="width:100%;"></p>
+<p><span class="subtitulo">Sitios web</span></p>
 </div>
-</section>
-<section class="slide level2">
-
+</div><div class="column fragment" style="width:33%;">
+<div class="cuadro">
+<p><img data-src="imagenes/shiny.png" style="width:100%;"></p>
+<p><span class="subtitulo">Aplicaciones Shiny</span></p>
+</div>
+</div><div class="column fragment" style="width:33%;">
+<div class="cuadro">
+<p><img data-src="imagenes/survey.png" style="width:100%;"></p>
+<p><span class="subtitulo">Encuestas</span></p>
+</div>
+</div></div>
 </section>
 <section>
 <section id="rstudio" class="title-slide slide level1 center">
@@ -337,8 +357,9 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <p>RStudio es un <strong>entorno de desarrollo (IDE)</strong> que nos permite escribir y ejecutar código en R de forma más cómoda y visual que la consola sola.</p>
 <ul>
 <li class="fragment">Es la forma más popular de trabajar con R</li>
-<li class="fragment">Es software libre</li>
+<li class="fragment">Existe como programa de escritorio, y también como <strong>Posit Cloud</strong>, que corre en el navegador</li>
 <li class="fragment">También existe <a href="https://positron.posit.co">Positron</a>, una alternativa más moderna</li>
+<li class="fragment">Hoy vamos a trabajar en <strong>Posit Cloud</strong>: no necesitan instalar nada, solo entrar al proyecto que les compartimos</li>
 </ul>
 </div><div class="column" style="width:45%;">
 <p><img data-src="imagenes/logo_rstudio.png" class="rosa" style="height: 200px; margin-top:-36px;"></p>
@@ -350,21 +371,20 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <div class="fragment">
 <h4 id="script">Script</h4>
 <p>Un archivo de texto <code>.R</code> (o <code>.qmd</code>) donde escribimos nuestro código en orden, paso a paso, para poder volver a ejecutarlo cuando queramos.</p>
-<p><br></p>
 </div>
 <div class="fragment">
 <h4 id="consola">Consola</h4>
 <p>El lugar donde R <strong>ejecuta</strong> cada instrucción, una a la vez. Lo que se escribe directo en la consola no queda guardado.</p>
-<p><br></p>
 </div>
 <div class="fragment">
 <h4 id="proyecto">Proyecto</h4>
-<p>Un archivo <code>.Rproj</code> que define una carpeta como nuestro espacio de trabajo, reuniendo datos, scripts y resultados en un mismo lugar.</p>
+<p>En <strong>Posit Cloud</strong>, cada espacio de trabajo <strong>ya es un proyecto</strong>: una carpeta que reúne datos, scripts y resultados en un mismo lugar. No hace falta crearlo a mano, así que solo entramos al proyecto que les compartimos.</p>
+<p>Cuando trabajen en su computador, el equivalente es un archivo <code>.Rproj</code>, que define esa misma carpeta como su espacio de trabajo.</p>
 </div>
 </section>
 <section id="paneles-de-rstudio" class="slide level2">
 <h2>Paneles de RStudio</h2>
-<p><img data-src="imagenes/panel_rstudio.png" class="entrada-fade-in centro" style="width: 800px;"></p>
+<p><img data-src="imagenes/rstudio_boton.png" class="entrada-fade-in centro" style="width: 800px;"></p>
 <div class="fragment">
 <p><span class="circulo-grande absolute" style="top: 30%; left: 4%; ">1</span> <span class="circulo-grande-texto absolute" style="top: 30%; left: 4%; ">Scripts</span></p>
 </div>
@@ -383,14 +403,15 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <h3 id="consola-y-scripts">Consola y scripts</h3>
 <div class="columns">
 <div class="column">
+<p>La <strong>consola</strong> es como hablar en voz alta con R (responde al instante, pero no queda registro de lo que dijiste); el <strong>script</strong> es tu <strong>receta escrita</strong> (queda guardada, y la puedes volver a ejecutar cuantas veces quieras).</p>
 <ul>
 <li class="fragment">Todo comando de R se <strong>ejecuta</strong> en la consola, que es donde vive R</li>
 <li class="fragment">Lo que escribes directo en la consola se ejecuta, pero <strong>no se guarda</strong></li>
 <li class="fragment">Para guardar tu trabajo, escribes en un <strong>script</strong></li>
-<li class="fragment">Con el cursor en la línea que quieres correr, usa el botón <em>Run</em> o <code>control/cmd + enter</code></li>
+<li class="fragment">Desde el script, <strong>envías</strong> cada línea a la consola con el botón <em>Run</em> o <code>control/cmd + enter</code></li>
 </ul>
 </div><div class="column">
-<p><img data-src="imagenes/panel_script.png" style="width:100%;"></p>
+<p><img data-src="imagenes/script.png" style="width:100%;"></p>
 </div></div>
 </section>
 <section class="slide level2">
@@ -405,12 +426,9 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <div class="fragment pad">
 <p>Vamos a ir probando estos botones a medida que avancemos.</p>
 </div>
-</section>
-<section class="slide level2">
-
 </section></section>
 <section>
-<section id="introducción-a-r" class="title-slide slide level1 center">
+<section id="introducción-a-r" class="title-slide slide level1 texto-blanco center" data-background-color="#523870">
 <h1>Introducción a R</h1>
 <div class="columns">
 <div class="column" style="width:55%;">
@@ -470,34 +488,43 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 </div>
 </div>
 </section>
-<section id="operaciones-lógicas" class="slide level2">
-<h2>Operaciones lógicas</h2>
-<p>Comparan dos valores y devuelven <code>TRUE</code> o <code>FALSE</code>.</p>
-<div class="columns">
-<div class="column fragment">
+<section id="operadores" class="slide level2">
+<h2>Operadores</h2>
+<p>En R usamos distintos operadores según lo que queramos hacer: calcular, comparar, asignar, o combinar condiciones.</p>
+<div class="fragment">
+<p><img data-src="imagenes/operadores.png" class="centro" style="width: 750px;"></p>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 class="scrollable" id="operadores-en-acción">Operadores en acción</h3>
+<p>Un par de ejemplos, sin ser exhaustivos (para eso está la imagen anterior):</p>
+<div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="dv">20</span> <span class="sc">==</span> <span class="dv">5</span> <span class="co"># igualdad</span></span>
-<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="dv">1000</span> <span class="sc">&gt;=</span> <span class="dv">500</span> <span class="co"># relacional: comparar</span></span>
+<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="dv">30</span> <span class="sc">&gt;=</span> <span class="dv">14</span> <span class="co"># mayor o igual que</span></span>
-<span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a>(<span class="dv">1000</span> <span class="sc">&gt;</span> <span class="dv">500</span>) <span class="sc">&amp;</span> (<span class="dv">200</span> <span class="sc">&lt;</span> <span class="dv">100</span>) <span class="co"># booleano: combinar condiciones</span></span>
+<span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="dv">22</span> <span class="sc">&lt;=</span> <span class="dv">2</span> <span class="co"># menor o igual que</span></span>
-<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="st">"Q1"</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Q1"</span>, <span class="st">"Q2"</span>) <span class="co"># relacional: pertenencia</span></span>
+<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div><div class="column fragment">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="dv">25</span> <span class="sc">!=</span> <span class="dv">10</span> <span class="co"># distinto de</span></span>
-<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a>edad <span class="ot">&lt;-</span> <span class="dv">32</span></span>
-<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a>edad <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;</span> edad <span class="sc">&lt;=</span> <span class="dv">65</span> <span class="co"># varias condiciones a la vez</span></span>
-<span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+
+<h3 id="pipe">Pipe</h3>
+<p>El <strong>pipe</strong> <code>|&gt;</code> (o <code>%&gt;%</code>) es otro operador, el <strong>conector</strong>, que usaremos para encadenar operaciones cuando lleguemos a <code>{dplyr}</code>.</p>
+<p>Significa: “toma lo que está a la izquierda y pásalo como primer argumento a la función de la derecha”.</p>
+<div class="fragment">
+<p><img data-src="imagenes/pipe_shortcut_mac.png" class="centro" style="width: 500px;"></p>
 </div>
-</div></div>
+<div class="fragment">
+<p><img data-src="imagenes/pipe_shortcut_win.png" class="centro" style="width: 500px;"></p>
+</div>
 </section>
 <section id="tipos-de-datos" class="slide level2 scrollable">
 <h2>Tipos de datos</h2>
@@ -506,10 +533,9 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <div class="pad">
 <p><strong>Numérico</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="dv">2026</span>)</span>
-<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "numeric"</span></span>
-<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fl">5.5</span>)</span>
-<span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "numeric"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a>edades <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">25</span>, <span class="dv">40</span>, <span class="dv">33</span>)</span>
+<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(edades)</span>
+<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "numeric"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -517,8 +543,9 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <div class="pad">
 <p><strong>Carácter</strong> (texto)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="st">"izquierda"</span>)</span>
-<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "character"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a>nombres <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Valentina"</span>, <span class="st">"Nicolás"</span>, <span class="st">"Dafne"</span>)</span>
+<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(nombres)</span>
+<span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "character"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -526,8 +553,9 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <div class="pad">
 <p><strong>Lógico</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="cn">TRUE</span>)</span>
-<span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "logical"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a>mayoria_edad <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mayoria_edad)</span>
+<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "logical"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -535,9 +563,34 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <div class="pad">
 <p><strong>Factor</strong> (categorías, muy común en encuestas)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(datos<span class="sc">$</span>ideologia)</span>
-<span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "factor"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a>posicion <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"Izquierda"</span>, <span class="st">"Centro"</span>, <span class="st">"Derecha"</span>))</span>
+<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(posicion)</span>
+<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "factor"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="fragment pad">
+<p>En nuestra encuesta, variables como <code>ideologia</code> ya vienen como factor: <code>class(datos$ideologia)</code>.</p>
+</div>
+</div>
+</section>
+<section id="transformar-tipos-coerción" class="slide level2 scrollable">
+<h2>Transformar tipos (coerción)</h2>
+<p>Existen funciones para convertir un dato de un tipo a otro:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>edades_texto <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"18"</span>, <span class="st">"25"</span>, <span class="st">"40"</span>)</span>
+<span id="cb14-2"><a></a><span class="fu">class</span>(edades_texto) <span class="co"># carácter</span></span>
+<span id="cb14-3"><a></a><span class="co">#&gt; [1] "character"</span></span>
+<span id="cb14-4"><a></a></span>
+<span id="cb14-5"><a></a>edades_num <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(edades_texto)</span>
+<span id="cb14-6"><a></a><span class="fu">class</span>(edades_num) <span class="co"># numérico</span></span>
+<span id="cb14-7"><a></a><span class="co">#&gt; [1] "numeric"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment pad">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">as.logical</span>()    <span class="co"># a lógico</span></span>
+<span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>()    <span class="co"># a numérico</span></span>
+<span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">as.factor</span>()     <span class="co"># a factor</span></span>
+<span id="cb15-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">as.character</span>()  <span class="co"># a carácter</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -573,25 +626,6 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 </section>
 <section class="slide level2">
 
-<h3 id="asignación">Asignación</h3>
-<p>Con el operador <code>&lt;-</code> creamos o modificamos objetos.</p>
-<div class="centrar" style="font-size: 200%">
-<p><code>&lt;-</code></p>
-</div>
-<div class="fragment">
-<p>Se escribe con:</p>
-<div class="centrar" style="color: #563A74; opacity: 40%;">
-<p>Windows:</p>
-</div>
-<p><img data-src="imagenes/assignment_shortcut_win.png" class="centrar"></p>
-<div class="centrar" style="color: #563A74; opacity: 40%; margin-top:32px;">
-<p>Mac:</p>
-</div>
-<p><img data-src="imagenes/assignment_shortcut_mac.png" class="centrar"></p>
-</div>
-</section>
-<section class="slide level2">
-
 <div class="columns">
 <div class="column">
 <p>Al asignar, <strong>creamos</strong> o <strong>modificamos</strong> un objeto. Al ejecutarlo, obtenemos su contenido.</p>
@@ -622,17 +656,57 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 </div>
 </div>
 </section>
+<section class="slide level2">
+
+<h3 class="scrollable" id="reto-de-asignación">Reto de asignación</h3>
+<p>¿Qué creen que va a mostrar cada línea? Piénsenlo antes de revelar la respuesta.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> a</span>
+<span id="cb21-3"><a aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">4</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<p>¿Cuál es el valor de a?</p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(a) <span class="co"># ¿qué muestra?</span></span>
+<span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="fragment">
+<p>¿Y de b?</p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(b) <span class="co"># ¿y esto?</span></span>
+<span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="fragment">
+<p>¿a + 10?</p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> <span class="dv">10</span></span>
+<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 14</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="fragment pad">
+<p>Al asignar <code>b &lt;- a</code>, <code>b</code> se queda con una <strong>copia</strong> del valor de <code>a</code> en ese momento. Cambiar <code>a</code> después no cambia <code>b</code>: por eso <code>a</code> termina en 4, <code>b</code> en 5, y <code>a + 10</code> da 14.</p>
+</div>
+</section>
 <section id="vectores" class="slide level2">
 <h2>Vectores</h2>
 <p>Un vector es una <strong>secuencia de elementos del mismo tipo</strong>: la forma más básica de guardar varios datos a la vez.</p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">10</span>)</span>
-<span id="cb21-2"><a></a><span class="co">#&gt; [1]  1  6  8  3 10</span></span>
-<span id="cb21-3"><a></a><span class="fu">c</span>(<span class="st">"Izquierda"</span>, <span class="st">"Centro"</span>, <span class="st">"Derecha"</span>)</span>
-<span id="cb21-4"><a></a><span class="co">#&gt; [1] "Izquierda" "Centro"    "Derecha"</span></span>
-<span id="cb21-5"><a></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
-<span id="cb21-6"><a></a><span class="co">#&gt; [1]  TRUE FALSE  TRUE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">10</span>)</span>
+<span id="cb25-2"><a></a><span class="co">#&gt; [1]  1  6  8  3 10</span></span>
+<span id="cb25-3"><a></a><span class="fu">c</span>(<span class="st">"Izquierda"</span>, <span class="st">"Centro"</span>, <span class="st">"Derecha"</span>)</span>
+<span id="cb25-4"><a></a><span class="co">#&gt; [1] "Izquierda" "Centro"    "Derecha"</span></span>
+<span id="cb25-5"><a></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb25-6"><a></a><span class="co">#&gt; [1]  TRUE FALSE  TRUE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment pad">
@@ -643,67 +717,80 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 
 <h3 id="operaciones-sobre-vectores">Operaciones sobre vectores</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>fichas_salud <span class="ot">&lt;-</span> datos<span class="sc">$</span>fichas_salud</span>
-<span id="cb22-2"><a></a><span class="fu">head</span>(fichas_salud, <span class="at">n =</span> <span class="dv">10</span>)</span>
-<span id="cb22-3"><a></a><span class="co">#&gt;  [1] 2 1 3 4 3 2 2 2 2 1</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>fichas_salud <span class="ot">&lt;-</span> datos<span class="sc">$</span>fichas_salud</span>
+<span id="cb26-2"><a></a><span class="fu">head</span>(fichas_salud, <span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb26-3"><a></a><span class="co">#&gt;  [1] 2 1 3 4 3 2 2 2 2 1</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <p>Como es un vector numérico, podemos calcular funciones sobre él, como el promedio:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">mean</span>(fichas_salud, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb23-2"><a></a><span class="co">#&gt; [1] 2.166166</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">mean</span>(fichas_salud, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb27-2"><a></a><span class="co">#&gt; [1] 2.166166</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment pad">
 <p><code>fichas_salud</code> viene de una pregunta donde cada persona reparte 10 fichas de gasto público entre distintas áreas: aquí vemos cuántas, en promedio, se destinan a salud.</p>
 </div>
 </section>
-<section id="bases-de-datos-data-frames" class="slide level2">
+<section id="bases-de-datos-data-frames" class="slide level2 scrollable">
 <h2>Bases de datos (data frames)</h2>
 <p>Un <em>data frame</em> es una tabla: cada <strong>fila</strong> es un caso (una persona encuestada) y cada <strong>columna</strong> es una variable.</p>
 <div class="fragment">
-<p>La base que vamos a usar durante todo el taller <strong>ya es un data frame</strong>:</p>
+<p>Un data frame es “pegar” varios vectores del mismo largo como columnas:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">class</span>(datos)</span>
-<span id="cb24-2"><a></a><span class="co">#&gt; [1] "tbl_df"     "tbl"        "data.frame"</span></span>
-<span id="cb24-3"><a></a><span class="fu">dim</span>(datos)</span>
-<span id="cb24-4"><a></a><span class="co">#&gt; [1] 1000  101</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>edad <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">36</span>, <span class="dv">19</span>, <span class="dv">35</span>)</span>
+<span id="cb28-2"><a></a>sexo <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>, <span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>, <span class="st">"Mujer"</span>)</span>
+<span id="cb28-3"><a></a>region <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Metropolitana"</span>, <span class="st">"Valparaíso"</span>, <span class="st">"Biobío"</span>, <span class="st">"Metropolitana"</span>, <span class="st">"Maule"</span>)</span>
+<span id="cb28-4"><a></a></span>
+<span id="cb28-5"><a></a>mini_base <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(edad, sexo, region)</span>
+<span id="cb28-6"><a></a>mini_base</span>
+<span id="cb28-7"><a></a><span class="co">#&gt;   edad   sexo        region</span></span>
+<span id="cb28-8"><a></a><span class="co">#&gt; 1   18  Mujer Metropolitana</span></span>
+<span id="cb28-9"><a></a><span class="co">#&gt; 2   22 Hombre    Valparaíso</span></span>
+<span id="cb28-10"><a></a><span class="co">#&gt; 3   36 Hombre        Biobío</span></span>
+<span id="cb28-11"><a></a><span class="co">#&gt; 4   19  Mujer Metropolitana</span></span>
+<span id="cb28-12"><a></a><span class="co">#&gt; 5   35  Mujer         Maule</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="fragment pad">
+<p>La base que vamos a usar durante todo el taller <strong>ya es un data frame</strong>, solo que mucho más grande:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">class</span>(datos)</span>
+<span id="cb29-2"><a></a><span class="co">#&gt; [1] "tbl_df"     "tbl"        "data.frame"</span></span>
+<span id="cb29-3"><a></a><span class="fu">dim</span>(datos)</span>
+<span id="cb29-4"><a></a><span class="co">#&gt; [1] 1000  101</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>datos <span class="sc">|&gt;</span></span>
-<span id="cb25-2"><a></a>  <span class="fu">select</span>(sexo, tramo_edad, region, gse) <span class="sc">|&gt;</span></span>
-<span id="cb25-3"><a></a>  <span class="fu">head</span>()</span>
-<span id="cb25-4"><a></a><span class="co">#&gt; # A tibble: 6 × 4</span></span>
-<span id="cb25-5"><a></a><span class="co">#&gt;   sexo   tramo_edad region        gse  </span></span>
-<span id="cb25-6"><a></a><span class="co">#&gt;   &lt;fct&gt;  &lt;ord&gt;      &lt;fct&gt;         &lt;chr&gt;</span></span>
-<span id="cb25-7"><a></a><span class="co">#&gt; 1 Mujer  18-29      Maule         C2   </span></span>
-<span id="cb25-8"><a></a><span class="co">#&gt; 2 Hombre 30-49      Maule         D    </span></span>
-<span id="cb25-9"><a></a><span class="co">#&gt; 3 Hombre 18-29      Antofagasta   ABC1 </span></span>
-<span id="cb25-10"><a></a><span class="co">#&gt; 4 Mujer  18-29      Biobío        C2   </span></span>
-<span id="cb25-11"><a></a><span class="co">#&gt; 5 Hombre 30-49      Metropolitana C2   </span></span>
-<span id="cb25-12"><a></a><span class="co">#&gt; 6 Mujer  50-99      Metropolitana D</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>datos <span class="sc">|&gt;</span></span>
+<span id="cb30-2"><a></a>  <span class="fu">select</span>(sexo, tramo_edad, region, gse) <span class="sc">|&gt;</span></span>
+<span id="cb30-3"><a></a>  <span class="fu">head</span>()</span>
+<span id="cb30-4"><a></a><span class="co">#&gt; # A tibble: 6 × 4</span></span>
+<span id="cb30-5"><a></a><span class="co">#&gt;   sexo   tramo_edad region        gse  </span></span>
+<span id="cb30-6"><a></a><span class="co">#&gt;   &lt;fct&gt;  &lt;ord&gt;      &lt;fct&gt;         &lt;chr&gt;</span></span>
+<span id="cb30-7"><a></a><span class="co">#&gt; 1 Mujer  18-29      Maule         C2   </span></span>
+<span id="cb30-8"><a></a><span class="co">#&gt; 2 Hombre 30-49      Maule         D    </span></span>
+<span id="cb30-9"><a></a><span class="co">#&gt; 3 Hombre 18-29      Antofagasta   ABC1 </span></span>
+<span id="cb30-10"><a></a><span class="co">#&gt; 4 Mujer  18-29      Biobío        C2   </span></span>
+<span id="cb30-11"><a></a><span class="co">#&gt; 5 Hombre 30-49      Metropolitana C2   </span></span>
+<span id="cb30-12"><a></a><span class="co">#&gt; 6 Mujer  50-99      Metropolitana D</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-</section>
-<section class="slide level2">
-
 </section></section>
 <section>
-<section id="herramientas-básicas-de-procesamiento-de-datos" class="title-slide slide level1 center">
+<section id="herramientas-básicas-de-procesamiento-de-datos" class="title-slide slide level1 texto-blanco center" data-background-color="#523870">
 <h1>Herramientas básicas de procesamiento de datos</h1>
 <ul>
-<li>Paquetes</li>
+<li>Librerías</li>
 <li>Cargar datos</li>
 <li>Observar datos</li>
-<li>Estructura de la bbdd</li>
-<li>Manipular datos con <code>{dplyr}</code></li>
+<li>Manipular datos</li>
 <li>Guardar y exportar</li>
 </ul>
 </section>
-<section id="paquetes" class="slide level2 scrollable">
-<h2>Paquetes</h2>
+<section id="librerías" class="slide level2 scrollable">
+<h2>Librerías</h2>
 <div class="columns">
 <div class="fragment column" style="width:60%;">
 <p><img data-src="imagenes/tidyverse.png"></p>
@@ -718,15 +805,12 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <div class="fragment pad">
 <p>Para instalar y cargar de una vez usamos <code>{pacman}</code>: si el paquete ya está instalado, solo lo carga; si no, lo instala primero.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr, ggplot2, sjlabelled, sjmisc, naniar, sjPlot)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr, ggplot2, sjlabelled, sjmisc, sjPlot)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment pad">
-<p>Hoy vamos a usar <code>{dplyr}</code> y <code>{ggplot2}</code> para procesar y graficar, y <code>{sjlabelled}</code>, <code>{sjmisc}</code>, <code>{naniar}</code> y <code>{sjPlot}</code>, pensados especialmente para datos de encuestas.</p>
+<p>Hoy vamos a usar <code>{dplyr}</code> y <code>{ggplot2}</code> para procesar y graficar, y <code>{sjlabelled}</code>, <code>{sjmisc}</code>, y <code>{sjPlot}</code>, pensados especialmente para datos de encuestas.</p>
 </div>
-</section>
-<section class="slide level2">
-
 </section></section>
 <section>
 <section id="datos" class="title-slide slide level1 center">
@@ -742,16 +826,20 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <h2>Cargar datos <i class="fa-solid fa-file-export" aria-label="file-export"></i></h2>
 <p>Nuestra base viene en formato <code>.RData</code>, el formato nativo de R. Se carga con <code>load()</code>, y el objeto aparece con el nombre que traía guardado:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"../input/data/BBDD_Clima_Junio_Sample.RData"</span>)</span>
-<span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span>
-<span id="cb27-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "bbdd_clima_sample" "casos_muestra"     "casos_totales"    </span></span>
-<span id="cb27-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4] "datos"             "edad"              "fichas_salud"     </span></span>
-<span id="cb27-5"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [7] "minimo_muestral"   "n_encuestados"     "region_favorita"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"../input/data/BBDD_Clima_Junio_Sample.RData"</span>)</span>
+<span id="cb32-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span>
+<span id="cb32-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] "a"                 "b"                 "bbdd_clima_sample"</span></span>
+<span id="cb32-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4] "casos_muestra"     "casos_totales"     "datos"            </span></span>
+<span id="cb32-5"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] "edad"              "edades"            "edades_num"       </span></span>
+<span id="cb32-6"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] "edades_texto"      "fichas_salud"      "mayoria_edad"     </span></span>
+<span id="cb32-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] "mini_base"         "minimo_muestral"   "n_encuestados"    </span></span>
+<span id="cb32-8"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [16] "nombres"           "posicion"          "region"           </span></span>
+<span id="cb32-9"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] "region_favorita"   "sexo"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment pad">
 <p>Las bases de encuesta suelen llegar <strong>etiquetadas</strong>: cada valor numérico representa una categoría (clase <code>haven_labelled</code>). Para trabajar cómodos desde ya, convertimos esas etiquetas en factores de una vez, con <code>sjlabelled::as_label()</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(bbdd_clima_sample)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(bbdd_clima_sample)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -767,9 +855,9 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 </div>
 <div class="fragment pad">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a>readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"datos.xlsx"</span>)</span>
-<span id="cb29-2"><a aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"datos.csv"</span>)</span>
-<span id="cb29-3"><a aria-hidden="true" tabindex="-1"></a>haven<span class="sc">::</span><span class="fu">read_sav</span>(<span class="st">"datos.sav"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-hidden="true" tabindex="-1"></a>readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"datos.xlsx"</span>)</span>
+<span id="cb34-2"><a aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"datos.csv"</span>)</span>
+<span id="cb34-3"><a aria-hidden="true" tabindex="-1"></a>haven<span class="sc">::</span><span class="fu">read_sav</span>(<span class="st">"datos.sav"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -783,14 +871,14 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">dim</span>(datos)</span>
-<span id="cb30-2"><a></a><span class="co">#&gt; [1] 1000  101</span></span>
-<span id="cb30-3"><a></a><span class="fu">names</span>(datos) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">10</span>)</span>
-<span id="cb30-4"><a></a><span class="co">#&gt;  [1] "id"                            "sexo"                         </span></span>
-<span id="cb30-5"><a></a><span class="co">#&gt;  [3] "tramo_edad"                    "quintil_ingreso"              </span></span>
-<span id="cb30-6"><a></a><span class="co">#&gt;  [5] "educ"                          "ideologia"                    </span></span>
-<span id="cb30-7"><a></a><span class="co">#&gt;  [7] "trade_crecimiento_desigualdad" "trade_ambiente_empleo"        </span></span>
-<span id="cb30-8"><a></a><span class="co">#&gt;  [9] "trade_derechos_laborales"      "provision_pensiones"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">dim</span>(datos)</span>
+<span id="cb35-2"><a></a><span class="co">#&gt; [1] 1000  101</span></span>
+<span id="cb35-3"><a></a><span class="fu">names</span>(datos) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb35-4"><a></a><span class="co">#&gt;  [1] "id"                            "sexo"                         </span></span>
+<span id="cb35-5"><a></a><span class="co">#&gt;  [3] "tramo_edad"                    "quintil_ingreso"              </span></span>
+<span id="cb35-6"><a></a><span class="co">#&gt;  [5] "educ"                          "ideologia"                    </span></span>
+<span id="cb35-7"><a></a><span class="co">#&gt;  [7] "trade_crecimiento_desigualdad" "trade_ambiente_empleo"        </span></span>
+<span id="cb35-8"><a></a><span class="co">#&gt;  [9] "trade_derechos_laborales"      "provision_pensiones"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -798,17 +886,17 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <h2>Estructura de la bbdd</h2>
 <p>Con <code>glimpse()</code> vemos el tipo de cada columna y sus primeros valores:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>datos <span class="sc">|&gt;</span></span>
-<span id="cb31-2"><a></a>  <span class="fu">select</span>(sexo, tramo_edad, region, gse, ideologia, autoubicacion_izq_der) <span class="sc">|&gt;</span></span>
-<span id="cb31-3"><a></a>  <span class="fu">glimpse</span>()</span>
-<span id="cb31-4"><a></a><span class="co">#&gt; Rows: 1,000</span></span>
-<span id="cb31-5"><a></a><span class="co">#&gt; Columns: 6</span></span>
-<span id="cb31-6"><a></a><span class="co">#&gt; $ sexo                  &lt;fct&gt; Mujer, Hombre, Hombre, Mujer, Hombre, Mujer, Hom…</span></span>
-<span id="cb31-7"><a></a><span class="co">#&gt; $ tramo_edad            &lt;ord&gt; 18-29, 30-49, 18-29, 18-29, 30-49, 50-99, 50-99,…</span></span>
-<span id="cb31-8"><a></a><span class="co">#&gt; $ region                &lt;fct&gt; Maule, Maule, Antofagasta, Biobío, Metropolitana…</span></span>
-<span id="cb31-9"><a></a><span class="co">#&gt; $ gse                   &lt;chr&gt; "C2", "D", "ABC1", "C2", "C2", "D", "C3", "ABC1"…</span></span>
-<span id="cb31-10"><a></a><span class="co">#&gt; $ ideologia             &lt;fct&gt; Izquierda, Centro, Derecha, Derecha, Ninguno, De…</span></span>
-<span id="cb31-11"><a></a><span class="co">#&gt; $ autoubicacion_izq_der &lt;fct&gt; 4, 5, 6, 7, Sin identificación política, 10. Der…</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>datos <span class="sc">|&gt;</span></span>
+<span id="cb36-2"><a></a>  <span class="fu">select</span>(sexo, tramo_edad, region, gse, ideologia, autoubicacion_izq_der) <span class="sc">|&gt;</span></span>
+<span id="cb36-3"><a></a>  <span class="fu">glimpse</span>()</span>
+<span id="cb36-4"><a></a><span class="co">#&gt; Rows: 1,000</span></span>
+<span id="cb36-5"><a></a><span class="co">#&gt; Columns: 6</span></span>
+<span id="cb36-6"><a></a><span class="co">#&gt; $ sexo                  &lt;fct&gt; Mujer, Hombre, Hombre, Mujer, Hombre, Mujer, Hom…</span></span>
+<span id="cb36-7"><a></a><span class="co">#&gt; $ tramo_edad            &lt;ord&gt; 18-29, 30-49, 18-29, 18-29, 30-49, 50-99, 50-99,…</span></span>
+<span id="cb36-8"><a></a><span class="co">#&gt; $ region                &lt;fct&gt; Maule, Maule, Antofagasta, Biobío, Metropolitana…</span></span>
+<span id="cb36-9"><a></a><span class="co">#&gt; $ gse                   &lt;chr&gt; "C2", "D", "ABC1", "C2", "C2", "D", "C3", "ABC1"…</span></span>
+<span id="cb36-10"><a></a><span class="co">#&gt; $ ideologia             &lt;fct&gt; Izquierda, Centro, Derecha, Derecha, Ninguno, De…</span></span>
+<span id="cb36-11"><a></a><span class="co">#&gt; $ autoubicacion_izq_der &lt;fct&gt; 4, 5, 6, 7, Sin identificación política, 10. Der…</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -820,28 +908,25 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <div class="fragment">
 <p><code>get_label()</code> nos recuerda la pregunta original de una variable:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>sjlabelled<span class="sc">::</span><span class="fu">get_label</span>(datos<span class="sc">$</span>eval_gobierno_kast)</span>
-<span id="cb32-2"><a></a><span class="co">#&gt; [1] "¿Cómo evalúa usted el gobierno de José Antonio Kast hasta ahora?"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>sjlabelled<span class="sc">::</span><span class="fu">get_label</span>(datos<span class="sc">$</span>eval_gobierno_kast)</span>
+<span id="cb37-2"><a></a><span class="co">#&gt; [1] "¿Cómo evalúa usted el gobierno de José Antonio Kast hasta ahora?"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
 <p>Y sus categorías ya se ven como texto legible, no como números:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(datos<span class="sc">$</span>eval_gobierno_kast)</span>
-<span id="cb33-2"><a></a><span class="co">#&gt; ¿Cómo evalúa usted el gobierno de José Antonio Kast hasta ahora? (x) &lt;categorical&gt; </span></span>
-<span id="cb33-3"><a></a><span class="co">#&gt; # total N=1000 valid N=998 mean=2.08 sd=0.67</span></span>
-<span id="cb33-4"><a></a><span class="co">#&gt; </span></span>
-<span id="cb33-5"><a></a><span class="co">#&gt; Value                       |   N | Raw % | Valid % | Cum. %</span></span>
-<span id="cb33-6"><a></a><span class="co">#&gt; ------------------------------------------------------------</span></span>
-<span id="cb33-7"><a></a><span class="co">#&gt; De manera más bien positiva | 185 | 18.50 |   18.54 |  18.54</span></span>
-<span id="cb33-8"><a></a><span class="co">#&gt; De manera más bien negativa | 550 | 55.00 |   55.11 |  73.65</span></span>
-<span id="cb33-9"><a></a><span class="co">#&gt; Ni positiva ni negativa     | 263 | 26.30 |   26.35 | 100.00</span></span>
-<span id="cb33-10"><a></a><span class="co">#&gt; &lt;NA&gt;                        |   2 |  0.20 |    &lt;NA&gt; |   &lt;NA&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(datos<span class="sc">$</span>eval_gobierno_kast)</span>
+<span id="cb38-2"><a></a><span class="co">#&gt; ¿Cómo evalúa usted el gobierno de José Antonio Kast hasta ahora? (x) &lt;categorical&gt; </span></span>
+<span id="cb38-3"><a></a><span class="co">#&gt; # total N=1000 valid N=998 mean=2.08 sd=0.67</span></span>
+<span id="cb38-4"><a></a><span class="co">#&gt; </span></span>
+<span id="cb38-5"><a></a><span class="co">#&gt; Value                       |   N | Raw % | Valid % | Cum. %</span></span>
+<span id="cb38-6"><a></a><span class="co">#&gt; ------------------------------------------------------------</span></span>
+<span id="cb38-7"><a></a><span class="co">#&gt; De manera más bien positiva | 185 | 18.50 |   18.54 |  18.54</span></span>
+<span id="cb38-8"><a></a><span class="co">#&gt; De manera más bien negativa | 550 | 55.00 |   55.11 |  73.65</span></span>
+<span id="cb38-9"><a></a><span class="co">#&gt; Ni positiva ni negativa     | 263 | 26.30 |   26.35 | 100.00</span></span>
+<span id="cb38-10"><a></a><span class="co">#&gt; &lt;NA&gt;                        |   2 |  0.20 |    &lt;NA&gt; |   &lt;NA&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-</section>
-<section class="slide level2">
-
 </section></section>
 <section>
 <section id="dplyr" class="title-slide slide level1 center">
@@ -857,90 +942,130 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <p><img data-src="imagenes/dplyr.png"></p>
 </div></div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="seleccionar" class="slide level2">
 <h2>Seleccionar</h2>
 <p><code>select()</code> elige columnas por su nombre:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>datos <span class="sc">|&gt;</span></span>
-<span id="cb35-2"><a></a>  <span class="fu">select</span>(sexo, tramo_edad, region, ideologia) <span class="sc">|&gt;</span></span>
-<span id="cb35-3"><a></a>  <span class="fu">head</span>()</span>
-<span id="cb35-4"><a></a><span class="co">#&gt; # A tibble: 6 × 4</span></span>
-<span id="cb35-5"><a></a><span class="co">#&gt;   sexo   tramo_edad region        ideologia</span></span>
-<span id="cb35-6"><a></a><span class="co">#&gt;   &lt;fct&gt;  &lt;ord&gt;      &lt;fct&gt;         &lt;fct&gt;    </span></span>
-<span id="cb35-7"><a></a><span class="co">#&gt; 1 Mujer  18-29      Maule         Izquierda</span></span>
-<span id="cb35-8"><a></a><span class="co">#&gt; 2 Hombre 30-49      Maule         Centro   </span></span>
-<span id="cb35-9"><a></a><span class="co">#&gt; 3 Hombre 18-29      Antofagasta   Derecha  </span></span>
-<span id="cb35-10"><a></a><span class="co">#&gt; 4 Mujer  18-29      Biobío        Derecha  </span></span>
-<span id="cb35-11"><a></a><span class="co">#&gt; 5 Hombre 30-49      Metropolitana Ninguno  </span></span>
-<span id="cb35-12"><a></a><span class="co">#&gt; 6 Mujer  50-99      Metropolitana Derecha</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>datos <span class="sc">|&gt;</span></span>
+<span id="cb40-2"><a></a>  <span class="fu">select</span>(sexo, tramo_edad, region, ideologia) <span class="sc">|&gt;</span></span>
+<span id="cb40-3"><a></a>  <span class="fu">head</span>()</span>
+<span id="cb40-4"><a></a><span class="co">#&gt; # A tibble: 6 × 4</span></span>
+<span id="cb40-5"><a></a><span class="co">#&gt;   sexo   tramo_edad region        ideologia</span></span>
+<span id="cb40-6"><a></a><span class="co">#&gt;   &lt;fct&gt;  &lt;ord&gt;      &lt;fct&gt;         &lt;fct&gt;    </span></span>
+<span id="cb40-7"><a></a><span class="co">#&gt; 1 Mujer  18-29      Maule         Izquierda</span></span>
+<span id="cb40-8"><a></a><span class="co">#&gt; 2 Hombre 30-49      Maule         Centro   </span></span>
+<span id="cb40-9"><a></a><span class="co">#&gt; 3 Hombre 18-29      Antofagasta   Derecha  </span></span>
+<span id="cb40-10"><a></a><span class="co">#&gt; 4 Mujer  18-29      Biobío        Derecha  </span></span>
+<span id="cb40-11"><a></a><span class="co">#&gt; 5 Hombre 30-49      Metropolitana Ninguno  </span></span>
+<span id="cb40-12"><a></a><span class="co">#&gt; 6 Mujer  50-99      Metropolitana Derecha</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="renombrar" class="slide level2">
 <h2>Renombrar</h2>
 <p><code>rename()</code> le cambia el nombre a una columna sin tocar su contenido:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>datos <span class="sc">|&gt;</span></span>
-<span id="cb36-2"><a></a>  <span class="fu">rename</span>(<span class="at">genero =</span> sexo, <span class="at">posicion_politica =</span> ideologia) <span class="sc">|&gt;</span></span>
-<span id="cb36-3"><a></a>  <span class="fu">select</span>(genero, posicion_politica) <span class="sc">|&gt;</span></span>
-<span id="cb36-4"><a></a>  <span class="fu">head</span>()</span>
-<span id="cb36-5"><a></a><span class="co">#&gt; # A tibble: 6 × 2</span></span>
-<span id="cb36-6"><a></a><span class="co">#&gt;   genero posicion_politica</span></span>
-<span id="cb36-7"><a></a><span class="co">#&gt;   &lt;fct&gt;  &lt;fct&gt;            </span></span>
-<span id="cb36-8"><a></a><span class="co">#&gt; 1 Mujer  Izquierda        </span></span>
-<span id="cb36-9"><a></a><span class="co">#&gt; 2 Hombre Centro           </span></span>
-<span id="cb36-10"><a></a><span class="co">#&gt; 3 Hombre Derecha          </span></span>
-<span id="cb36-11"><a></a><span class="co">#&gt; 4 Mujer  Derecha          </span></span>
-<span id="cb36-12"><a></a><span class="co">#&gt; 5 Hombre Ninguno          </span></span>
-<span id="cb36-13"><a></a><span class="co">#&gt; 6 Mujer  Derecha</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>datos <span class="sc">|&gt;</span></span>
+<span id="cb41-2"><a></a>  <span class="fu">select</span>(sexo, ideologia) <span class="sc">|&gt;</span></span>
+<span id="cb41-3"><a></a>  <span class="fu">rename</span>(<span class="at">genero =</span> sexo, <span class="at">posicion_politica =</span> ideologia) <span class="sc">|&gt;</span></span>
+<span id="cb41-4"><a></a>  <span class="fu">head</span>()</span>
+<span id="cb41-5"><a></a><span class="co">#&gt; # A tibble: 6 × 2</span></span>
+<span id="cb41-6"><a></a><span class="co">#&gt;   genero posicion_politica</span></span>
+<span id="cb41-7"><a></a><span class="co">#&gt;   &lt;fct&gt;  &lt;fct&gt;            </span></span>
+<span id="cb41-8"><a></a><span class="co">#&gt; 1 Mujer  Izquierda        </span></span>
+<span id="cb41-9"><a></a><span class="co">#&gt; 2 Hombre Centro           </span></span>
+<span id="cb41-10"><a></a><span class="co">#&gt; 3 Hombre Derecha          </span></span>
+<span id="cb41-11"><a></a><span class="co">#&gt; 4 Mujer  Derecha          </span></span>
+<span id="cb41-12"><a></a><span class="co">#&gt; 5 Hombre Ninguno          </span></span>
+<span id="cb41-13"><a></a><span class="co">#&gt; 6 Mujer  Derecha</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="filtrar" class="slide level2">
+<section id="filtrar" class="slide level2 scrollable">
 <h2>Filtrar</h2>
 <p><code>filter()</code> conserva solo las filas que cumplen una condición:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>datos <span class="sc">|&gt;</span></span>
-<span id="cb37-2"><a></a>  <span class="fu">filter</span>(quintil_ingreso <span class="sc">==</span> <span class="st">"Q1"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb37-3"><a></a>  <span class="fu">select</span>(quintil_ingreso, region, gse) <span class="sc">|&gt;</span></span>
-<span id="cb37-4"><a></a>  <span class="fu">head</span>()</span>
-<span id="cb37-5"><a></a><span class="co">#&gt; # A tibble: 6 × 3</span></span>
-<span id="cb37-6"><a></a><span class="co">#&gt;   quintil_ingreso region                              gse  </span></span>
-<span id="cb37-7"><a></a><span class="co">#&gt;   &lt;ord&gt;           &lt;fct&gt;                               &lt;chr&gt;</span></span>
-<span id="cb37-8"><a></a><span class="co">#&gt; 1 Q1              Maule                               C3   </span></span>
-<span id="cb37-9"><a></a><span class="co">#&gt; 2 Q1              Ñuble                               E    </span></span>
-<span id="cb37-10"><a></a><span class="co">#&gt; 3 Q1              Antofagasta                         E    </span></span>
-<span id="cb37-11"><a></a><span class="co">#&gt; 4 Q1              Antofagasta                         E    </span></span>
-<span id="cb37-12"><a></a><span class="co">#&gt; 5 Q1              Biobío                              C3   </span></span>
-<span id="cb37-13"><a></a><span class="co">#&gt; 6 Q1              Libertador Gral. Bernardo O'Higgins D</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>datos <span class="sc">|&gt;</span></span>
+<span id="cb42-2"><a></a>  <span class="fu">select</span>(quintil_ingreso, region, gse) <span class="sc">|&gt;</span></span>
+<span id="cb42-3"><a></a>  <span class="fu">filter</span>(quintil_ingreso <span class="sc">==</span> <span class="st">"Q1"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb42-4"><a></a>  <span class="fu">head</span>()</span>
+<span id="cb42-5"><a></a><span class="co">#&gt; # A tibble: 6 × 3</span></span>
+<span id="cb42-6"><a></a><span class="co">#&gt;   quintil_ingreso region                              gse  </span></span>
+<span id="cb42-7"><a></a><span class="co">#&gt;   &lt;ord&gt;           &lt;fct&gt;                               &lt;chr&gt;</span></span>
+<span id="cb42-8"><a></a><span class="co">#&gt; 1 Q1              Maule                               C3   </span></span>
+<span id="cb42-9"><a></a><span class="co">#&gt; 2 Q1              Ñuble                               E    </span></span>
+<span id="cb42-10"><a></a><span class="co">#&gt; 3 Q1              Antofagasta                         E    </span></span>
+<span id="cb42-11"><a></a><span class="co">#&gt; 4 Q1              Antofagasta                         E    </span></span>
+<span id="cb42-12"><a></a><span class="co">#&gt; 5 Q1              Biobío                              C3   </span></span>
+<span id="cb42-13"><a></a><span class="co">#&gt; 6 Q1              Libertador Gral. Bernardo O'Higgins D</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment pad">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>datos <span class="sc">|&gt;</span></span>
-<span id="cb38-2"><a></a>  <span class="fu">filter</span>(tramo_edad <span class="sc">==</span> <span class="st">"18-29"</span> <span class="sc">&amp;</span> sexo <span class="sc">==</span> <span class="st">"Mujer"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb38-3"><a></a>  <span class="fu">nrow</span>()</span>
-<span id="cb38-4"><a></a><span class="co">#&gt; [1] 112</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>datos <span class="sc">|&gt;</span></span>
+<span id="cb43-2"><a></a>  <span class="fu">select</span>(tramo_edad, sexo) <span class="sc">|&gt;</span></span>
+<span id="cb43-3"><a></a>  <span class="fu">filter</span>(tramo_edad <span class="sc">==</span> <span class="st">"18-29"</span> <span class="sc">&amp;</span> sexo <span class="sc">==</span> <span class="st">"Mujer"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb43-4"><a></a>  <span class="fu">head</span>()</span>
+<span id="cb43-5"><a></a><span class="co">#&gt; # A tibble: 6 × 2</span></span>
+<span id="cb43-6"><a></a><span class="co">#&gt;   tramo_edad sexo </span></span>
+<span id="cb43-7"><a></a><span class="co">#&gt;   &lt;ord&gt;      &lt;fct&gt;</span></span>
+<span id="cb43-8"><a></a><span class="co">#&gt; 1 18-29      Mujer</span></span>
+<span id="cb43-9"><a></a><span class="co">#&gt; 2 18-29      Mujer</span></span>
+<span id="cb43-10"><a></a><span class="co">#&gt; 3 18-29      Mujer</span></span>
+<span id="cb43-11"><a></a><span class="co">#&gt; 4 18-29      Mujer</span></span>
+<span id="cb43-12"><a></a><span class="co">#&gt; 5 18-29      Mujer</span></span>
+<span id="cb43-13"><a></a><span class="co">#&gt; 6 18-29      Mujer</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="fragment pad">
+<p>Antes de seguir, conozcamos <code>count()</code>: cuenta cuántos casos hay por cada valor único de una o más variables.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>datos <span class="sc">|&gt;</span> </span>
+<span id="cb44-2"><a></a>  <span class="fu">count</span>(sexo) <span class="co"># cuántos casos hay por cada categoría de sexo</span></span>
+<span id="cb44-3"><a></a><span class="co">#&gt; # A tibble: 3 × 2</span></span>
+<span id="cb44-4"><a></a><span class="co">#&gt;   sexo       n</span></span>
+<span id="cb44-5"><a></a><span class="co">#&gt;   &lt;fct&gt;  &lt;int&gt;</span></span>
+<span id="cb44-6"><a></a><span class="co">#&gt; 1 Hombre   467</span></span>
+<span id="cb44-7"><a></a><span class="co">#&gt; 2 Mujer    522</span></span>
+<span id="cb44-8"><a></a><span class="co">#&gt; 3 &lt;NA&gt;      11</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
-<section id="recodificar-y-transformar" class="slide level2">
+<section id="recodificar-y-transformar" class="slide level2 scrollable">
 <h2>Recodificar y transformar</h2>
-<p><code>mutate()</code> crea o modifica columnas. Con <code>if_else()</code> resolvemos una condición simple:</p>
+<p><code>mutate()</code> crea o modifica columnas. Empecemos con <code>if_else()</code>, primero codificando como 1 / 0:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>datos <span class="sc">|&gt;</span></span>
-<span id="cb39-2"><a></a>  <span class="fu">mutate</span>(<span class="at">de_acuerdo =</span> <span class="fu">if_else</span>(</span>
-<span id="cb39-3"><a></a>    gob_buen_camino <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"De acuerdo"</span>, <span class="st">"Muy de acuerdo"</span>),</span>
-<span id="cb39-4"><a></a>    <span class="st">"De acuerdo"</span>, <span class="st">"No de acuerdo"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb39-5"><a></a>  <span class="fu">count</span>(de_acuerdo)</span>
-<span id="cb39-6"><a></a><span class="co">#&gt; # A tibble: 2 × 2</span></span>
-<span id="cb39-7"><a></a><span class="co">#&gt;   de_acuerdo        n</span></span>
-<span id="cb39-8"><a></a><span class="co">#&gt;   &lt;chr&gt;         &lt;int&gt;</span></span>
-<span id="cb39-9"><a></a><span class="co">#&gt; 1 De acuerdo      296</span></span>
-<span id="cb39-10"><a></a><span class="co">#&gt; 2 No de acuerdo   704</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>datos <span class="sc">|&gt;</span></span>
+<span id="cb45-2"><a></a>  <span class="fu">select</span>(fichas_salud) <span class="sc">|&gt;</span></span>
+<span id="cb45-3"><a></a>  <span class="fu">mutate</span>(<span class="at">prioriza_salud =</span> <span class="fu">if_else</span>(fichas_salud <span class="sc">&gt;=</span> <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb45-4"><a></a>  <span class="fu">head</span>()</span>
+<span id="cb45-5"><a></a><span class="co">#&gt; # A tibble: 6 × 2</span></span>
+<span id="cb45-6"><a></a><span class="co">#&gt;   fichas_salud prioriza_salud</span></span>
+<span id="cb45-7"><a></a><span class="co">#&gt;          &lt;dbl&gt;          &lt;dbl&gt;</span></span>
+<span id="cb45-8"><a></a><span class="co">#&gt; 1            2              0</span></span>
+<span id="cb45-9"><a></a><span class="co">#&gt; 2            1              0</span></span>
+<span id="cb45-10"><a></a><span class="co">#&gt; 3            3              0</span></span>
+<span id="cb45-11"><a></a><span class="co">#&gt; 4            4              0</span></span>
+<span id="cb45-12"><a></a><span class="co">#&gt; 5            3              0</span></span>
+<span id="cb45-13"><a></a><span class="co">#&gt; 6            2              0</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment pad">
-<p>Como <code>gob_buen_camino</code> ya es un factor con categorías legibles, comparamos directamente contra el texto de las categorías que nos interesan.</p>
+<p>La misma condición, ahora con etiquetas legibles en vez de números:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>datos <span class="sc">|&gt;</span></span>
+<span id="cb46-2"><a></a>  <span class="fu">select</span>(fichas_salud) <span class="sc">|&gt;</span></span>
+<span id="cb46-3"><a></a>  <span class="fu">mutate</span>(<span class="at">prioriza_salud =</span> <span class="fu">if_else</span>(fichas_salud <span class="sc">&gt;=</span> <span class="dv">5</span>, <span class="st">"Sí"</span>, <span class="st">"No"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb46-4"><a></a>  <span class="fu">head</span>()</span>
+<span id="cb46-5"><a></a><span class="co">#&gt; # A tibble: 6 × 2</span></span>
+<span id="cb46-6"><a></a><span class="co">#&gt;   fichas_salud prioriza_salud</span></span>
+<span id="cb46-7"><a></a><span class="co">#&gt;          &lt;dbl&gt; &lt;chr&gt;         </span></span>
+<span id="cb46-8"><a></a><span class="co">#&gt; 1            2 No            </span></span>
+<span id="cb46-9"><a></a><span class="co">#&gt; 2            1 No            </span></span>
+<span id="cb46-10"><a></a><span class="co">#&gt; 3            3 No            </span></span>
+<span id="cb46-11"><a></a><span class="co">#&gt; 4            4 No            </span></span>
+<span id="cb46-12"><a></a><span class="co">#&gt; 5            3 No            </span></span>
+<span id="cb46-13"><a></a><span class="co">#&gt; 6            2 No</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 </section>
 <section class="slide level2">
@@ -948,82 +1073,171 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <h3 id="case_when-para-varias-categorías"><code>case_when()</code> para varias categorías</h3>
 <p>Cuando hay más de dos opciones, <code>case_when()</code> evalúa condiciones en orden. Aquí aprovechamos que <code>as.integer()</code> sobre un factor devuelve la <strong>posición</strong> de cada categoría, que en este caso ya viene ordenada de menor a mayor ingreso:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>datos <span class="sc">|&gt;</span></span>
-<span id="cb40-2"><a></a>  <span class="fu">mutate</span>(<span class="at">tramo_ingreso =</span> <span class="fu">case_when</span>(</span>
-<span id="cb40-3"><a></a>    <span class="fu">as.integer</span>(ingreso_hogar) <span class="sc">&lt;=</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Bajo"</span>,</span>
-<span id="cb40-4"><a></a>    <span class="fu">as.integer</span>(ingreso_hogar) <span class="sc">&lt;=</span> <span class="dv">8</span> <span class="sc">~</span> <span class="st">"Medio"</span>,</span>
-<span id="cb40-5"><a></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Alto"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb40-6"><a></a>  <span class="fu">count</span>(tramo_ingreso)</span>
-<span id="cb40-7"><a></a><span class="co">#&gt; # A tibble: 3 × 2</span></span>
-<span id="cb40-8"><a></a><span class="co">#&gt;   tramo_ingreso     n</span></span>
-<span id="cb40-9"><a></a><span class="co">#&gt;   &lt;chr&gt;         &lt;int&gt;</span></span>
-<span id="cb40-10"><a></a><span class="co">#&gt; 1 Alto            131</span></span>
-<span id="cb40-11"><a></a><span class="co">#&gt; 2 Bajo            409</span></span>
-<span id="cb40-12"><a></a><span class="co">#&gt; 3 Medio           460</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a>datos <span class="sc">|&gt;</span></span>
+<span id="cb47-2"><a></a>  <span class="fu">mutate</span>(<span class="at">tramo_ingreso =</span> <span class="fu">case_when</span>(</span>
+<span id="cb47-3"><a></a>    <span class="fu">as.integer</span>(ingreso_hogar) <span class="sc">&lt;=</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Bajo"</span>,</span>
+<span id="cb47-4"><a></a>    <span class="fu">as.integer</span>(ingreso_hogar) <span class="sc">&lt;=</span> <span class="dv">8</span> <span class="sc">~</span> <span class="st">"Medio"</span>,</span>
+<span id="cb47-5"><a></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Alto"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb47-6"><a></a>  <span class="fu">count</span>(tramo_ingreso)</span>
+<span id="cb47-7"><a></a><span class="co">#&gt; # A tibble: 3 × 2</span></span>
+<span id="cb47-8"><a></a><span class="co">#&gt;   tramo_ingreso     n</span></span>
+<span id="cb47-9"><a></a><span class="co">#&gt;   &lt;chr&gt;         &lt;int&gt;</span></span>
+<span id="cb47-10"><a></a><span class="co">#&gt; 1 Alto            131</span></span>
+<span id="cb47-11"><a></a><span class="co">#&gt; 2 Bajo            409</span></span>
+<span id="cb47-12"><a></a><span class="co">#&gt; 3 Medio           460</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="valores-perdidos" class="slide level2 scrollable">
 <h2>Valores perdidos</h2>
 <ul>
 <li class="fragment">En una encuesta, no todas las personas responden todo: eso genera valores perdidos (<code>NA</code>)</li>
-<li class="fragment">El paquete <code>{naniar}</code> está pensado justo para diagnosticar cuántos y dónde están</li>
+<li class="fragment"><code>is.na()</code> nos dice si un valor es perdido; <code>sum()</code> los cuenta</li>
 </ul>
 <div class="fragment pad">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(datos)) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">6</span>)</span>
-<span id="cb41-2"><a></a><span class="co">#&gt;              id            sexo      tramo_edad quintil_ingreso            educ </span></span>
-<span id="cb41-3"><a></a><span class="co">#&gt;               0              11               0               0               0 </span></span>
-<span id="cb41-4"><a></a><span class="co">#&gt;       ideologia </span></span>
-<span id="cb41-5"><a></a><span class="co">#&gt;               1</span></span>
-<span id="cb41-6"><a></a>naniar<span class="sc">::</span><span class="fu">n_miss</span>(datos)</span>
-<span id="cb41-7"><a></a><span class="co">#&gt; [1] 117</span></span>
-<span id="cb41-8"><a></a>naniar<span class="sc">::</span><span class="fu">prop_miss</span>(datos) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb41-9"><a></a><span class="co">#&gt; [1] 0.1158416</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<div class="fragment">
-<p><code>miss_var_summary()</code> ordena las variables de más a menos incompletas:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>naniar<span class="sc">::</span><span class="fu">miss_var_summary</span>(datos) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span>
-<span id="cb42-2"><a></a><span class="co">#&gt; # A tibble: 5 × 3</span></span>
-<span id="cb42-3"><a></a><span class="co">#&gt;   variable                n_miss pct_miss</span></span>
-<span id="cb42-4"><a></a><span class="co">#&gt;   &lt;chr&gt;                    &lt;int&gt;    &lt;num&gt;</span></span>
-<span id="cb42-5"><a></a><span class="co">#&gt; 1 sexo                        11      1.1</span></span>
-<span id="cb42-6"><a></a><span class="co">#&gt; 2 llega_fin_mes                5      0.5</span></span>
-<span id="cb42-7"><a></a><span class="co">#&gt; 3 imp_bajar_genera_empleo      4      0.4</span></span>
-<span id="cb42-8"><a></a><span class="co">#&gt; 4 trade_ambiente_empleo        3      0.3</span></span>
-<span id="cb42-9"><a></a><span class="co">#&gt; 5 problema_desigualdad         3      0.3</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">sum</span>(<span class="fu">is.na</span>(datos<span class="sc">$</span>sexo)) <span class="co"># NA en una sola variable</span></span>
+<span id="cb48-2"><a></a><span class="co">#&gt; [1] 11</span></span>
+<span id="cb48-3"><a></a></span>
+<span id="cb48-4"><a></a><span class="fu">sum</span>(<span class="fu">is.na</span>(datos)) <span class="co"># NA en toda la base</span></span>
+<span id="cb48-5"><a></a><span class="co">#&gt; [1] 117</span></span>
+<span id="cb48-6"><a></a></span>
+<span id="cb48-7"><a></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(datos)) <span class="co"># NA por columna</span></span>
+<span id="cb48-8"><a></a><span class="co">#&gt;                            id                          sexo </span></span>
+<span id="cb48-9"><a></a><span class="co">#&gt;                             0                            11 </span></span>
+<span id="cb48-10"><a></a><span class="co">#&gt;                    tramo_edad               quintil_ingreso </span></span>
+<span id="cb48-11"><a></a><span class="co">#&gt;                             0                             0 </span></span>
+<span id="cb48-12"><a></a><span class="co">#&gt;                          educ                     ideologia </span></span>
+<span id="cb48-13"><a></a><span class="co">#&gt;                             0                             1 </span></span>
+<span id="cb48-14"><a></a><span class="co">#&gt; trade_crecimiento_desigualdad         trade_ambiente_empleo </span></span>
+<span id="cb48-15"><a></a><span class="co">#&gt;                             1                             3 </span></span>
+<span id="cb48-16"><a></a><span class="co">#&gt;      trade_derechos_laborales           provision_pensiones </span></span>
+<span id="cb48-17"><a></a><span class="co">#&gt;                             0                             2 </span></span>
+<span id="cb48-18"><a></a><span class="co">#&gt;               provision_salud        provision_educ_escolar </span></span>
+<span id="cb48-19"><a></a><span class="co">#&gt;                             0                             1 </span></span>
+<span id="cb48-20"><a></a><span class="co">#&gt;  provision_educ_universitaria       provision_cuidado_ninos </span></span>
+<span id="cb48-21"><a></a><span class="co">#&gt;                             1                             1 </span></span>
+<span id="cb48-22"><a></a><span class="co">#&gt;     provision_cuidado_mayores                          zona </span></span>
+<span id="cb48-23"><a></a><span class="co">#&gt;                             2                             0 </span></span>
+<span id="cb48-24"><a></a><span class="co">#&gt;                        region                 condicion_exp </span></span>
+<span id="cb48-25"><a></a><span class="co">#&gt;                             1                             1 </span></span>
+<span id="cb48-26"><a></a><span class="co">#&gt;                  emocion_pais               eval_pais_retro </span></span>
+<span id="cb48-27"><a></a><span class="co">#&gt;                             0                             0 </span></span>
+<span id="cb48-28"><a></a><span class="co">#&gt;         eval_pais_prospectivo         problema_delincuencia </span></span>
+<span id="cb48-29"><a></a><span class="co">#&gt;                             0                             0 </span></span>
+<span id="cb48-30"><a></a><span class="co">#&gt;            problema_migracion          problema_crecimiento </span></span>
+<span id="cb48-31"><a></a><span class="co">#&gt;                             0                             1 </span></span>
+<span id="cb48-32"><a></a><span class="co">#&gt;            problema_desempleo                problema_salud </span></span>
+<span id="cb48-33"><a></a><span class="co">#&gt;                             0                             2 </span></span>
+<span id="cb48-34"><a></a><span class="co">#&gt;           problema_corrupcion              problema_pobreza </span></span>
+<span id="cb48-35"><a></a><span class="co">#&gt;                             1                             0 </span></span>
+<span id="cb48-36"><a></a><span class="co">#&gt;              problema_sueldos              problema_precios </span></span>
+<span id="cb48-37"><a></a><span class="co">#&gt;                             0                             0 </span></span>
+<span id="cb48-38"><a></a><span class="co">#&gt;            problema_educacion            problema_pensiones </span></span>
+<span id="cb48-39"><a></a><span class="co">#&gt;                             2                             0 </span></span>
+<span id="cb48-40"><a></a><span class="co">#&gt;             problema_vivienda               problema_genero </span></span>
+<span id="cb48-41"><a></a><span class="co">#&gt;                             2                             1 </span></span>
+<span id="cb48-42"><a></a><span class="co">#&gt;             problema_ambiente           problema_transporte </span></span>
+<span id="cb48-43"><a></a><span class="co">#&gt;                             1                             1 </span></span>
+<span id="cb48-44"><a></a><span class="co">#&gt;          problema_desigualdad          emergencia_economica </span></span>
+<span id="cb48-45"><a></a><span class="co">#&gt;                             3                             1 </span></span>
+<span id="cb48-46"><a></a><span class="co">#&gt;           medida_imp_empresas           medida_tramites_amb </span></span>
+<span id="cb48-47"><a></a><span class="co">#&gt;                             2                             2 </span></span>
+<span id="cb48-48"><a></a><span class="co">#&gt;              medida_gratuidad         medida_contrib_adulto </span></span>
+<span id="cb48-49"><a></a><span class="co">#&gt;                             3                             0 </span></span>
+<span id="cb48-50"><a></a><span class="co">#&gt;     medida_imp_inversionistas         percep_benef_empresas </span></span>
+<span id="cb48-51"><a></a><span class="co">#&gt;                             2                             0 </span></span>
+<span id="cb48-52"><a></a><span class="co">#&gt;             percep_necesarias         percep_prioriza_ricos </span></span>
+<span id="cb48-53"><a></a><span class="co">#&gt;                             0                             1 </span></span>
+<span id="cb48-54"><a></a><span class="co">#&gt;          percep_bases_solidas         percep_confianza_plan </span></span>
+<span id="cb48-55"><a></a><span class="co">#&gt;                             1                             1 </span></span>
+<span id="cb48-56"><a></a><span class="co">#&gt;          gob_distinto_campana            gob_favorece_ricos </span></span>
+<span id="cb48-57"><a></a><span class="co">#&gt;                             2                             1 </span></span>
+<span id="cb48-58"><a></a><span class="co">#&gt;               gob_buen_camino                 gob_capacidad </span></span>
+<span id="cb48-59"><a></a><span class="co">#&gt;                             2                             0 </span></span>
+<span id="cb48-60"><a></a><span class="co">#&gt;          tiempo_confianza_gob         meta_prioritaria_kast </span></span>
+<span id="cb48-61"><a></a><span class="co">#&gt;                             2                             0 </span></span>
+<span id="cb48-62"><a></a><span class="co">#&gt;               voto_2da_vuelta            eval_gobierno_kast </span></span>
+<span id="cb48-63"><a></a><span class="co">#&gt;                             2                             2 </span></span>
+<span id="cb48-64"><a></a><span class="co">#&gt;            gob_vs_expectativa           intervencion_estado </span></span>
+<span id="cb48-65"><a></a><span class="co">#&gt;                             1                             0 </span></span>
+<span id="cb48-66"><a></a><span class="co">#&gt;           trade_estado_grande         resp_estado_pensiones </span></span>
+<span id="cb48-67"><a></a><span class="co">#&gt;                             1                             0 </span></span>
+<span id="cb48-68"><a></a><span class="co">#&gt;            resp_estado_empleo          resp_estado_educ_uni </span></span>
+<span id="cb48-69"><a></a><span class="co">#&gt;                             1                             1 </span></span>
+<span id="cb48-70"><a></a><span class="co">#&gt;             resp_estado_salud          resp_estado_vivienda </span></span>
+<span id="cb48-71"><a></a><span class="co">#&gt;                             1                             0 </span></span>
+<span id="cb48-72"><a></a><span class="co">#&gt;        resp_estado_transporte          resp_estado_internet </span></span>
+<span id="cb48-73"><a></a><span class="co">#&gt;                             1                             0 </span></span>
+<span id="cb48-74"><a></a><span class="co">#&gt;                  fichas_salud                   fichas_educ </span></span>
+<span id="cb48-75"><a></a><span class="co">#&gt;                             1                             1 </span></span>
+<span id="cb48-76"><a></a><span class="co">#&gt;              fichas_pensiones              fichas_seguridad </span></span>
+<span id="cb48-77"><a></a><span class="co">#&gt;                             1                             2 </span></span>
+<span id="cb48-78"><a></a><span class="co">#&gt;               fichas_vivienda                fichas_fomento </span></span>
+<span id="cb48-79"><a></a><span class="co">#&gt;                             2                             0 </span></span>
+<span id="cb48-80"><a></a><span class="co">#&gt;                  fichas_redes          justo_pension_aporte </span></span>
+<span id="cb48-81"><a></a><span class="co">#&gt;                             3                             0 </span></span>
+<span id="cb48-82"><a></a><span class="co">#&gt;               justo_educ_pago              justo_salud_pago </span></span>
+<span id="cb48-83"><a></a><span class="co">#&gt;                             2                             1 </span></span>
+<span id="cb48-84"><a></a><span class="co">#&gt;            imp_prefiero_menos           imp_justo_ricos_mas </span></span>
+<span id="cb48-85"><a></a><span class="co">#&gt;                             1                             2 </span></span>
+<span id="cb48-86"><a></a><span class="co">#&gt;          imp_mal_gasto_estado       imp_bajar_genera_empleo </span></span>
+<span id="cb48-87"><a></a><span class="co">#&gt;                             0                             4 </span></span>
+<span id="cb48-88"><a></a><span class="co">#&gt;              chequeo_atencion redistrib_reducir_diferencias </span></span>
+<span id="cb48-89"><a></a><span class="co">#&gt;                             0                             1 </span></span>
+<span id="cb48-90"><a></a><span class="co">#&gt;        redistrib_ayuda_pobres   redistrib_nivel_vida_desemp </span></span>
+<span id="cb48-91"><a></a><span class="co">#&gt;                             1                             1 </span></span>
+<span id="cb48-92"><a></a><span class="co">#&gt;   imp_aumentar_altos_ingresos            imp_herencia_ricos </span></span>
+<span id="cb48-93"><a></a><span class="co">#&gt;                             1                             1 </span></span>
+<span id="cb48-94"><a></a><span class="co">#&gt;               educacion_nivel           actividad_principal </span></span>
+<span id="cb48-95"><a></a><span class="co">#&gt;                             2                             2 </span></span>
+<span id="cb48-96"><a></a><span class="co">#&gt;                 ingreso_hogar                 llega_fin_mes </span></span>
+<span id="cb48-97"><a></a><span class="co">#&gt;                             0                             5 </span></span>
+<span id="cb48-98"><a></a><span class="co">#&gt;          impacto_alza_precios          economia_hogar_retro </span></span>
+<span id="cb48-99"><a></a><span class="co">#&gt;                             1                             1 </span></span>
+<span id="cb48-100"><a></a><span class="co">#&gt;    economia_hogar_prospectiva         autoubicacion_izq_der </span></span>
+<span id="cb48-101"><a></a><span class="co">#&gt;                             0                             3 </span></span>
+<span id="cb48-102"><a></a><span class="co">#&gt;              edad_grupo_banda             educacion_nivel_r </span></span>
+<span id="cb48-103"><a></a><span class="co">#&gt;                             2                             1 </span></span>
+<span id="cb48-104"><a></a><span class="co">#&gt;               ingreso_hogar_r                        zona_r </span></span>
+<span id="cb48-105"><a></a><span class="co">#&gt;                             2                             1 </span></span>
+<span id="cb48-106"><a></a><span class="co">#&gt;       autoubicacion_izq_der_r                    ponderador </span></span>
+<span id="cb48-107"><a></a><span class="co">#&gt;                             2                             1 </span></span>
+<span id="cb48-108"><a></a><span class="co">#&gt;                           gse </span></span>
+<span id="cb48-109"><a></a><span class="co">#&gt;                             0</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment pad">
-<p><code>na.omit()</code> elimina toda fila con <strong>al menos un</strong> dato perdido en <strong>cualquier</strong> columna, así que hay que usarlo con cuidado en bases tan anchas como esta:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">nrow</span>(datos)</span>
-<span id="cb43-2"><a></a><span class="co">#&gt; [1] 1000</span></span>
-<span id="cb43-3"><a></a><span class="fu">nrow</span>(<span class="fu">na.omit</span>(datos))</span>
-<span id="cb43-4"><a></a><span class="co">#&gt; [1] 939</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>No siempre hay que eliminar los <code>NA</code>: depende del análisis.</strong> En este taller usaremos <strong>listwise deletion</strong>: eliminar solo los casos que tengan <code>NA</code> en las variables que vamos a analizar, no en toda la base.</p>
 </div>
+<div class="fragment">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>datos_proc <span class="ot">&lt;-</span> datos <span class="sc">|&gt;</span></span>
+<span id="cb49-2"><a></a>  <span class="fu">select</span>(sexo, ideologia, fichas_salud) <span class="sc">|&gt;</span></span>
+<span id="cb49-3"><a></a>  <span class="fu">na.omit</span>() <span class="co"># conserva solo los casos completos en estas variables</span></span>
+<span id="cb49-4"><a></a></span>
+<span id="cb49-5"><a></a><span class="fu">nrow</span>(datos)          <span class="co"># casos originales</span></span>
+<span id="cb49-6"><a></a><span class="co">#&gt; [1] 1000</span></span>
+<span id="cb49-7"><a></a><span class="fu">nrow</span>(datos_proc) <span class="co"># casos tras listwise deletion</span></span>
+<span id="cb49-8"><a></a><span class="co">#&gt; [1] 987</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="fragment pad">
+<p>¿Por qué no aplicar <code>na.omit()</code> directo sobre <code>datos</code> completo? Porque es una base muy ancha (más de 100 columnas), y bastaría con que <strong>una sola</strong> tuviera un <code>NA</code> en cada fila para que casi todos los casos se eliminaran.</p>
 </div>
 </section>
 <section id="guardar-y-exportar" class="slide level2">
 <h2>Guardar y exportar</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a aria-hidden="true" tabindex="-1"></a>datos_filtrados <span class="ot">&lt;-</span> datos <span class="sc">|&gt;</span></span>
-<span id="cb44-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sexo))</span>
-<span id="cb44-3"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(datos_filtrados, <span class="st">"datos_filtrados.rds"</span>)</span>
-<span id="cb44-5"><a aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(datos_filtrados, <span class="st">"datos_filtrados.csv"</span>)</span>
-<span id="cb44-6"><a aria-hidden="true" tabindex="-1"></a>writexl<span class="sc">::</span><span class="fu">write_xlsx</span>(datos_filtrados, <span class="st">"datos_filtrados.xlsx"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(datos_proc, <span class="st">"../output/data/datos_proc.RData"</span>)</span>
+<span id="cb50-2"><a aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(datos_proc, <span class="st">"../output/data/datos_proc.csv"</span>)</span>
+<span id="cb50-3"><a aria-hidden="true" tabindex="-1"></a>writexl<span class="sc">::</span><span class="fu">write_xlsx</span>(datos_proc, <span class="st">"../output/data/datos_proc.xlsx"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment pad">
 <p>Guardamos siempre en un <strong>objeto nuevo</strong>, para no perder ni sobreescribir los datos originales.</p>
 </div>
-</section>
-<section class="slide level2">
-
 </section></section>
 <section>
-<section id="herramientas-para-analizar-datos" class="title-slide slide level1 center">
+<section id="herramientas-para-analizar-datos" class="title-slide slide level1 texto-blanco center" data-background-color="#523870">
 <h1>Herramientas para analizar datos</h1>
 <ul>
 <li>Resumiendo datos</li>
@@ -1033,23 +1247,51 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <li>Algunos gráficos</li>
 </ul>
 </section>
-<section id="resumiendo-datos" class="slide level2">
+<section id="resumiendo-datos" class="slide level2 scrollable">
 <h2>Resumiendo datos</h2>
-<p><code>summarize()</code> reduce toda la tabla a un solo resultado; <code>group_by()</code> lo hace por grupos:</p>
+<p><code>summarize()</code> reduce toda la tabla a un solo resultado. Vamos de lo simple a lo más completo:</p>
+<div class="fragment">
+<p>Un resumen simple, de una sola variable:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>datos <span class="sc">|&gt;</span></span>
-<span id="cb45-2"><a></a>  <span class="fu">group_by</span>(ideologia) <span class="sc">|&gt;</span></span>
-<span id="cb45-3"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb45-4"><a></a>    <span class="at">fichas_seguridad_prom =</span> <span class="fu">mean</span>(fichas_seguridad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb45-5"><a></a>    <span class="at">n =</span> <span class="fu">n</span>())</span>
-<span id="cb45-6"><a></a><span class="co">#&gt; # A tibble: 5 × 3</span></span>
-<span id="cb45-7"><a></a><span class="co">#&gt;   ideologia fichas_seguridad_prom     n</span></span>
-<span id="cb45-8"><a></a><span class="co">#&gt;   &lt;fct&gt;                     &lt;dbl&gt; &lt;int&gt;</span></span>
-<span id="cb45-9"><a></a><span class="co">#&gt; 1 Izquierda                  1.45   253</span></span>
-<span id="cb45-10"><a></a><span class="co">#&gt; 2 Centro                     1.72   150</span></span>
-<span id="cb45-11"><a></a><span class="co">#&gt; 3 Derecha                    2.17   313</span></span>
-<span id="cb45-12"><a></a><span class="co">#&gt; 4 Ninguno                    1.65   283</span></span>
-<span id="cb45-13"><a></a><span class="co">#&gt; 5 &lt;NA&gt;                       2        1</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>datos_proc <span class="sc">|&gt;</span></span>
+<span id="cb51-2"><a></a>  <span class="fu">summarize</span>(<span class="at">fichas_seguridad_prom =</span> <span class="fu">mean</span>(fichas_seguridad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb51-3"><a></a><span class="co">#&gt; # A tibble: 1 × 1</span></span>
+<span id="cb51-4"><a></a><span class="co">#&gt;   fichas_seguridad_prom</span></span>
+<span id="cb51-5"><a></a><span class="co">#&gt;                   &lt;dbl&gt;</span></span>
+<span id="cb51-6"><a></a><span class="co">#&gt; 1                  1.78</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="fragment pad">
+<p>El mismo resumen, ahora por grupos, con <code>group_by()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a>datos_proc <span class="sc">|&gt;</span></span>
+<span id="cb52-2"><a></a>  <span class="fu">group_by</span>(ideologia) <span class="sc">|&gt;</span></span>
+<span id="cb52-3"><a></a>  <span class="fu">summarize</span>(<span class="at">fichas_seguridad_prom =</span> <span class="fu">mean</span>(fichas_seguridad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb52-4"><a></a><span class="co">#&gt; # A tibble: 4 × 2</span></span>
+<span id="cb52-5"><a></a><span class="co">#&gt;   ideologia fichas_seguridad_prom</span></span>
+<span id="cb52-6"><a></a><span class="co">#&gt;   &lt;fct&gt;                     &lt;dbl&gt;</span></span>
+<span id="cb52-7"><a></a><span class="co">#&gt; 1 Izquierda                  1.43</span></span>
+<span id="cb52-8"><a></a><span class="co">#&gt; 2 Centro                     1.71</span></span>
+<span id="cb52-9"><a></a><span class="co">#&gt; 3 Derecha                    2.19</span></span>
+<span id="cb52-10"><a></a><span class="co">#&gt; 4 Ninguno                    1.65</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="fragment pad">
+<p>Y agregando una condición previa con <code>filter()</code>, más el conteo de casos por grupo con <code>n()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>datos_proc <span class="sc">|&gt;</span></span>
+<span id="cb53-2"><a></a>  <span class="fu">filter</span>(region <span class="sc">==</span> <span class="st">"Metropolitana"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb53-3"><a></a>  <span class="fu">group_by</span>(ideologia) <span class="sc">|&gt;</span></span>
+<span id="cb53-4"><a></a>  <span class="fu">summarize</span>(<span class="at">fichas_seguridad_prom =</span> <span class="fu">mean</span>(fichas_seguridad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb53-5"><a></a>            <span class="at">n =</span> <span class="fu">n</span>())</span>
+<span id="cb53-6"><a></a><span class="co">#&gt; # A tibble: 4 × 3</span></span>
+<span id="cb53-7"><a></a><span class="co">#&gt;   ideologia fichas_seguridad_prom     n</span></span>
+<span id="cb53-8"><a></a><span class="co">#&gt;   &lt;fct&gt;                     &lt;dbl&gt; &lt;int&gt;</span></span>
+<span id="cb53-9"><a></a><span class="co">#&gt; 1 Izquierda                  1.53   127</span></span>
+<span id="cb53-10"><a></a><span class="co">#&gt; 2 Centro                     1.78    63</span></span>
+<span id="cb53-11"><a></a><span class="co">#&gt; 3 Derecha                    2.31   150</span></span>
+<span id="cb53-12"><a></a><span class="co">#&gt; 4 Ninguno                    1.60   104</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 <div class="fragment pad">
 <p><code>fichas_seguridad</code> son las fichas de gasto público que cada persona asignó a seguridad; vemos que quienes se identifican de derecha le asignan, en promedio, bastantes más que quienes se identifican de izquierda.</p>
@@ -1059,37 +1301,37 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <h2>Variables categóricas</h2>
 <p>Para ver la distribución de una variable categórica, usamos <code>sjmisc::frq()</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(datos<span class="sc">$</span>gse)</span>
-<span id="cb46-2"><a></a><span class="co">#&gt; x &lt;character&gt; </span></span>
-<span id="cb46-3"><a></a><span class="co">#&gt; # total N=1000 valid N=1000 mean=2.65 sd=1.15</span></span>
-<span id="cb46-4"><a></a><span class="co">#&gt; </span></span>
-<span id="cb46-5"><a></a><span class="co">#&gt; Value |   N | Raw % | Valid % | Cum. %</span></span>
-<span id="cb46-6"><a></a><span class="co">#&gt; --------------------------------------</span></span>
-<span id="cb46-7"><a></a><span class="co">#&gt; ABC1  | 207 | 20.70 |   20.70 |  20.70</span></span>
-<span id="cb46-8"><a></a><span class="co">#&gt; C2    | 225 | 22.50 |   22.50 |  43.20</span></span>
-<span id="cb46-9"><a></a><span class="co">#&gt; C3    | 328 | 32.80 |   32.80 |  76.00</span></span>
-<span id="cb46-10"><a></a><span class="co">#&gt; D     | 189 | 18.90 |   18.90 |  94.90</span></span>
-<span id="cb46-11"><a></a><span class="co">#&gt; E     |  51 |  5.10 |    5.10 | 100.00</span></span>
-<span id="cb46-12"><a></a><span class="co">#&gt; &lt;NA&gt;  |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(datos_proc<span class="sc">$</span>gse)</span>
+<span id="cb54-2"><a></a><span class="co">#&gt; x &lt;character&gt; </span></span>
+<span id="cb54-3"><a></a><span class="co">#&gt; # total N=939 valid N=939 mean=2.66 sd=1.15</span></span>
+<span id="cb54-4"><a></a><span class="co">#&gt; </span></span>
+<span id="cb54-5"><a></a><span class="co">#&gt; Value |   N | Raw % | Valid % | Cum. %</span></span>
+<span id="cb54-6"><a></a><span class="co">#&gt; --------------------------------------</span></span>
+<span id="cb54-7"><a></a><span class="co">#&gt; ABC1  | 193 | 20.55 |   20.55 |  20.55</span></span>
+<span id="cb54-8"><a></a><span class="co">#&gt; C2    | 211 | 22.47 |   22.47 |  43.02</span></span>
+<span id="cb54-9"><a></a><span class="co">#&gt; C3    | 306 | 32.59 |   32.59 |  75.61</span></span>
+<span id="cb54-10"><a></a><span class="co">#&gt; D     | 181 | 19.28 |   19.28 |  94.89</span></span>
+<span id="cb54-11"><a></a><span class="co">#&gt; E     |  48 |  5.11 |    5.11 | 100.00</span></span>
+<span id="cb54-12"><a></a><span class="co">#&gt; &lt;NA&gt;  |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="variables-numéricas" class="slide level2">
 <h2>Variables numéricas</h2>
 <p>Para variables numéricas usamos funciones de resumen o <code>sjmisc::descr()</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">summary</span>(datos<span class="sc">$</span>fichas_salud)</span>
-<span id="cb47-2"><a></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's </span></span>
-<span id="cb47-3"><a></a><span class="co">#&gt;   0.000   2.000   2.000   2.166   2.000  10.000       1</span></span>
-<span id="cb47-4"><a></a>sjmisc<span class="sc">::</span><span class="fu">descr</span>(datos, fichas_salud)</span>
-<span id="cb47-5"><a></a><span class="co">#&gt; </span></span>
-<span id="cb47-6"><a></a><span class="co">#&gt; ## Basic descriptive statistics</span></span>
-<span id="cb47-7"><a></a><span class="co">#&gt; </span></span>
-<span id="cb47-8"><a></a><span class="co">#&gt;           var    type</span></span>
-<span id="cb47-9"><a></a><span class="co">#&gt;  fichas_salud numeric</span></span>
-<span id="cb47-10"><a></a><span class="co">#&gt;                                                                                                                                                                                                                                                       label</span></span>
-<span id="cb47-11"><a></a><span class="co">#&gt;  Imagine que usted tiene 10 fichas para repartir entre las siguientes áreas de gasto público en Chile. ¿Cuánto le asignaría a cada una? Puede asignar 0 fichas a las áreas que considere menos prioritarias, pero el total debe sumar exactamente 10 - Salu</span></span>
-<span id="cb47-12"><a></a><span class="co">#&gt;    n NA.prc mean   sd   se md trimmed     range iqr skew</span></span>
-<span id="cb47-13"><a></a><span class="co">#&gt;  999    0.1 2.17 0.87 0.03  2    2.12 10 (0-10)   0  2.9</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="fu">summary</span>(datos_proc<span class="sc">$</span>fichas_salud)</span>
+<span id="cb55-2"><a></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span id="cb55-3"><a></a><span class="co">#&gt;   0.000   2.000   2.000   2.169   2.000  10.000</span></span>
+<span id="cb55-4"><a></a>sjmisc<span class="sc">::</span><span class="fu">descr</span>(datos_proc, fichas_salud)</span>
+<span id="cb55-5"><a></a><span class="co">#&gt; </span></span>
+<span id="cb55-6"><a></a><span class="co">#&gt; ## Basic descriptive statistics</span></span>
+<span id="cb55-7"><a></a><span class="co">#&gt; </span></span>
+<span id="cb55-8"><a></a><span class="co">#&gt;           var    type</span></span>
+<span id="cb55-9"><a></a><span class="co">#&gt;  fichas_salud numeric</span></span>
+<span id="cb55-10"><a></a><span class="co">#&gt;                                                                                                                                                                                                                                                       label</span></span>
+<span id="cb55-11"><a></a><span class="co">#&gt;  Imagine que usted tiene 10 fichas para repartir entre las siguientes áreas de gasto público en Chile. ¿Cuánto le asignaría a cada una? Puede asignar 0 fichas a las áreas que considere menos prioritarias, pero el total debe sumar exactamente 10 - Salu</span></span>
+<span id="cb55-12"><a></a><span class="co">#&gt;    n NA.prc mean   sd   se md trimmed     range iqr skew</span></span>
+<span id="cb55-13"><a></a><span class="co">#&gt;  939      0 2.17 0.88 0.03  2    2.12 10 (0-10)   0 2.92</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment pad">
 <p><code>fichas_salud</code> viene de una pregunta donde cada persona reparte 10 fichas de gasto público entre distintas áreas; aquí vemos cuántas fichas, en promedio, se destinan a salud.</p>
@@ -1098,7 +1340,7 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <section id="bivariados-categórica-categórica" class="slide level2 scrollable">
 <h2>Bivariados: categórica × categórica</h2>
 <p>Con <code>sjPlot::tab_xtab()</code> obtenemos una tabla de contingencia con porcentajes de fila:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a>sjPlot<span class="sc">::</span><span class="fu">tab_xtab</span>(datos<span class="sc">$</span>gse, datos<span class="sc">$</span>ideologia, <span class="at">show.row.prc =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a>sjPlot<span class="sc">::</span><span class="fu">tab_xtab</span>(datos_proc<span class="sc">$</span>gse, datos_proc<span class="sc">$</span>ideologia, <span class="at">show.row.prc =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <table style="border-collapse:collapse; border:none;">
  <tbody><tr>
  <th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">gse</th>
@@ -1115,58 +1357,58 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
  
 <tr> 
 <td style="padding:0.2cm;  text-align:left; vertical-align:middle;">ABC1</td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">61</span><br><span style="color:#333399;">29.5&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">32</span><br><span style="color:#333399;">15.5&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">76</span><br><span style="color:#333399;">36.7&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">38</span><br><span style="color:#333399;">18.4&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">207</span><br><span style="color:#333399;">100&nbsp;%</span></td> 
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">54</span><br><span style="color:#333399;">28&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">30</span><br><span style="color:#333399;">15.5&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">75</span><br><span style="color:#333399;">38.9&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">34</span><br><span style="color:#333399;">17.6&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">193</span><br><span style="color:#333399;">100&nbsp;%</span></td> 
 </tr>
  
 <tr> 
 <td style="padding:0.2cm;  text-align:left; vertical-align:middle;">C2</td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">71</span><br><span style="color:#333399;">31.6&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">21</span><br><span style="color:#333399;">9.3&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">81</span><br><span style="color:#333399;">36&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">52</span><br><span style="color:#333399;">23.1&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">225</span><br><span style="color:#333399;">100&nbsp;%</span></td> 
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">61</span><br><span style="color:#333399;">28.9&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">21</span><br><span style="color:#333399;">10&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">78</span><br><span style="color:#333399;">37&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">51</span><br><span style="color:#333399;">24.2&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">211</span><br><span style="color:#333399;">100&nbsp;%</span></td> 
 </tr>
  
 <tr> 
 <td style="padding:0.2cm;  text-align:left; vertical-align:middle;">C3</td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">82</span><br><span style="color:#333399;">25.1&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">46</span><br><span style="color:#333399;">14.1&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">101</span><br><span style="color:#333399;">30.9&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">98</span><br><span style="color:#333399;">30&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">327</span><br><span style="color:#333399;">100&nbsp;%</span></td> 
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">75</span><br><span style="color:#333399;">24.5&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">46</span><br><span style="color:#333399;">15&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">94</span><br><span style="color:#333399;">30.7&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">91</span><br><span style="color:#333399;">29.7&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">306</span><br><span style="color:#333399;">100&nbsp;%</span></td> 
 </tr>
  
 <tr> 
 <td style="padding:0.2cm;  text-align:left; vertical-align:middle;">D</td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">37</span><br><span style="color:#333399;">19.6&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">33</span><br><span style="color:#333399;">17.5&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">39</span><br><span style="color:#333399;">20.6&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">80</span><br><span style="color:#333399;">42.3&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">189</span><br><span style="color:#333399;">100&nbsp;%</span></td> 
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">35</span><br><span style="color:#333399;">19.3&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">32</span><br><span style="color:#333399;">17.7&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">38</span><br><span style="color:#333399;">21&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">76</span><br><span style="color:#333399;">42&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">181</span><br><span style="color:#333399;">100&nbsp;%</span></td> 
 </tr>
  
 <tr> 
 <td style="padding:0.2cm;  text-align:left; vertical-align:middle;">E</td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">2</span><br><span style="color:#333399;">3.9&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">18</span><br><span style="color:#333399;">35.3&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">16</span><br><span style="color:#333399;">31.4&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center; "><span style="color:black;">15</span><br><span style="color:#333399;">29.4&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">51</span><br><span style="color:#333399;">100&nbsp;%</span></td> 
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">2</span><br><span style="color:#333399;">4.2&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">18</span><br><span style="color:#333399;">37.5&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">15</span><br><span style="color:#333399;">31.2&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">13</span><br><span style="color:#333399;">27.1&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">48</span><br><span style="color:#333399;">100&nbsp;%</span></td> 
 </tr>
  
 <tr> 
 <td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">Total</td>
-<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">253</span><br><span style="color:#333399;">25.3&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">150</span><br><span style="color:#333399;">15&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">313</span><br><span style="color:#333399;">31.3&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">283</span><br><span style="color:#333399;">28.3&nbsp;%</span></td>
-<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">999</span><br><span style="color:#333399;">100&nbsp;%</span></td> 
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">227</span><br><span style="color:#333399;">24.2&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">147</span><br><span style="color:#333399;">15.7&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">300</span><br><span style="color:#333399;">31.9&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">265</span><br><span style="color:#333399;">28.2&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">939</span><br><span style="color:#333399;">100&nbsp;%</span></td> 
 </tr>
-<tr><td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="6">χ<sup>2</sup>=69.570 · df=12 · Cramer's V=0.152 · p=0.000</td> 
+<tr><td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="6">χ<sup>2</sup>=65.238 · df=12 · Cramer's V=0.152 · p=0.000</td> 
 </tr>
  
 </tbody></table>
@@ -1176,67 +1418,62 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <h3 class="scrollable" id="bivariados-numérica-categórica">Bivariados: numérica × categórica</h3>
 <p>Comparamos las fichas de seguridad asignadas por hombres y por mujeres, y confirmamos la diferencia con una prueba t:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>datos <span class="sc">|&gt;</span></span>
-<span id="cb49-2"><a></a>  <span class="fu">group_by</span>(sexo) <span class="sc">|&gt;</span></span>
-<span id="cb49-3"><a></a>  <span class="fu">summarize</span>(<span class="at">fichas_seguridad_prom =</span> <span class="fu">mean</span>(fichas_seguridad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">n =</span> <span class="fu">n</span>())</span>
-<span id="cb49-4"><a></a><span class="co">#&gt; # A tibble: 3 × 3</span></span>
-<span id="cb49-5"><a></a><span class="co">#&gt;   sexo   fichas_seguridad_prom     n</span></span>
-<span id="cb49-6"><a></a><span class="co">#&gt;   &lt;fct&gt;                  &lt;dbl&gt; &lt;int&gt;</span></span>
-<span id="cb49-7"><a></a><span class="co">#&gt; 1 Hombre                  1.70   467</span></span>
-<span id="cb49-8"><a></a><span class="co">#&gt; 2 Mujer                   1.84   522</span></span>
-<span id="cb49-9"><a></a><span class="co">#&gt; 3 &lt;NA&gt;                    1.82    11</span></span>
-<span id="cb49-10"><a></a></span>
-<span id="cb49-11"><a></a><span class="fu">t.test</span>(fichas_seguridad <span class="sc">~</span> sexo, <span class="at">data =</span> datos)</span>
-<span id="cb49-12"><a></a><span class="co">#&gt; </span></span>
-<span id="cb49-13"><a></a><span class="co">#&gt;  Welch Two Sample t-test</span></span>
-<span id="cb49-14"><a></a><span class="co">#&gt; </span></span>
-<span id="cb49-15"><a></a><span class="co">#&gt; data:  fichas_seguridad by sexo</span></span>
-<span id="cb49-16"><a></a><span class="co">#&gt; t = -2.1549, df = 981.38, p-value = 0.03141</span></span>
-<span id="cb49-17"><a></a><span class="co">#&gt; alternative hypothesis: true difference in means between group Hombre and group Mujer is not equal to 0</span></span>
-<span id="cb49-18"><a></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
-<span id="cb49-19"><a></a><span class="co">#&gt;  -0.25637944 -0.01198656</span></span>
-<span id="cb49-20"><a></a><span class="co">#&gt; sample estimates:</span></span>
-<span id="cb49-21"><a></a><span class="co">#&gt; mean in group Hombre  mean in group Mujer </span></span>
-<span id="cb49-22"><a></a><span class="co">#&gt;             1.702355             1.836538</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="fragment pad">
-<p>El valor p menor a 0,05 sugiere que la diferencia entre hombres y mujeres no se debe solo al azar.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>datos_proc <span class="sc">|&gt;</span></span>
+<span id="cb57-2"><a></a>  <span class="fu">group_by</span>(sexo) <span class="sc">|&gt;</span></span>
+<span id="cb57-3"><a></a>  <span class="fu">summarize</span>(<span class="at">fichas_seguridad_prom =</span> <span class="fu">mean</span>(fichas_seguridad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">n =</span> <span class="fu">n</span>())</span>
+<span id="cb57-4"><a></a><span class="co">#&gt; # A tibble: 2 × 3</span></span>
+<span id="cb57-5"><a></a><span class="co">#&gt;   sexo   fichas_seguridad_prom     n</span></span>
+<span id="cb57-6"><a></a><span class="co">#&gt;   &lt;fct&gt;                  &lt;dbl&gt; &lt;int&gt;</span></span>
+<span id="cb57-7"><a></a><span class="co">#&gt; 1 Hombre                  1.71   445</span></span>
+<span id="cb57-8"><a></a><span class="co">#&gt; 2 Mujer                   1.85   494</span></span>
+<span id="cb57-9"><a></a></span>
+<span id="cb57-10"><a></a><span class="fu">t.test</span>(fichas_seguridad <span class="sc">~</span> sexo, <span class="at">data =</span> datos_proc)</span>
+<span id="cb57-11"><a></a><span class="co">#&gt; </span></span>
+<span id="cb57-12"><a></a><span class="co">#&gt;  Welch Two Sample t-test</span></span>
+<span id="cb57-13"><a></a><span class="co">#&gt; </span></span>
+<span id="cb57-14"><a></a><span class="co">#&gt; data:  fichas_seguridad by sexo</span></span>
+<span id="cb57-15"><a></a><span class="co">#&gt; t = -2.1865, df = 932.49, p-value = 0.02903</span></span>
+<span id="cb57-16"><a></a><span class="co">#&gt; alternative hypothesis: true difference in means between group Hombre and group Mujer is not equal to 0</span></span>
+<span id="cb57-17"><a></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span id="cb57-18"><a></a><span class="co">#&gt;  -0.26667538 -0.01439636</span></span>
+<span id="cb57-19"><a></a><span class="co">#&gt; sample estimates:</span></span>
+<span id="cb57-20"><a></a><span class="co">#&gt; mean in group Hombre  mean in group Mujer </span></span>
+<span id="cb57-21"><a></a><span class="co">#&gt;             1.705618             1.846154</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
 <h3 class="scrollable" id="bivariados-numérica-numérica">Bivariados: numérica × numérica</h3>
-<p>Construimos una versión numérica del ingreso del hogar (sus 11 categorías originales, donde la última, “no hubo ingresos”, equivale a 0), y la cruzamos con las fichas asignadas a pensiones:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a>datos <span class="ot">&lt;-</span> datos <span class="sc">|&gt;</span></span>
-<span id="cb50-2"><a></a>  <span class="fu">mutate</span>(<span class="at">ingreso_decil =</span> <span class="fu">if_else</span>(<span class="fu">as.integer</span>(ingreso_hogar) <span class="sc">==</span> <span class="dv">11</span>, <span class="dv">0</span>L, <span class="fu">as.integer</span>(ingreso_hogar)))</span>
-<span id="cb50-3"><a></a></span>
-<span id="cb50-4"><a></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> ingreso_decil, <span class="at">y =</span> fichas_pensiones)) <span class="sc">+</span></span>
-<span id="cb50-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb50-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb50-7"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ingreso del hogar y fichas asignadas a pensiones"</span>,</span>
-<span id="cb50-8"><a></a>       <span class="at">x =</span> <span class="st">"Ingreso del hogar (0 = sin ingresos, 10 = tramo más alto)"</span>,</span>
-<span id="cb50-9"><a></a>       <span class="at">y =</span> <span class="st">"Fichas asignadas a pensiones"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a>datos_proc <span class="ot">&lt;-</span> datos_proc <span class="sc">|&gt;</span></span>
+<span id="cb58-2"><a></a>  <span class="fu">mutate</span>(<span class="at">ingreso_decil =</span> <span class="fu">ntile</span>(<span class="fu">as.integer</span>(ingreso_hogar), <span class="dv">10</span>)) <span class="co"># deciles de ingreso del hogar</span></span>
+<span id="cb58-3"><a></a></span>
+<span id="cb58-4"><a></a><span class="fu">ggplot</span>(datos_proc, <span class="fu">aes</span>(<span class="at">x =</span> ingreso_decil, <span class="at">y =</span> fichas_pensiones)) <span class="sc">+</span></span>
+<span id="cb58-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb58-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb58-7"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ingreso del hogar y fichas asignadas a pensiones"</span>,</span>
+<span id="cb58-8"><a></a>       <span class="at">x =</span> <span class="st">"Ingreso del hogar (0 = sin ingresos, 10 = tramo más alto)"</span>,</span>
+<span id="cb58-9"><a></a>       <span class="at">y =</span> <span class="st">"Fichas asignadas a pensiones"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="taller_files/figure-revealjs/unnamed-chunk-51-1.png" width="960"></p>
+<p><img data-src="taller_files/figure-revealjs/unnamed-chunk-60-1.png" width="960"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a></span>
-<span id="cb51-2"><a></a><span class="fu">cor.test</span>(datos<span class="sc">$</span>ingreso_decil, datos<span class="sc">$</span>fichas_pensiones)</span>
-<span id="cb51-3"><a></a><span class="co">#&gt; </span></span>
-<span id="cb51-4"><a></a><span class="co">#&gt;  Pearson's product-moment correlation</span></span>
-<span id="cb51-5"><a></a><span class="co">#&gt; </span></span>
-<span id="cb51-6"><a></a><span class="co">#&gt; data:  datos$ingreso_decil and datos$fichas_pensiones</span></span>
-<span id="cb51-7"><a></a><span class="co">#&gt; t = -3.6683, df = 997, p-value = 0.0002571</span></span>
-<span id="cb51-8"><a></a><span class="co">#&gt; alternative hypothesis: true correlation is not equal to 0</span></span>
-<span id="cb51-9"><a></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
-<span id="cb51-10"><a></a><span class="co">#&gt;  -0.17616279 -0.05376024</span></span>
-<span id="cb51-11"><a></a><span class="co">#&gt; sample estimates:</span></span>
-<span id="cb51-12"><a></a><span class="co">#&gt;        cor </span></span>
-<span id="cb51-13"><a></a><span class="co">#&gt; -0.1153996</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a></span>
+<span id="cb59-2"><a></a><span class="fu">cor.test</span>(datos_proc<span class="sc">$</span>ingreso_decil, datos_proc<span class="sc">$</span>fichas_pensiones)</span>
+<span id="cb59-3"><a></a><span class="co">#&gt; </span></span>
+<span id="cb59-4"><a></a><span class="co">#&gt;  Pearson's product-moment correlation</span></span>
+<span id="cb59-5"><a></a><span class="co">#&gt; </span></span>
+<span id="cb59-6"><a></a><span class="co">#&gt; data:  datos_proc$ingreso_decil and datos_proc$fichas_pensiones</span></span>
+<span id="cb59-7"><a></a><span class="co">#&gt; t = -5.39, df = 937, p-value = 8.921e-08</span></span>
+<span id="cb59-8"><a></a><span class="co">#&gt; alternative hypothesis: true correlation is not equal to 0</span></span>
+<span id="cb59-9"><a></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span id="cb59-10"><a></a><span class="co">#&gt;  -0.2347854 -0.1106661</span></span>
+<span id="cb59-11"><a></a><span class="co">#&gt; sample estimates:</span></span>
+<span id="cb59-12"><a></a><span class="co">#&gt;        cor </span></span>
+<span id="cb59-13"><a></a><span class="co">#&gt; -0.1734142</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment pad">
 <p>La correlación es negativa y significativa: a mayor ingreso del hogar, se tiende a asignar menos fichas a pensiones.</p>
@@ -1246,13 +1483,13 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <h2>Algunos gráficos con <code>{ggplot2}</code></h2>
 <p>Una barra para una variable categórica:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> gse)) <span class="sc">+</span></span>
-<span id="cb52-2"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb52-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución por grupo socioeconómico"</span>, <span class="at">x =</span> <span class="st">"GSE"</span>, <span class="at">y =</span> <span class="st">"Casos"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a><span class="fu">ggplot</span>(datos_proc, <span class="fu">aes</span>(<span class="at">x =</span> gse)) <span class="sc">+</span></span>
+<span id="cb60-2"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb60-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución por grupo socioeconómico"</span>, <span class="at">x =</span> <span class="st">"GSE"</span>, <span class="at">y =</span> <span class="st">"Casos"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="taller_files/figure-revealjs/unnamed-chunk-52-1.png" width="960"></p>
+<p><img data-src="taller_files/figure-revealjs/unnamed-chunk-61-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1263,13 +1500,13 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <h3 id="densidad-para-una-numérica">Densidad para una numérica</h3>
 <p>Para ver la forma de la distribución completa, en vez de un histograma usamos una curva de densidad:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> fichas_salud)) <span class="sc">+</span></span>
-<span id="cb53-2"><a></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"grey80"</span>) <span class="sc">+</span></span>
-<span id="cb53-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución de fichas asignadas a salud"</span>, <span class="at">x =</span> <span class="st">"Fichas"</span>, <span class="at">y =</span> <span class="st">"Densidad"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a><span class="fu">ggplot</span>(datos_proc, <span class="fu">aes</span>(<span class="at">x =</span> fichas_salud)) <span class="sc">+</span></span>
+<span id="cb61-2"><a></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"grey80"</span>) <span class="sc">+</span></span>
+<span id="cb61-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución de fichas asignadas a salud"</span>, <span class="at">x =</span> <span class="st">"Fichas"</span>, <span class="at">y =</span> <span class="st">"Densidad"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="taller_files/figure-revealjs/unnamed-chunk-53-1.png" width="960"></p>
+<p><img data-src="taller_files/figure-revealjs/unnamed-chunk-62-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1279,14 +1516,14 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 
 <h3 id="un-gráfico-bivariado">Un gráfico bivariado</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> ideologia, <span class="at">y =</span> fichas_seguridad)) <span class="sc">+</span></span>
-<span id="cb54-2"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb54-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Fichas para seguridad según posición política"</span>,</span>
-<span id="cb54-4"><a></a>       <span class="at">x =</span> <span class="st">"Posición política"</span>, <span class="at">y =</span> <span class="st">"Fichas asignadas a seguridad"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a><span class="fu">ggplot</span>(datos_proc, <span class="fu">aes</span>(<span class="at">x =</span> ideologia, <span class="at">y =</span> fichas_seguridad)) <span class="sc">+</span></span>
+<span id="cb62-2"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb62-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Fichas para seguridad según posición política"</span>,</span>
+<span id="cb62-4"><a></a>       <span class="at">x =</span> <span class="st">"Posición política"</span>, <span class="at">y =</span> <span class="st">"Fichas asignadas a seguridad"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="taller_files/figure-revealjs/unnamed-chunk-54-1.png" width="960"></p>
+<p><img data-src="taller_files/figure-revealjs/unnamed-chunk-63-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1312,18 +1549,38 @@ Andreas Laffert Tamayo <a href="https://orcid.org/0000-0002-9008-2454" class="qu
 <li class="fragment">Usen la IA como apoyo puntual, no como reemplazo de entender lo que hacen</li>
 <li class="fragment">Compartan lo que van aprendiendo con sus colegas ✨</li>
 </ul>
-</section>
-<section class="slide level2">
-
 </section></section>
-<section id="gracias" class="title-slide slide level1 center">
+<section>
+<section id="gracias" class="title-slide slide level1 texto-blanco center" data-background-color="#523870">
 <h1>Gracias</h1>
 <p>Cualquier duda o comentario, escríbanme a andreas.laffert@uchile.cl</p>
 <p><br></p>
 <p>Ahora vamos a la práctica: en la segunda parte de este bloque aplicaremos todo esto paso a paso sobre la misma base, en <code>script_taller_clima.R</code>.</p>
-
-
 </section>
+<section class="slide level2">
+
+<!-- OPCIONAL: se puede omitir si vamos cortos de tiempo -->
+</section>
+<section id="anexo-indexar-vectores-en-r-base" class="slide level2 scrollable">
+<h2>Anexo: indexar vectores en R base</h2>
+<p>Además de <code>{dplyr}</code>, R base tiene su propia forma de extraer elementos de un vector, usando corchetes <code>[ ]</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a>nombres <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Valentina"</span>, <span class="st">"Nicolás"</span>, <span class="st">"Dafne"</span>, <span class="st">"Ignacia"</span>)</span>
+<span id="cb63-2"><a></a></span>
+<span id="cb63-3"><a></a>nombres[<span class="dv">4</span>]        <span class="co"># el cuarto elemento</span></span>
+<span id="cb63-4"><a></a><span class="co">#&gt; [1] "Ignacia"</span></span>
+<span id="cb63-5"><a></a>nombres[<span class="sc">-</span><span class="dv">4</span>]       <span class="co"># todos menos el cuarto</span></span>
+<span id="cb63-6"><a></a><span class="co">#&gt; [1] "Valentina" "Nicolás"   "Dafne"</span></span>
+<span id="cb63-7"><a></a>nombres[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]      <span class="co"># del 1 al 3</span></span>
+<span id="cb63-8"><a></a><span class="co">#&gt; [1] "Valentina" "Nicolás"   "Dafne"</span></span>
+<span id="cb63-9"><a></a>nombres[<span class="sc">-</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>)]   <span class="co"># todos menos del 2 al 4</span></span>
+<span id="cb63-10"><a></a><span class="co">#&gt; [1] "Valentina"</span></span>
+<span id="cb63-11"><a></a>nombres[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]  <span class="co"># los elementos 1 y 3</span></span>
+<span id="cb63-12"><a></a><span class="co">#&gt; [1] "Valentina" "Dafne"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

@@ -163,7 +163,7 @@ h4 {
     padding-left: 20px !important;
     padding-bottom: 4px !important;
     margin: 10px;
-    background-color: lighten($presentation-heading-color, 42%);
+    background-color: #8f6db6;
     margin-bottom: 20px !important;
     margin-top: 20px !important;
 }
@@ -206,6 +206,27 @@ h4 {
 
 .reveal ul ul ul {
   list-style-type: none;
+}
+
+
+/* clase para usar sobre fondos oscuros/de color: fuerza el texto a blanco,
+   incluidos títulos, negritas y links, que por defecto tienen su propio color.
+   Uso: en el encabezado de la slide, junto al atributo de fondo, ej:
+   # Mi slide {background-color="#523870" .texto-blanco} */
+.reveal .slide.texto-blanco,
+.reveal .slide.texto-blanco h1,
+.reveal .slide.texto-blanco h2,
+.reveal .slide.texto-blanco h3,
+.reveal .slide.texto-blanco h4,
+.reveal .slide.texto-blanco p,
+.reveal .slide.texto-blanco li,
+.reveal .slide.texto-blanco strong,
+.reveal .slide.texto-blanco a {
+  color: #ffffff !important;
+}
+
+.reveal .slide.texto-blanco ul li::before {
+  color: #ffffff;
 }
 
 
