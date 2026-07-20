@@ -38,18 +38,18 @@ editor_options:
 
 ```{r}
 #| include: false
-pacman::p_load(dplyr, ggplot2, sjlabelled, sjmisc, sjPlot)
+pacman::p_load(dplyr, ggplot2, sjlabelled, sjmisc, sjPlot, psych)
 load("../input/data/BBDD_Clima_Junio_Sample.RData")
 datos <- sjlabelled::as_label(bbdd_clima_sample)
 ```
 
 ## Objetivo del taller
 
-Este taller busca darles las primeras herramientas para **programar en R** aplicado al **análisis de datos en ciencias sociales**. Vamos a trabajar con una muestra de la **Encuesta ICSOH-UDP**, un instrumento de opinión pública que mide el clima social y político en Chile.
+- Darles las primeras herramientas para **programar en R** aplicado al **análisis de datos en ciencias sociales**. Vamos a trabajar con una versión de la **Encuesta ICSOH-UDP**, un instrumento de opinión pública que mide el clima social y político en Chile.
 
 . . .
 
-Al terminar, ustedes van a poder cargar una base de datos de encuesta, explorarla, recodificarla, y producir sus primeras tablas y gráficos descriptivos, todo con código que puedan repetir y adaptar.
+- Al terminar, ustedes van a poder cargar una base de datos, explorarla, recodificarla, y producir sus primeros análisis descriptivos, todo con código que puedan repetir y adaptar.
 
 ::: {.fragment .pad}
 Vamos a trabajar en **Posit Cloud**, directo desde el navegador y sin instalar nada. Los detalles de acceso están en la **Guía 1** que se envió antes del taller.
@@ -73,7 +73,7 @@ Vamos a trabajar en **Posit Cloud**, directo desde el navegador y sin instalar n
 ::: {.incremental}
 - Cómo instalar R y RStudio en tu computador: como trabajamos en **Posit Cloud**, hoy no hace falta instalar nada; si igual quieres instalarlo en tu computador, la guía está en la **Guía 1**
 - Cómo escribir tus propias funciones o loops
-- Modelos estadísticos (regresiones, tests de hipótesis, etc.)
+- Modelos estadísticos complejos (p. ej. regresiones)
 :::
 
 ::: {.fragment}
@@ -86,7 +86,6 @@ Todo esto lo pueden seguir aprendiendo después, una vez que tengan las bases �
 
 ::: {.incremental}
 - Van a perder el miedo a la pantalla en blanco de un script
-- Van a saber leer un mensaje de error y no entrar en pánico
 - Van a poder cargar cualquier base de encuesta y darle una primera mirada
 - Van a poder responder preguntas simples con datos: ¿cuántas personas piensan X?, ¿cómo varía Y según Z?
 :::
@@ -97,7 +96,7 @@ Todo esto lo pueden seguir aprendiendo después, una vez que tengan las bases �
 
 :::: {.columns}
 
-::: {.column width="55%" .incremental}
+::: {.column width="45%" .incremental}
 
 - Encuesta de **opinión pública** sobre clima social y político en Chile, levantada por ICSOH y el OBDE de la UDP
 - Metodología: encuesta **online autoaplicada**, con diseño muestral por cuotas
@@ -106,8 +105,8 @@ Todo esto lo pueden seguir aprendiendo después, una vez que tengan las bases �
 :::
 
 
-::: {.column width="45%"}
-![](imagenes/clima.png)
+::: {.column width="55%"}
+![](imagenes/clima.png){style="max-width:100%; max-height:100%;"}
 :::
 ::::
 
@@ -118,16 +117,16 @@ Todo esto lo pueden seguir aprendiendo después, una vez que tengan las bases �
 
 
 ::: {.fragment}
-![](imagenes/ipo.png){.centro style="width: 800px;"}
+![](imagenes/diagrama_1.png){.centro style="width: 800px;"}
 :::
 
 
 ----
 
-### Flujo de trabajo
+### Input - Processing - Output
 
 ::: {.fragment}
-![](imagenes/cora1.png){.centro style="width: 800px;"}
+![](imagenes/ipo.png){.centro style="width: 800px;"}
 :::
 
 ----
@@ -151,8 +150,8 @@ R es un **lenguaje y ambiente de programación** pensado para trabajar con datos
 ### ¿Para qué lo vamos a usar?
 
 ::: {.incremental}
-- Para cargar y limpiar bases de encuestas
-- Para construir tablas y gráficos de forma reproducible
+- Para cargar, procesar y analizar datos
+- Para construir tablas, gráficos o informes de forma reproducible
 - Para dejar registrado cada paso de nuestro análisis
 :::
 ::::
@@ -161,6 +160,13 @@ R es un **lenguaje y ambiente de programación** pensado para trabajar con datos
 
 ### ¿Por qué usar R?
 
+:::: {.fragment}
+![](imagenes/meme2.jpg)
+::::
+
+----
+
+### ¿Por qué usar R?
 :::: {.fragment}
 ::: {.cuadro}
 [Gratuito]{.subtitulo}
@@ -190,10 +196,11 @@ Un script de R deja registrado cada paso de tu análisis: si te equivocas, corri
 ## ¿Qué se puede hacer con R?
 
 ::: {.incremental}
-- Limpiar y recodificar bases de datos de encuestas
-- Construir tablas de frecuencias y estadísticas descriptivas
-- Generar gráficos para informes y presentaciones
-- Hacer mapas, dashboards, reportes automáticos, y más
+- Procesar distintos tipos de datos
+- Realizar análisis estadísticos simples y complejos
+- Generar reportes y presentaciones
+- Reproducibilidad
+- Hacer mapas, dashboards, reportes automáticos, y más:
 :::
 
 :::: {.columns}
@@ -230,7 +237,7 @@ Un script de R deja registrado cada paso de tu análisis: si te equivocas, corri
 ::::: {.columns}
 
 :::: {.column width="55%"}
-RStudio es un **entorno de desarrollo (IDE)** que nos permite escribir y ejecutar código en R de forma más cómoda y visual que la consola sola.
+RStudio es un **entorno de desarrollo integrado (IDE)** que nos permite escribir y ejecutar código en R de forma más cómoda y visual que la consola sola.
 
 ::: {.incremental}
 - Es la forma más popular de trabajar con R
@@ -251,9 +258,9 @@ RStudio es un **entorno de desarrollo (IDE)** que nos permite escribir y ejecuta
 
 ## Conceptos clave
 
-<br>
-
 ::: {.fragment}
+![](imagenes/icono_script.png){.izq style="margin: 10px; width: 110px;"}
+
 #### Script
 
 Un archivo de texto `.R` (o `.qmd`) donde escribimos nuestro código en orden, paso a paso, para poder volver a ejecutarlo cuando queramos.
@@ -261,6 +268,8 @@ Un archivo de texto `.R` (o `.qmd`) donde escribimos nuestro código en orden, p
 :::
 
 ::: {.fragment}
+![](imagenes/icono_consola.png){.izq style="margin: 10px; width: 110px;"}
+
 #### Consola
 
 El lugar donde R **ejecuta** cada instrucción, una a la vez. Lo que se escribe directo en la consola no queda guardado.
@@ -268,6 +277,8 @@ El lugar donde R **ejecuta** cada instrucción, una a la vez. Lo que se escribe 
 :::
 
 ::: {.fragment}
+![](imagenes/icono_project.png){.izq style="margin: 10px; width: 110px;"}
+
 #### Proyecto
 
 En **Posit Cloud**, cada espacio de trabajo **ya es un proyecto**: una carpeta que reúne datos, scripts y resultados en un mismo lugar. No hace falta crearlo a mano, así que solo entramos al proyecto que les compartimos.
@@ -328,16 +339,50 @@ La **consola** es como hablar en voz alta con R (responde al instante, pero no q
 
 ### Botones útiles
 
-::: {.incremental}
-- Crear un **nuevo script** 
-- **Ejecutar** la línea o selección actual
-- **Ejecutar todo** el script de una vez
-- Abrir o crear un **proyecto** nuevo
+::::{.r-stack}
+
+::: {.fragment .fondo}
+![](imagenes/rstudio_boton_0.png){style="width: 700px;"}
+
+::: {.centrar}
+Crear un **nuevo script** de R
+:::
 :::
 
-::: {.fragment .pad}
-Vamos a ir probando estos botones a medida que avancemos.
+
+::: {.fragment .fondo}
+![](imagenes/rstudio_boton_1.png){style="width: 700px;"}
+
+::: {.centrar}
+Botón para **ejecutar código**
 :::
+:::
+
+::: {.fragment .fondo}
+![](imagenes/rstudio_boton_2.png){style="width: 700px;"}
+
+::: {.centrar}
+Botón para **ejecutar todo el script**
+:::
+:::
+
+::: {.fragment .fondo}
+![](imagenes/rstudio_boton_3.png){style="width: 700px;"}
+
+::: {.centrar}
+Configurar paneles de RStudio
+:::
+:::
+
+::: {.fragment .fondo}
+![](imagenes/rstudio_boton_4.png){style="width: 700px;"}
+
+::: {.centrar}
+Cambiar de **proyecto** o crear uno nuevo
+:::
+:::
+
+::::
 
 
 
@@ -401,158 +446,13 @@ Antes de trabajar con la encuesta, veamos los elementos más básicos del lengua
 
 ----
 
-### Comentarios
-
-::: {.incremental}
-- Un comentario empieza con `#`: todo lo que sigue en esa línea no se ejecuta
-- Sirven para explicar qué hace tu código, o para desactivar una línea sin borrarla
-- Son fundamentales para que tu script se entienda meses después, o para que otra persona lo entienda
-:::
-
-::: {.fragment}
-```{r}
-#| eval: false
-# vamos a sumar cuatro números
-1 + 1 + 1 + 1
-
-1 * 4 # esta forma es más simple
-```
-:::
-
-----
-
-## Operadores
-
-En R usamos distintos operadores según lo que queramos hacer: calcular, comparar, asignar, o combinar condiciones.
-
-::: {.fragment}
-![](imagenes/operadores.png){.centro style="width: 750px;"}
-:::
-
-----
-
-### Operadores en acción {.scrollable}
-
-Un par de ejemplos, sin ser exhaustivos (para eso está la imagen anterior):
-
-::: {.fragment}
-```{r}
-#| code-line-numbers: false
-1000 >= 500 # relacional: comparar
-```
-
-```{r}
-#| code-line-numbers: false
-(1000 > 500) & (200 < 100) # booleano: combinar condiciones
-```
-
-```{r}
-#| code-line-numbers: false
-"Q1" %in% c("Q1", "Q2") # relacional: pertenencia
-```
-:::
-
-----
-
-### Pipe
-
-El **pipe** `|>` (o `%>%`) es otro operador, el **conector**, que usaremos para encadenar operaciones cuando lleguemos a `{dplyr}`.
-
-Significa: "toma lo que está a la izquierda y pásalo como primer argumento a la función de la derecha".
-
-::: {.fragment}
-![](imagenes/pipe_shortcut_mac.png){.centro style="width: 500px;"}
-:::
-
-::: {.fragment}
-![](imagenes/pipe_shortcut_win.png){.centro style="width: 500px;"}
-:::
-
-
-----
-
-## Tipos de datos {.scrollable}
-
-Lo que podemos hacer con un dato depende de su **tipo**.
-
-. . .
-
-::: {.pad}
-**Numérico**
-```{r}
-#| code-line-numbers: false
-edades <- c(18, 25, 40, 33)
-class(edades)
-```
-:::
-
-. . .
-
-::: {.pad}
-**Carácter** (texto)
-```{r}
-#| code-line-numbers: false
-nombres <- c("Valentina", "Nicolás", "Dafne")
-class(nombres)
-```
-:::
-
-. . .
-
-::: {.pad}
-**Lógico**
-```{r}
-#| code-line-numbers: false
-mayoria_edad <- c(TRUE, FALSE, TRUE)
-class(mayoria_edad)
-```
-:::
-
-. . .
-
-::: {.pad}
-**Factor** (categorías, muy común en encuestas)
-```{r}
-#| code-line-numbers: false
-posicion <- factor(c("Izquierda", "Centro", "Derecha"))
-class(posicion)
-```
-:::
-
-::: {.fragment .pad}
-En nuestra encuesta, variables como `ideologia` ya vienen como factor: `class(datos$ideologia)`.
-:::
-
-----
-
-## Transformar tipos (coerción) {.scrollable}
-
-Existen funciones para convertir un dato de un tipo a otro:
-
-```{r}
-edades_texto <- c("18", "25", "40")
-class(edades_texto) # carácter
-
-edades_num <- as.numeric(edades_texto)
-class(edades_num) # numérico
-```
-
-::: {.fragment .pad}
-```{r}
-#| eval: false
-#| code-line-numbers: false
-as.logical()    # a lógico
-as.numeric()    # a numérico
-as.factor()     # a factor
-as.character()  # a carácter
-```
-:::
-
-----
-
 ## Objetos
 
-Cuando queremos reutilizar un dato o resultado, lo guardamos en un **objeto**: le damos un nombre y le asignamos un contenido.
+R es un lenguaje de programación orientado a **objetos**: 
+
+- Crear elementos dentro del ambiente de R, a los cuales les asignaremos información que quedará almacenada
+
+- Todas las instrucciones en R en las que crees objetos, es decir, instrucciones de asignación, tendrán la misma estructura
 
 ::: {style="max-width: 320px; margin: auto;"}
 **nombre** [←]{style="font-size: 130%;"} _contenido_
@@ -685,15 +585,153 @@ a + 10
 ```
 :::
 
-::: {.fragment .pad}
-Al asignar `b <- a`, `b` se queda con una **copia** del valor de `a` en ese momento. Cambiar `a` después no cambia `b`: por eso `a` termina en 4, `b` en 5, y `a + 10` da 14.
+----
+
+### Comentarios
+
+::: {.incremental}
+- Un comentario empieza con `#`: todo lo que sigue en esa línea no se ejecuta
+- Sirven para explicar qué hace tu código, o para desactivar una línea sin borrarla
+- Son fundamentales para que tu script se entienda meses después, o para que otra persona lo entienda
+:::
+
+::: {.fragment}
+```{r}
+#| eval: false
+# vamos a sumar cuatro números
+1 + 1 + 1 + 1
+
+1 * 4 # esta forma es más simple
+
+# 2 * 4 esto no se ejecutará
+```
 :::
 
 ----
 
+## Operadores
+
+En R usamos distintos operadores según lo que queramos hacer: calcular, comparar, asignar, o combinar condiciones.
+
+::: {.fragment}
+![](imagenes/operadores.png){.centro style="width: 750px;"}
+:::
+
+----
+
+### Operadores en acción {.scrollable}
+
+Un par de ejemplos, sin ser exhaustivos (para eso está la imagen anterior):
+
+::: {.fragment}
+```{r}
+#| code-line-numbers: false
+1000 >= 500 # relacional: comparar
+```
+
+```{r}
+#| code-line-numbers: false
+(1000 > 500) & (200 < 100) # booleano: combinar condiciones
+```
+
+```{r}
+#| code-line-numbers: false
+"Q1" %in% c("Q1", "Q2") # relacional: pertenencia
+```
+
+
+```{r}
+#| code-line-numbers: false
+fichas <- c(3, 0, 5, 2, 10)
+
+fichas >= 5 # una respuesta por cada elemento
+```
+:::
+----
+
+## Tipos de datos {.scrollable}
+
+Lo que podemos hacer con un dato depende de su **tipo**.
+
+. . .
+
+::: {.pad}
+**Numérico**
+```{r}
+#| code-line-numbers: false
+edades <- c(18, 25, 40, 33)
+class(edades)
+```
+:::
+
+. . .
+
+::: {.pad}
+**Carácter** (texto)
+```{r}
+#| code-line-numbers: false
+nombres <- c("Valentina", "Nicolás", "Dafne")
+class(nombres)
+```
+:::
+
+. . .
+
+::: {.pad}
+**Lógico**
+```{r}
+#| code-line-numbers: false
+mayoria_edad <- c(TRUE, FALSE, TRUE)
+class(mayoria_edad)
+```
+:::
+
+. . .
+
+::: {.pad}
+**Factor** (categorías, muy común en encuestas)
+```{r}
+#| code-line-numbers: false
+posicion <- factor(c("Izquierda", "Centro", "Derecha"))
+class(posicion)
+```
+:::
+
+::: {.fragment .pad}
+En nuestra encuesta, variables como `ideologia` ya vienen como factor: `class(datos$ideologia)`.
+:::
+
+----
+
+## Transformar tipos (coerción) {.scrollable}
+
+Existen funciones para convertir un dato de un tipo a otro:
+
+```{r}
+edades_texto <- c("18", "25", "40")
+class(edades_texto) # carácter
+
+edades_num <- as.numeric(edades_texto)
+class(edades_num) # numérico
+```
+
+::: {.fragment .pad}
+```{r}
+#| eval: false
+#| code-line-numbers: false
+as.logical()    # a lógico
+as.numeric()    # a numérico
+as.factor()     # a factor
+as.character()  # a carácter
+```
+:::
+
+----
+
+
 ## Vectores
 
-Un vector es una **secuencia de elementos del mismo tipo**: la forma más básica de guardar varios datos a la vez.
+Un vector es una **secuencia de elementos del mismo tipo**: la forma más básica de guardar varios datos a la vez usando `c()`
 
 ::: {.fragment}
 ```{r}
@@ -729,6 +767,46 @@ mean(fichas_salud, na.rm = TRUE)
 
 ----
 
+## Funciones
+
+::: {.incremental}
+- Las **funciones** son pequeñas herramientas que permiten realizar distintas operaciones.
+:::
+
+::: {.centrar .fragment}
+`función(argumento = 123)`
+:::
+
+::: {.fragment}
+Algunas funciones comunes:
+
+```{r}
+#| code-line-numbers: false
+#| eval: false
+mean() # calcular promedio
+median() # calcular mediana
+sum() # sumar elementos
+min() # valor mínimo
+max() # valor máximo
+```
+:::
+
+::: {.fragment}
+Por ejemplo:
+
+```{r}
+mean(c(1, 2, 3, 4, 5))
+```
+:::
+
+:::: aside
+::: {.fragment}
+Si no sabemos cómo usar una función, podemos buscar su nombre en el panel **Ayuda** de RStudio, o escribir el nombre de la función precedido de un signo de interrogación: `?funcion`
+:::
+::::
+
+----
+
 ## Bases de datos (data frames) {.scrollable}
 
 Un *data frame* es una tabla: cada **fila** es un caso (una persona encuestada) y cada **columna** es una variable.
@@ -748,18 +826,10 @@ mini_base
 ::: {.fragment .pad}
 La base que vamos a usar durante todo el taller **ya es un data frame**, solo que mucho más grande:
 ```{r}
-class(datos)
-dim(datos)
+datos
 ```
 :::
 
-::: {.fragment}
-```{r}
-datos |>
-  select(sexo, tramo_edad, region, gse) |>
-  head()
-```
-:::
 
 
 # Herramientas básicas de procesamiento de datos {background-color="#523870" .texto-blanco}
@@ -772,7 +842,7 @@ datos |>
 
 ----
 
-## Librerías {.scrollable}
+## Librerías 
 
 :::: {.columns}
 
@@ -790,17 +860,38 @@ datos |>
 :::
 ::::
 
+## Librerías 
+
 ::: {.fragment .pad}
-Para instalar y cargar de una vez usamos `{pacman}`: si el paquete ya está instalado, solo lo carga; si no, lo instala primero.
+
+El flujo tradicional para usar un paquete es en **dos pasos**:
+
 ```{r}
+#| eval: false
 #| code-line-numbers: false
-pacman::p_load(dplyr, ggplot2, sjlabelled, sjmisc, sjPlot)
+install.packages("dplyr")  # se hace UNA vez: descarga el paquete
+library(dplyr)              # se hace CADA sesión: lo deja disponible
 ```
+
+
+Instalar es **comprar la herramienta y guardarla en el cajón**; cargarla con `library()` es **sacarla del cajón** cada vez que te pones a cocinar.
 :::
 
 ::: {.fragment .pad}
-Hoy vamos a usar `{dplyr}` y `{ggplot2}` para procesar y graficar, y `{sjlabelled}`, `{sjmisc}`, y `{sjPlot}`, pensados especialmente para datos de encuestas.
+
+Para instalar y cargar de una vez usamos `{pacman}`: es el atajo que hace los dos pasos juntos 
+
+```{r}
+#| code-line-numbers: false
+pacman::p_load(tidyverse, 
+               sjlabelled, 
+               sjmisc, 
+               sjPlot, 
+               psych)
+```
 :::
+
+
 
 # Datos {{< fa database >}}
 
@@ -814,23 +905,48 @@ Para cargar datos necesitamos:
 
 ----
 
-## Cargar datos {{< fa file-export >}}
+## Cargar datos {{< fa file-export >}} {.scrollable}
 
 Nuestra base viene en formato `.RData`, el formato nativo de R. Se carga con `load()`, y el objeto aparece con el nombre que traía guardado:
 
 ```{r}
-#| code-line-numbers: false
+#| include: false
 load("../input/data/BBDD_Clima_Junio_Sample.RData")
-ls()
 ```
 
-::: {.fragment .pad}
-Las bases de encuesta suelen llegar **etiquetadas**: cada valor numérico representa una categoría (clase `haven_labelled`). Para trabajar cómodos desde ya, convertimos esas etiquetas en factores de una vez, con `sjlabelled::as_label()`:
 ```{r}
 #| code-line-numbers: false
+#| eval: false
+load("input/data/BBDD_Clima_Junio_Sample.RData")
+```
+
+```{r}
+#| code-line-numbers: false
+head(bbdd_clima_sample)
+```
+
+La estructura general para importar datos es la siguiente:
+
+`read_*("ruta_hacia_archivo/nombre_archivo.*")`
+
+```{r}
+#| code-line-numbers: false
+#| eval: false
+clima_2026 <- read.csv("BBDD_Clima_Junio_Sample.csv")  # No funciona
+
+clima_2026 <- read.csv("input/data/BBDD Clima Junio Sample.csv") # No funciona
+
+clima_2026 <- read.csv("input/data/BBDD_Clima_Junio_Sample.csv") # Si funciona!
+```
+
+
+
+```{r}
+#| code-line-numbers: false
+#| include: false
 datos <- sjlabelled::as_label(bbdd_clima_sample)
 ```
-:::
+
 
 ----
 
@@ -866,7 +982,7 @@ haven::read_sav("datos.sav")
 ::: {.fragment}
 ```{r}
 dim(datos)
-names(datos) |> head(10)
+names(datos)
 ```
 :::
 
@@ -877,32 +993,8 @@ names(datos) |> head(10)
 Con `glimpse()` vemos el tipo de cada columna y sus primeros valores:
 
 ```{r}
-datos |>
-  select(sexo, tramo_edad, region, gse, ideologia, autoubicacion_izq_der) |>
-  glimpse()
+glimpse(datos)
 ```
-
-----
-
-### Datos etiquetados
-
-::: {.fragment .pad}
-Como ya convertimos las etiquetas al cargar los datos, `datos` no tiene columnas `haven_labelled`: son factores normales. Pero no perdimos nada, porque las etiquetas quedan documentadas.
-:::
-
-::: {.fragment}
-`get_label()` nos recuerda la pregunta original de una variable:
-```{r}
-sjlabelled::get_label(datos$eval_gobierno_kast)
-```
-:::
-
-::: {.fragment}
-Y sus categorías ya se ven como texto legible, no como números:
-```{r}
-sjmisc::frq(datos$eval_gobierno_kast)
-```
-:::
 
 
 # `{dplyr}`
@@ -910,75 +1002,105 @@ sjmisc::frq(datos$eval_gobierno_kast)
 :::: {.columns}
 ::: {.incremental .column width=70%}
 - Paquete para explorar, filtrar y transformar datos
-- Sus funciones se escriben como verbos: `select()`, `filter()`, `mutate()`...
+- Sus funciones se escriben como **verbos**, cada uno con un propósito claro
 - Se encadenan con el conector `|>` (también existe `%>%`)
 :::
 
 ::: {.column width=30%}
 ![](imagenes/dplyr.png){}
 :::
+
+
+::: {.fragment}
+
+![](imagenes/clean.data.jpg){.centro style="width: 500px;"}
+
+::: 
+
+
 ::::
 
-```{r}
-#| message: false
-#| code-line-numbers: false
-library(dplyr)
-```
 
 ----
 
-## Seleccionar
 
-`select()` elige columnas por su nombre:
+### Conector
 
-```{r}
-datos |>
-  select(sexo, tramo_edad, region, ideologia) |>
-  head()
-```
+El **pipe** `|>` (o `%>%`) es otro operador, el **conector**, que usaremos para encadenar operaciones cuando lleguemos a `{dplyr}`.
 
-----
-
-## Renombrar
-
-`rename()` le cambia el nombre a una columna sin tocar su contenido:
-
-```{r}
-datos |>
-  select(sexo, ideologia) |>
-  rename(genero = sexo, posicion_politica = ideologia) |>
-  head()
-```
-
-----
-
-## Filtrar {.scrollable}
-
-`filter()` conserva solo las filas que cumplen una condición:
-
-```{r}
-datos |>
-  select(quintil_ingreso, region, gse) |>
-  filter(quintil_ingreso == "Q1") |>
-  head()
-```
-
-::: {.fragment .pad}
-```{r}
-datos |>
-  select(tramo_edad, sexo) |>
-  filter(tramo_edad == "18-29" & sexo == "Mujer") |>
-  head()
-```
+::: {.centrar style="font-size: 100%"}
+`|>` o `%>%`
 :::
 
-::: {.fragment .pad}
-Antes de seguir, conozcamos `count()`: cuenta cuántos casos hay por cada valor único de una o más variables.
-```{r}
-datos |> 
-  count(sexo) # cuántos casos hay por cada categoría de sexo
-```
+Significa: "toma lo que está a la izquierda y pásalo como primer argumento a la función de la derecha".
+
+::: {.fragment}
+![](imagenes/pipe_shortcut_mac.png){.centro style="width: 400px;"}
 :::
+
+::: {.fragment}
+![](imagenes/pipe_shortcut_win.png){.centro style="width: 400px;"}
+:::
+
+----
+
+## Los verbos principales
+
+:::: {.columns}
+
+::: {.column}
+**Seleccionar columnas:**
+```r
+datos |> select(sexo, region)
+```
+
+```{r}
+#| echo: false
+datos |>
+  select(sexo, region) |> head(n = 4)
+```
+
+
+**Ordenar observaciones:**
+```r
+datos |> arrange(fichas_pensiones)
+```
+
+```{r}
+#| echo: false
+datos |> select(sexo, region, fichas_pensiones) |> arrange(fichas_pensiones) |> head(n = 4)
+```
+
+:::
+
+::: {.column}
+
+**Filtrar datos:**
+```r
+datos |> filter(tramo_edad == "18-29")
+```
+
+```{r}
+#| echo: false
+datos |> select(sexo, region, tramo_edad) |> filter(tramo_edad == "18-29") |> head(n = 4)
+```
+
+**Crear variables:**
+```r
+datos |> mutate(fichas_x = fichas_pensiones * fichas_seguridad)
+```
+
+```{r}
+#| echo: false
+datos |> mutate(fichas_x = fichas_pensiones * fichas_seguridad) |> select(sexo, region, fichas_x) |> head(n = 4)
+
+
+```
+
+Y más!
+
+:::
+::::
 
 ----
 
@@ -1007,20 +1129,20 @@ datos |>
 
 ### `case_when()` para varias categorías
 
-Cuando hay más de dos opciones, `case_when()` evalúa condiciones en orden. Aquí aprovechamos que `as.integer()` sobre un factor devuelve la **posición** de cada categoría, que en este caso ya viene ordenada de menor a mayor ingreso:
+Cuando hay más de dos opciones, `case_when()` evalúa condiciones en orden
 
 ```{r}
 datos |>
   mutate(tramo_ingreso = case_when(
-    as.integer(ingreso_hogar) <= 4 ~ "Bajo",
-    as.integer(ingreso_hogar) <= 8 ~ "Medio",
-    TRUE ~ "Alto")) |>
+    ingreso_hogar >= 1 & ingreso_hogar <= 4 ~ "Bajo",
+    ingreso_hogar >= 5 & ingreso_hogar <= 7 ~ "Medio",
+    ingreso_hogar >= 8 & ingreso_hogar <= 10 ~ "Alto")) |>
   count(tramo_ingreso)
 ```
 
 ----
 
-## Valores perdidos {.scrollable}
+## Valores perdidos 
 
 ::: {.incremental}
 - En una encuesta, no todas las personas responden todo: eso genera valores perdidos (`NA`)
@@ -1036,6 +1158,9 @@ sum(is.na(datos)) # NA en toda la base
 colSums(is.na(datos)) # NA por columna
 ```
 :::
+
+----
+
 
 ::: {.fragment .pad}
 **No siempre hay que eliminar los `NA`: depende del análisis.** En este taller usaremos **listwise deletion**: eliminar solo los casos que tengan `NA` en las variables que vamos a analizar, no en toda la base.
@@ -1057,6 +1182,20 @@ nrow(datos_proc) # casos tras listwise deletion
 :::
 
 ----
+
+## Funciones comunes
+
+Algunas de las funciones más comunes de usar en `{dplyr}`:
+
+::: {.incremental}
+- `head()`, `tail()`, `glimpse()`: mirar los datos
+- `select()`: seleccionar variables
+- `slice()`: extraer filas por su posición o distintos criterios
+- `pull()`: extraer una columna como vector
+- `filter()`: filtrar observaciones según condiciones 
+- `distinct()`: filtrar observaciones repetidas 
+- `count()`: conteo de casos únicos en una o más columnas
+:::
 
 ## Guardar y exportar
 
@@ -1148,7 +1287,7 @@ Para variables numéricas usamos funciones de resumen o `sjmisc::descr()`:
 
 ```{r}
 summary(datos_proc$fichas_salud)
-sjmisc::descr(datos_proc, fichas_salud)
+psych::describe(datos_proc$fichas_salud)
 ```
 
 ::: {.fragment .pad}
@@ -1202,41 +1341,6 @@ cor.test(datos_proc$ingreso_decil, datos_proc$fichas_pensiones)
 ::: {.fragment .pad}
 La correlación es negativa y significativa: a mayor ingreso del hogar, se tiende a asignar menos fichas a pensiones.
 :::
-
-----
-
-## Algunos gráficos con `{ggplot2}`
-
-Una barra para una variable categórica:
-
-```{r}
-ggplot(datos_proc, aes(x = gse)) +
-  geom_bar() +
-  labs(title = "Distribución por grupo socioeconómico", x = "GSE", y = "Casos")
-```
-
-----
-
-### Densidad para una numérica
-
-Para ver la forma de la distribución completa, en vez de un histograma usamos una curva de densidad:
-
-```{r}
-ggplot(datos_proc, aes(x = fichas_salud)) +
-  geom_density(fill = "grey80") +
-  labs(title = "Distribución de fichas asignadas a salud", x = "Fichas", y = "Densidad")
-```
-
-----
-
-### Un gráfico bivariado
-
-```{r}
-ggplot(datos_proc, aes(x = ideologia, y = fichas_seguridad)) +
-  geom_boxplot() +
-  labs(title = "Fichas para seguridad según posición política",
-       x = "Posición política", y = "Fichas asignadas a seguridad")
-```
 
 ----
 
