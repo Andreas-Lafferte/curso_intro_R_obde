@@ -3,8 +3,8 @@
     "objectID": "taller.html#objetivo-del-taller",
     "href": "taller.html#objetivo-del-taller",
     "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
-    "section": "Objetivo del taller",
-    "text": "Objetivo del taller\n\nDarles las primeras herramientas para programar en R aplicado al análisis de datos en ciencias sociales. Vamos a trabajar con una versión de la Encuesta ICSOH-UDP, un instrumento de opinión pública que mide el clima social y político en Chile.\n\n\n\nAl terminar, ustedes van a poder cargar una base de datos, explorarla, recodificarla, y producir sus primeros análisis descriptivos, todo con código que puedan repetir y adaptar.\n\n\nVamos a trabajar en Posit Cloud, directo desde el navegador y sin instalar nada. Los detalles de acceso están en la Guía 1 que se envió antes del taller."
+    "section": "Objetivo del taller 🎯",
+    "text": "Objetivo del taller 🎯\n\n\nDarles las primeras herramientas para programar en R aplicado al análisis de datos en ciencias sociales. Vamos a trabajar con una versión de la Encuesta ICSOH-UDP, un instrumento de opinión pública que mide el clima social y político en Chile.\n\n\n\n\nAl terminar, ustedes van a poder cargar una base de datos, explorarla, recodificarla, y producir sus primeros análisis descriptivos, todo con código que puedan repetir y adaptar.\n\n\n\nPrimer bloque: presentación\nSegundo bloque: práctico\n\nVamos a trabajar en Posit Cloud, directo desde el navegador y sin instalar nada. Los detalles de acceso están en la Guía 1 que se envió antes del taller."
   },
   {
     "objectID": "taller.html#qué-se-van-a-llevar",
@@ -17,8 +17,8 @@
     "objectID": "taller.html#la-encuesta-icsoh-udp",
     "href": "taller.html#la-encuesta-icsoh-udp",
     "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
-    "section": "La Encuesta ICSOH-UDP",
-    "text": "La Encuesta ICSOH-UDP\n\n\n\nEncuesta de opinión pública sobre clima social y político en Chile, levantada por ICSOH y el OBDE de la UDP\nMetodología: encuesta online autoaplicada, con diseño muestral por cuotas\n\\(N\\) = 1.500 casos con valores perdidos introducidos con fines pedagógicos\nMás información: icso.udp.cl/nosotros/encuesta"
+    "section": "La Encuesta ICSOH-UDP 📋",
+    "text": "La Encuesta ICSOH-UDP 📋\n\n\n\nEncuesta de opinión pública sobre clima social y político en Chile, levantada por ICSOH y el OBDE de la UDP\nMetodología: encuesta online autoaplicada, con diseño muestral por cuotas\n\\(N\\) = 1.500 casos con valores perdidos introducidos con fines pedagógicos\nMás información: icso.udp.cl/nosotros/encuesta"
   },
   {
     "objectID": "taller.html#qué-es-r",
@@ -39,7 +39,7 @@
     "href": "taller.html#conceptos-clave",
     "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
     "section": "Conceptos clave",
-    "text": "Conceptos clave\n\n\nScript\nUn archivo de texto .R (o .qmd) donde escribimos nuestro código en orden, paso a paso, para poder volver a ejecutarlo cuando queramos.\n\n\n\nConsola\nEl lugar donde R ejecuta cada instrucción, una a la vez. Lo que se escribe directo en la consola no queda guardado.\n\n\n\nProyecto\nEn Posit Cloud, cada espacio de trabajo ya es un proyecto: una carpeta que reúne datos, scripts y resultados en un mismo lugar. No hace falta crearlo a mano, así que solo entramos al proyecto que les compartimos.\nCuando trabajen en su computador, el equivalente es un archivo .Rproj, que define esa misma carpeta como su espacio de trabajo."
+    "text": "Conceptos clave\n\n\nScript\nUn archivo de texto .R (o .qmd) donde escribimos nuestro código en orden, paso a paso, para poder volver a ejecutarlo cuando queramos.\n\n\n\nConsola\nEl lugar donde R ejecuta cada instrucción, una a la vez. Lo que se escribe directo en la consola no queda guardado."
   },
   {
     "objectID": "taller.html#paneles-de-rstudio",
@@ -67,7 +67,7 @@
     "href": "taller.html#tipos-de-datos",
     "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
     "section": "Tipos de datos",
-    "text": "Tipos de datos\nLo que podemos hacer con un dato depende de su tipo.\n\n\nNumérico\n\nedades &lt;- c(18, 25, 40, 33)\nclass(edades)\n#&gt; [1] \"numeric\"\n\n\n\n\n\nCarácter (texto)\n\nnombres &lt;- c(\"Valentina\", \"Nicolás\", \"Dafne\")\nclass(nombres)\n#&gt; [1] \"character\"\n\n\n\n\n\nLógico\n\nmayoria_edad &lt;- c(TRUE, FALSE, TRUE)\nclass(mayoria_edad)\n#&gt; [1] \"logical\"\n\n\n\n\n\nFactor (categorías, muy común en encuestas)\n\nposicion &lt;- factor(c(\"Izquierda\", \"Centro\", \"Derecha\"))\nclass(posicion)\n#&gt; [1] \"factor\"\n\n\n\nEn nuestra encuesta, variables como ideologia ya vienen como factor: class(datos$ideologia)."
+    "text": "Tipos de datos\nLo que podemos hacer con un dato depende de su tipo.\n\n\nNumérico\n\nedades &lt;- c(18, 25, 40, 33)\nclass(edades)\n#&gt; [1] \"numeric\"\n\n\n\n\n\nCarácter (texto)\n\nnombres &lt;- c(\"Valentina\", \"Nicolás\", \"Dafne\")\nclass(nombres)\n#&gt; [1] \"character\"\n\n\n\n\n\nLógico\n\nmayoria_edad &lt;- c(TRUE, FALSE, TRUE)\nclass(mayoria_edad)\n#&gt; [1] \"logical\"\n\n\n\n\n\nFactor (categorías, muy común en encuestas)\n\nposicion &lt;- factor(c(\"Izquierda\", \"Centro\", \"Derecha\"))\nclass(posicion)\n#&gt; [1] \"factor\""
   },
   {
     "objectID": "taller.html#transformar-tipos-coerción",
@@ -81,7 +81,7 @@
     "href": "taller.html#objetos",
     "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
     "section": "Objetos",
-    "text": "Objetos\nR es un lenguaje de programación orientado a objetos:\n\nCrear elementos dentro del ambiente de R, a los cuales les asignaremos información que quedará almacenada\nTodas las instrucciones en R en las que crees objetos, es decir, instrucciones de asignación, tendrán la misma estructura\n\n\nnombre ← contenido\n\n\n\n\n\nUsamos el operador &lt;- para asignar:\n\n\nn_encuestados &lt;- 1000\n\n\n\n\n\n\n\nEl objeto se crea al asignarle un valor, y podemos ejecutarlo para ver su contenido:\n\n\nn_encuestados\n#&gt; [1] 1000"
+    "text": "Objetos\nR es un lenguaje de programación que funciona a partir de objetos:\n\nCrear elementos dentro del ambiente de R, a los cuales les asignaremos información que quedará almacenada\nTodas las instrucciones en R en las que crees objetos, es decir, instrucciones de asignación, tendrán la misma estructura\n\n\nnombre ← contenido\n\n\n\n\n\nUsamos el operador &lt;- para asignar:\n\n\nn_encuestados &lt;- 1000\n\n\n\n\n\n\n\nEl objeto se crea al asignarle un valor, y podemos ejecutarlo para ver su contenido:\n\n\nn_encuestados\n#&gt; [1] 1000"
   },
   {
     "objectID": "taller.html#vectores",
@@ -151,7 +151,7 @@
     "href": "taller.html#recodificar-y-transformar",
     "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
     "section": "Recodificar y transformar",
-    "text": "Recodificar y transformar\nmutate() crea o modifica columnas. Empecemos con if_else(), primero codificando como 1 / 0:\n\ndatos |&gt;\n  select(fichas_salud) |&gt;\n  mutate(prioriza_salud = if_else(fichas_salud &gt;= 5, 1, 0)) |&gt;\n  head()\n#&gt; # A tibble: 6 × 2\n#&gt;   fichas_salud prioriza_salud\n#&gt;          &lt;dbl&gt;          &lt;dbl&gt;\n#&gt; 1            2              0\n#&gt; 2            1              0\n#&gt; 3            3              0\n#&gt; 4            4              0\n#&gt; 5            3              0\n#&gt; 6            2              0\n\n\nLa misma condición, ahora con etiquetas legibles en vez de números:\n\ndatos |&gt;\n  select(fichas_salud) |&gt;\n  mutate(prioriza_salud = if_else(fichas_salud &gt;= 5, \"Sí\", \"No\")) |&gt;\n  head()\n#&gt; # A tibble: 6 × 2\n#&gt;   fichas_salud prioriza_salud\n#&gt;          &lt;dbl&gt; &lt;chr&gt;         \n#&gt; 1            2 No            \n#&gt; 2            1 No            \n#&gt; 3            3 No            \n#&gt; 4            4 No            \n#&gt; 5            3 No            \n#&gt; 6            2 No"
+    "text": "Recodificar y transformar\nmutate() crea o modifica columnas. Empecemos con if_else(), primero codificando como 1 / 0:\n\ndatos |&gt;\n  select(fichas_salud) |&gt;\n  mutate(prioriza_salud = if_else(fichas_salud &gt;= 4, 1, 0)) |&gt;\n  head()\n#&gt; # A tibble: 6 × 2\n#&gt;   fichas_salud prioriza_salud\n#&gt;          &lt;dbl&gt;          &lt;dbl&gt;\n#&gt; 1            2              0\n#&gt; 2            1              0\n#&gt; 3            3              0\n#&gt; 4            4              1\n#&gt; 5            3              0\n#&gt; 6            2              0\n\n\nLa misma condición, ahora con etiquetas legibles en vez de números:\n\ndatos |&gt;\n  select(fichas_salud) |&gt;\n  mutate(prioriza_salud = if_else(fichas_salud &gt;= 4, \"Sí\", \"No\")) |&gt;\n  head()\n#&gt; # A tibble: 6 × 2\n#&gt;   fichas_salud prioriza_salud\n#&gt;          &lt;dbl&gt; &lt;chr&gt;         \n#&gt; 1            2 No            \n#&gt; 2            1 No            \n#&gt; 3            3 No            \n#&gt; 4            4 Sí            \n#&gt; 5            3 No            \n#&gt; 6            2 No"
   },
   {
     "objectID": "taller.html#valores-perdidos",
@@ -186,7 +186,7 @@
     "href": "taller.html#variables-numéricas",
     "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
     "section": "Variables numéricas",
-    "text": "Variables numéricas\nPara variables numéricas usamos funciones de resumen o sjmisc::descr():\n\nsummary(datos_proc$fichas_salud)\n#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#&gt;   0.000   2.000   2.000   2.169   2.000  10.000\npsych::describe(datos_proc$fichas_salud)\n#&gt;    vars   n mean   sd median trimmed mad min max range skew kurtosis   se\n#&gt; X1    1 939 2.17 0.88      2    2.12   0   0  10    10 2.91    21.82 0.03\n\n\nfichas_salud viene de una pregunta donde cada persona reparte 10 fichas de gasto público entre distintas áreas; aquí vemos cuántas fichas, en promedio, se destinan a salud."
+    "text": "Variables numéricas\nPara variables numéricas usamos funciones de resumen o psych::describe():\n\nsummary(datos_proc$fichas_salud)\n#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#&gt;   0.000   2.000   2.000   2.169   2.000  10.000\npsych::describe(datos_proc$fichas_salud)\n#&gt;    vars   n mean   sd median trimmed mad min max range skew kurtosis   se\n#&gt; X1    1 939 2.17 0.88      2    2.12   0   0  10    10 2.91    21.82 0.03\n\n\nfichas_salud viene de una pregunta donde cada persona reparte 10 fichas de gasto público entre distintas áreas; aquí vemos cuántas fichas, en promedio, se destinan a salud."
   },
   {
     "objectID": "taller.html#bivariados-categórica-categórica",
@@ -207,14 +207,14 @@
     "href": "taller.html#recursos-para-seguir-aprendiendo",
     "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
     "section": "Recursos para seguir aprendiendo",
-    "text": "Recursos para seguir aprendiendo\n\nR Graph Gallery\nR Charts\nA ggplot2 Tutorial for Beautiful Plotting in R (en inglés)\n\n\nEste taller se inspira en los materiales abiertos de Bastián Olea (proyecto Aprende R), a quien agradecemos por compartir su trabajo con la comunidad."
+    "text": "Recursos para seguir aprendiendo\n\nR for Data Science\nAdvanced R\nA ggplot2 Tutorial for Beautiful Plotting in R (en inglés)\n\n\nEste taller se inspira en los materiales abiertos de Bastián Olea (proyecto Aprende R), a quien agradecemos por compartir su trabajo con la comunidad."
   },
   {
     "objectID": "taller.html#consejos-finales",
     "href": "taller.html#consejos-finales",
     "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
     "section": "Consejos finales",
-    "text": "Consejos finales\n\nMantengan su propio cuaderno de aprendizajes 📝\nLean con calma los errores: casi siempre dicen exactamente qué falló\nSi algo sale mal, revisen paso a paso, y si hace falta, empiecen de nuevo\nUsen la IA como apoyo puntual, no como reemplazo de entender lo que hacen\nCompartan lo que van aprendiendo con sus colegas ✨"
+    "text": "Consejos finales\n\nLean con calma los errores: casi siempre dicen exactamente qué falló\nSi algo sale mal, revisen paso a paso, y si hace falta, empiecen de nuevo\nUsen la IA como apoyo puntual, no como reemplazo de entender lo que hacen\nCompartan lo que van aprendiendo con sus colegas"
   },
   {
     "objectID": "taller.html#anexo-indexar-vectores-en-r-base",
@@ -494,7 +494,7 @@
     "href": "taller.html#librerías-1",
     "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
     "section": "Librerías",
-    "text": "Librerías\n\nEl flujo tradicional para usar un paquete es en dos pasos:\n\ninstall.packages(\"dplyr\")  # se hace UNA vez: descarga el paquete\nlibrary(dplyr)              # se hace CADA sesión: lo deja disponible\n\nInstalar es comprar la herramienta y guardarla en el cajón; cargarla con library() es sacarla del cajón cada vez que te pones a cocinar.\n\n\nPara instalar y cargar de una vez usamos {pacman}: es el atajo que hace los dos pasos juntos\n\npacman::p_load(tidyverse, \n               sjlabelled, \n               sjmisc, \n               sjPlot, \n               psych)"
+    "text": "Librerías\n\nEl flujo tradicional para usar un paquete es en dos pasos:\n\ninstall.packages(\"dplyr\")  # se hace UNA vez: descarga el paquete\nlibrary(dplyr)              # se hace CADA sesión: lo deja disponible\n\nInstalar es comprar la herramienta y guardarla en el cajón; cargarla con library() es sacarla del cajón cada vez que te pones a cocinar.\n\n\nPara instalar y cargar de una vez usamos {pacman}: es el atajo que hace los dos pasos juntos\n\nlibrary(pacman)\npacman::p_load(tidyverse, \n               sjlabelled, \n               sjmisc, \n               sjPlot, \n               psych)"
   },
   {
     "objectID": "taller.html#funciones-comunes",
@@ -508,7 +508,7 @@
     "href": "taller.html#funciones",
     "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
     "section": "Funciones",
-    "text": "Funciones\n\nLas funciones son pequeñas herramientas que permiten realizar distintas operaciones.\n\n\nfunción(argumento = 123)\n\n\nAlgunas funciones comunes:\n\nmean() # calcular promedio\nmedian() # calcular mediana\nsum() # sumar elementos\nmin() # valor mínimo\nmax() # valor máximo\n\n\n\nPor ejemplo:\n\nmean(c(1, 2, 3, 4, 5))\n#&gt; [1] 3\n\n\n\n\n\nSi no sabemos cómo usar una función, podemos buscar su nombre en el panel Ayuda de RStudio, o escribir el nombre de la función precedido de un signo de interrogación: ?funcion"
+    "text": "Funciones\n\nLas funciones son pequeñas herramientas que permiten realizar distintas operaciones.\n\n\nfunción(argumento_1 = x, argumento_2 = z)\n\n\nAlgunas funciones comunes:\n\nmean() # calcular promedio\nmedian() # calcular mediana\nsum() # sumar elementos\nmin() # valor mínimo\nmax() # valor máximo\n\n\n\nPor ejemplo:\n\nvector &lt;- c(1, 2, 3, 4, 5, NA)\n\nmean(vector, na.rm = TRUE)\n#&gt; [1] 3\n\n\n\n\n\nSi no sabemos cómo usar una función, podemos buscar su nombre en el panel Ayuda de RStudio, o escribir el nombre de la función precedido de un signo de interrogación: ?funcion"
   },
   {
     "objectID": "taller.html#valores-perdidos-1",
@@ -516,5 +516,33 @@
     "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
     "section": "Valores perdidos",
     "text": "Valores perdidos\n\nNo siempre hay que eliminar los NA: depende del análisis. En este taller usaremos listwise deletion: eliminar solo los casos que tengan NA en las variables que vamos a analizar, no en toda la base.\n\n\n\ndatos_proc &lt;- datos |&gt;\n  select(sexo, ideologia, fichas_salud) |&gt;\n  na.omit() # conserva solo los casos completos en estas variables\n\nnrow(datos)          # casos originales\n#&gt; [1] 1000\nnrow(datos_proc) # casos tras listwise deletion\n#&gt; [1] 987\n\n\n\n¿Por qué no aplicar na.omit() directo sobre datos completo? Porque es una base muy ancha (más de 100 columnas), y bastaría con que una sola tuviera un NA en cada fila para que casi todos los casos se eliminaran."
+  },
+  {
+    "objectID": "taller.html#reto-de-asignación",
+    "href": "taller.html#reto-de-asignación",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Reto de asignación",
+    "text": "Reto de asignación\n¿Qué creen que va a mostrar cada línea? Piénsenlo antes de revelar la respuesta.\n\na &lt;- 5\nb &lt;- a\na &lt;- 4\n\n\n¿Cuál es el valor de a?\n\n\n\nprint(a) # ¿qué muestra?\n#&gt; [1] 4\n\n\n\n¿Y de b?\n\n\n\nprint(b) # ¿y esto?\n#&gt; [1] 5\n\n\n\n¿a + 10?\n\n\n\na + 10\n#&gt; [1] 14"
+  },
+  {
+    "objectID": "taller.html#operadores-en-acción",
+    "href": "taller.html#operadores-en-acción",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Operadores en acción",
+    "text": "Operadores en acción\nUn par de ejemplos, sin ser exhaustivos (para eso está la imagen anterior):\n\n\n1000 &gt;= 500 # relacional: comparar\n#&gt; [1] TRUE\n\n\n(1000 &gt; 500) & (200 &lt; 100) # booleano: combinar condiciones\n#&gt; [1] FALSE\n\n\n\"Q1\" %in% c(\"Q1\", \"Q2\") # relacional: pertenencia\n#&gt; [1] TRUE\n\n\nfichas &lt;- c(3, 0, 5, 2, 10)\n\nfichas &gt;= 5 # una respuesta por cada elemento\n#&gt; [1] FALSE FALSE  TRUE FALSE  TRUE"
+  },
+  {
+    "objectID": "taller.html#bivariados-numérica-categórica",
+    "href": "taller.html#bivariados-numérica-categórica",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Bivariados: numérica × categórica",
+    "text": "Bivariados: numérica × categórica\nComparamos las fichas de seguridad asignadas por hombres y por mujeres, y confirmamos la diferencia con una prueba t:\n\ndatos_proc |&gt;\n  group_by(sexo) |&gt;\n  summarize(fichas_seguridad_prom = mean(fichas_seguridad, na.rm = TRUE), n = n())\n#&gt; # A tibble: 2 × 3\n#&gt;   sexo   fichas_seguridad_prom     n\n#&gt;   &lt;fct&gt;                  &lt;dbl&gt; &lt;int&gt;\n#&gt; 1 Hombre                  1.71   445\n#&gt; 2 Mujer                   1.85   494\n\nt.test(fichas_seguridad ~ sexo, data = datos_proc)\n#&gt; \n#&gt;  Welch Two Sample t-test\n#&gt; \n#&gt; data:  fichas_seguridad by sexo\n#&gt; t = -2.1865, df = 932.49, p-value = 0.02903\n#&gt; alternative hypothesis: true difference in means between group Hombre and group Mujer is not equal to 0\n#&gt; 95 percent confidence interval:\n#&gt;  -0.26667538 -0.01439636\n#&gt; sample estimates:\n#&gt; mean in group Hombre  mean in group Mujer \n#&gt;             1.705618             1.846154"
+  },
+  {
+    "objectID": "taller.html#bivariados-numérica-numérica",
+    "href": "taller.html#bivariados-numérica-numérica",
+    "title": "Taller de introducción a R con la Encuesta ICSOH-UDP",
+    "section": "Bivariados: numérica × numérica",
+    "text": "Bivariados: numérica × numérica\n\ndatos_proc &lt;- datos_proc |&gt;\n  mutate(ingreso_decil = ntile(as.integer(ingreso_hogar), 10)) # deciles de ingreso del hogar\n\nggplot(datos_proc, aes(x = ingreso_decil, y = fichas_pensiones)) +\n  geom_point(alpha = 0.3) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  labs(title = \"Ingreso del hogar y fichas asignadas a pensiones\",\n       x = \"Ingreso del hogar (0 = sin ingresos, 10 = tramo más alto)\",\n       y = \"Fichas asignadas a pensiones\")\n\n\n\n\n\n\n\n\ncor.test(datos_proc$ingreso_decil, datos_proc$fichas_pensiones)\n#&gt; \n#&gt;  Pearson's product-moment correlation\n#&gt; \n#&gt; data:  datos_proc$ingreso_decil and datos_proc$fichas_pensiones\n#&gt; t = -5.39, df = 937, p-value = 8.921e-08\n#&gt; alternative hypothesis: true correlation is not equal to 0\n#&gt; 95 percent confidence interval:\n#&gt;  -0.2347854 -0.1106661\n#&gt; sample estimates:\n#&gt;        cor \n#&gt; -0.1734142\n\n\nLa correlación es negativa y significativa: a mayor ingreso del hogar, se tiende a asignar menos fichas a pensiones."
   }
 ]

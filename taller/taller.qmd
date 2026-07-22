@@ -5,6 +5,7 @@ date: 07-22-2026
 date-format: "DD MMMM, YYYY"
 author:
   - name: Andreas Laffert Tamayo
+    url: https://andreas-lafferte.github.io/alaffert-website/
     orcid: 0000-0002-9008-2454
     email: andreas.laffert@uchile.cl
     affiliations:
@@ -22,6 +23,8 @@ knitr:
 format:
   revealjs:
     theme: [default, edumer.scss]
+    title-slide-attributes:
+      data-background-color: "#523870"
     transition: slide
     transition-speed: slow
     highlight-style: "github-dark"
@@ -43,7 +46,9 @@ load("../input/data/BBDD_Clima_Junio_Sample.RData")
 datos <- sjlabelled::as_label(bbdd_clima_sample)
 ```
 
-## Objetivo del taller
+## Objetivo del taller 🎯
+
+. . .
 
 - Darles las primeras herramientas para **programar en R** aplicado al **análisis de datos en ciencias sociales**. Vamos a trabajar con una versión de la **Encuesta ICSOH-UDP**, un instrumento de opinión pública que mide el clima social y político en Chile.
 
@@ -52,23 +57,27 @@ datos <- sjlabelled::as_label(bbdd_clima_sample)
 - Al terminar, ustedes van a poder cargar una base de datos, explorarla, recodificarla, y producir sus primeros análisis descriptivos, todo con código que puedan repetir y adaptar.
 
 ::: {.fragment .pad}
+
+- **Primer bloque**: presentación
+- **Segundo bloque**: práctico
+
 Vamos a trabajar en **Posit Cloud**, directo desde el navegador y sin instalar nada. Los detalles de acceso están en la **Guía 1** que se envió antes del taller.
 :::
 
 ----
 
-### Lo que sí vamos a ver
+### Lo que sí vamos a ver 👁️
 
 ::: {.incremental}
-- Qué es R y cómo se usa junto a RStudio
-- Los elementos básicos del lenguaje: objetos, vectores, tipos de datos
-- Herramientas para cargar, ordenar y procesar datos de encuestas
-- Estadística descriptiva: frecuencias, promedios y gráficos simples
+1. **Qué es R y cómo se usa junto a RStudio**
+2. **Los elementos básicos del lenguaje de R**
+3. **Herramientas para cargar, ordenar y procesar datos de encuestas**
+4. **Herramientas para realizar estadísticas descriptivas**
 :::
 
 ----
 
-### Lo que no vamos a ver
+### Lo que no vamos a ver 
 
 ::: {.incremental}
 - Cómo instalar R y RStudio en tu computador: como trabajamos en **Posit Cloud**, hoy no hace falta instalar nada; si igual quieres instalarlo en tu computador, la guía está en la **Guía 1**
@@ -92,7 +101,7 @@ Todo esto lo pueden seguir aprendiendo después, una vez que tengan las bases �
 
 ----
 
-## La Encuesta ICSOH-UDP
+## La Encuesta ICSOH-UDP 📋
 
 :::: {.columns}
 
@@ -112,6 +121,10 @@ Todo esto lo pueden seguir aprendiendo después, una vez que tengan las bases �
 
 ----
 
+![](imagenes/rusa.png){style="max-width:100%; max-height:100%;"}
+
+----
+
 ### Flujo de trabajo
 
 
@@ -126,12 +139,23 @@ Todo esto lo pueden seguir aprendiendo después, una vez que tengan las bases �
 ### Input - Processing - Output
 
 ::: {.fragment}
-![](imagenes/ipo.png){.centro style="width: 800px;"}
+![](imagenes/cora3.png){.centro style="width: 800px;"}
 :::
 
 ----
 
-## ¿Qué es R?
+
+### Input - Processing - Output
+
+::: {.fragment}
+![](imagenes/ipo.png){.centro style="width: 800px;"}
+:::
+
+
+----
+
+## ¿Qué es R? {background-color="#523870" .texto-blanco}
+
 
 :::: {.columns}
 
@@ -232,12 +256,13 @@ Un script de R deja registrado cada paso de tu análisis: si te equivocas, corri
 ::::
 
 
-# RStudio
+# RStudio {background-color="#523870" .texto-blanco}
 
 ::::: {.columns}
 
 :::: {.column width="55%"}
-RStudio es un **entorno de desarrollo integrado (IDE)** que nos permite escribir y ejecutar código en R de forma más cómoda y visual que la consola sola.
+RStudio es un **entorno de desarrollo integrado (IDE)**  es una interfaz más amigable que nos permite interactuar con R.
+
 
 ::: {.incremental}
 - Es la forma más popular de trabajar con R
@@ -276,7 +301,10 @@ El lugar donde R **ejecuta** cada instrucción, una a la vez. Lo que se escribe 
 
 :::
 
-::: {.fragment}
+
+----
+
+
 ![](imagenes/icono_project.png){.izq style="margin: 10px; width: 110px;"}
 
 #### Proyecto
@@ -284,7 +312,11 @@ El lugar donde R **ejecuta** cada instrucción, una a la vez. Lo que se escribe 
 En **Posit Cloud**, cada espacio de trabajo **ya es un proyecto**: una carpeta que reúne datos, scripts y resultados en un mismo lugar. No hace falta crearlo a mano, así que solo entramos al proyecto que les compartimos.
 
 Cuando trabajen en su computador, el equivalente es un archivo `.Rproj`, que define esa misma carpeta como su espacio de trabajo.
-:::
+
+
+::: {.fragment}
+![](imagenes/cora1.png){style="width:80%;"}
+::: 
 
 ----
 
@@ -386,7 +418,7 @@ Cambiar de **proyecto** o crear uno nuevo
 
 
 
-# Introducción a R {background-color="#523870" .texto-blanco}
+# Introducción a R💡 {background-color="#523870" .texto-blanco}
 
 ::::: {.columns}
 
@@ -448,7 +480,7 @@ Antes de trabajar con la encuesta, veamos los elementos más básicos del lengua
 
 ## Objetos
 
-R es un lenguaje de programación orientado a **objetos**: 
+R es un lenguaje de programación que funciona a partir de **objetos**: 
 
 - Crear elementos dentro del ambiente de R, a los cuales les asignaremos información que quedará almacenada
 
@@ -530,7 +562,7 @@ casos_totales - casos_muestra
 
 ----
 
-### Reto de asignación {.scrollable}
+## Reto de asignación {.scrollable}
 
 ¿Qué creen que va a mostrar cada línea? Piénsenlo antes de revelar la respuesta.
 
@@ -619,7 +651,7 @@ En R usamos distintos operadores según lo que queramos hacer: calcular, compara
 
 ----
 
-### Operadores en acción {.scrollable}
+## Operadores en acción {.scrollable}
 
 Un par de ejemplos, sin ser exhaustivos (para eso está la imagen anterior):
 
@@ -697,10 +729,6 @@ class(posicion)
 ```
 :::
 
-::: {.fragment .pad}
-En nuestra encuesta, variables como `ideologia` ya vienen como factor: `class(datos$ideologia)`.
-:::
-
 ----
 
 ## Transformar tipos (coerción) {.scrollable}
@@ -745,25 +773,6 @@ c(TRUE, FALSE, TRUE)
 Y ahora la buena noticia: **cada columna de una base de datos ya es un vector**.
 :::
 
-----
-
-### Operaciones sobre vectores
-
-```{r}
-fichas_salud <- datos$fichas_salud
-head(fichas_salud, n = 10)
-```
-
-::: {.fragment}
-Como es un vector numérico, podemos calcular funciones sobre él, como el promedio:
-```{r}
-mean(fichas_salud, na.rm = TRUE)
-```
-:::
-
-::: {.fragment .pad}
-`fichas_salud` viene de una pregunta donde cada persona reparte 10 fichas de gasto público entre distintas áreas: aquí vemos cuántas, en promedio, se destinan a salud.
-:::
 
 ----
 
@@ -774,7 +783,7 @@ mean(fichas_salud, na.rm = TRUE)
 :::
 
 ::: {.centrar .fragment}
-`función(argumento = 123)`
+`función(argumento_1 = x, argumento_2 = z)`
 :::
 
 ::: {.fragment}
@@ -795,7 +804,9 @@ max() # valor máximo
 Por ejemplo:
 
 ```{r}
-mean(c(1, 2, 3, 4, 5))
+vector <- c(1, 2, 3, 4, 5, NA)
+
+mean(vector, na.rm = TRUE)
 ```
 :::
 
@@ -832,7 +843,7 @@ datos
 
 
 
-# Herramientas básicas de procesamiento de datos {background-color="#523870" .texto-blanco}
+# Herramientas básicas de procesamiento de datos 🖥️{background-color="#523870" .texto-blanco}
 
 - Librerías
 - Cargar datos
@@ -883,6 +894,8 @@ Para instalar y cargar de una vez usamos `{pacman}`: es el atajo que hace los do
 
 ```{r}
 #| code-line-numbers: false
+
+library(pacman)
 pacman::p_load(tidyverse, 
                sjlabelled, 
                sjmisc, 
@@ -1111,7 +1124,7 @@ Y más!
 ```{r}
 datos |>
   select(fichas_salud) |>
-  mutate(prioriza_salud = if_else(fichas_salud >= 5, 1, 0)) |>
+  mutate(prioriza_salud = if_else(fichas_salud >= 4, 1, 0)) |>
   head()
 ```
 
@@ -1120,7 +1133,7 @@ La misma condición, ahora con etiquetas legibles en vez de números:
 ```{r}
 datos |>
   select(fichas_salud) |>
-  mutate(prioriza_salud = if_else(fichas_salud >= 5, "Sí", "No")) |>
+  mutate(prioriza_salud = if_else(fichas_salud >= 4, "Sí", "No")) |>
   head()
 ```
 :::
@@ -1133,11 +1146,12 @@ Cuando hay más de dos opciones, `case_when()` evalúa condiciones en orden
 
 ```{r}
 datos |>
-  mutate(tramo_ingreso = case_when(
-    ingreso_hogar >= 1 & ingreso_hogar <= 4 ~ "Bajo",
-    ingreso_hogar >= 5 & ingreso_hogar <= 7 ~ "Medio",
-    ingreso_hogar >= 8 & ingreso_hogar <= 10 ~ "Alto")) |>
-  count(tramo_ingreso)
+  select(fichas_salud) |> 
+  mutate(tramo_salud = case_when(
+    fichas_salud >= 1 & fichas_salud <= 3 ~ "Bajo",
+    fichas_salud >= 4 & fichas_salud <= 6 ~ "Medio",
+    fichas_salud >= 7 & fichas_salud <= 10 ~ "Alto")) |>
+  head()
 ```
 
 ----
@@ -1223,7 +1237,7 @@ load("../output/data/datos_proc.RData")
 ```
 
 
-# Herramientas para analizar datos {background-color="#523870" .texto-blanco}
+# Herramientas para analizar datos 🔎📊{background-color="#523870" .texto-blanco}
 
 - Resumiendo datos
 - Variables categóricas
@@ -1283,7 +1297,7 @@ sjmisc::frq(datos_proc$gse)
 
 ## Variables numéricas
 
-Para variables numéricas usamos funciones de resumen o `sjmisc::descr()`:
+Para variables numéricas usamos funciones de resumen o `psych::describe()`:
 
 ```{r}
 summary(datos_proc$fichas_salud)
@@ -1307,7 +1321,7 @@ sjPlot::tab_xtab(datos_proc$gse, datos_proc$ideologia, show.row.prc = TRUE)
 
 ----
 
-### Bivariados: numérica × categórica {.scrollable}
+## Bivariados: numérica × categórica {.scrollable}
 
 Comparamos las fichas de seguridad asignadas por hombres y por mujeres, y confirmamos la diferencia con una prueba t:
 
@@ -1322,7 +1336,7 @@ t.test(fichas_seguridad ~ sexo, data = datos_proc)
 
 ----
 
-### Bivariados: numérica × numérica {.scrollable}
+## Bivariados: numérica × numérica {.scrollable}
 
 ```{r}
 datos_proc <- datos_proc |>
@@ -1346,8 +1360,8 @@ La correlación es negativa y significativa: a mayor ingreso del hogar, se tiend
 
 ## Recursos para seguir aprendiendo
 
-- [R Graph Gallery](https://www.r-graph-gallery.com/)
-- [R Charts](https://r-charts.com/es/)
+- [R for Data Science](https://r4ds.hadley.nz/)
+- [Advanced R](https://adv-r.hadley.nz/oo.html)
 - [A ggplot2 Tutorial for Beautiful Plotting in R](https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/) (en inglés)
 
 ::: {.fragment .pad}
@@ -1359,21 +1373,19 @@ Este taller se inspira en los materiales abiertos de **Bastián Olea** (proyecto
 ## Consejos finales
 
 ::: {.incremental}
-- Mantengan su propio cuaderno de aprendizajes 📝
 - Lean con calma los errores: casi siempre dicen exactamente qué falló
 - Si algo sale mal, revisen paso a paso, y si hace falta, empiecen de nuevo
 - Usen la IA como apoyo puntual, no como reemplazo de entender lo que hacen
-- Compartan lo que van aprendiendo con sus colegas ✨
+- Compartan lo que van aprendiendo con sus colegas 
 :::
 
-# Gracias {background-color="#523870" .texto-blanco}
+# ¡Gracias! {background-color="#523870" .texto-blanco}
 
-Cualquier duda o comentario, escríbanme a andreas.laffert@uchile.cl
+Cualquier duda o comentario, escríbanme a [andreas.laffert@uchile.cl](andreas.laffert@uchile.cl) 📥
 
 <br>
 
-Ahora vamos a la práctica: en la segunda parte de este bloque aplicaremos todo esto paso a paso sobre la misma base, en `script_taller_clima.R`.
-
+Ahora vamos a la práctica! 🤓
 
 ----
 

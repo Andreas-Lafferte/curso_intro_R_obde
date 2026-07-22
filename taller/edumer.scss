@@ -230,6 +230,17 @@ h4 {
 }
 
 
+// portada (slide de título generada por Quarto)
+// el fondo se controla con title-slide-attributes > data-background-color en el YAML
+.reveal #title-slide h1.title,
+.reveal #title-slide p.subtitle,
+.reveal #title-slide p.date,
+.reveal #title-slide .quarto-title-author-name,
+.reveal #title-slide .quarto-title-affiliation,
+.reveal #title-slide a {
+  color: #ffffff !important;
+}
+
 .rosa {
   filter: saturate(200%) brightness(90%);
 }
